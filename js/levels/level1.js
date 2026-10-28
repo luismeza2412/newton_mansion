@@ -192,6 +192,16 @@
         totalScore: recomputeTotalScore(newLevels),
       });
       showMessage('win', starsEarned);
+      window.NM.quiz.showLesson(LEVEL_ID, {
+        onDone: function () {
+          var nextScreenId = 'level-' + (LEVEL_ID + 1);
+          if (document.querySelector('[data-screen="' + nextScreenId + '"]')) {
+            window.NM.screens.navigateTo(nextScreenId);
+          } else {
+            window.NM.screens.navigateTo('home');
+          }
+        },
+      });
     } else {
       var attemptsUsed = level.attempts + 1;
       window.NM.state.setState({

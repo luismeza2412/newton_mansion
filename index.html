@@ -113,6 +113,30 @@
       </div>
     </div>
 
+    <div class="modal" data-modal="lesson" hidden>
+      <div class="modal__backdrop"></div>
+      <div class="modal__content panel" role="dialog" aria-modal="true" aria-labelledby="lesson-title">
+        <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">&times;</button>
+
+        <div data-lesson="explanation">
+          <p class="lesson__eyebrow">Ley de Newton</p>
+          <h2 id="lesson-title" data-lesson="law-name"></h2>
+          <p class="lesson__statement" data-lesson="law-statement"></p>
+          <p class="lesson__formula" data-lesson="law-formula"></p>
+          <p class="lesson__example" data-lesson="law-example"></p>
+          <button type="button" class="btn btn--primary" data-lesson="continue-quiz">Continuar al quiz</button>
+        </div>
+
+        <div data-lesson="quiz" hidden>
+          <p class="lesson__eyebrow">Quiz</p>
+          <h2 data-lesson="quiz-question"></h2>
+          <div class="quiz__options" data-lesson="quiz-options"></div>
+          <p class="quiz__feedback" data-lesson="quiz-feedback" hidden></p>
+          <button type="button" class="btn btn--primary" data-lesson="next-level" hidden>Siguiente nivel</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Librerías de terceros -->
     <script src="vendor/matter.min.js" defer></script>
     <script src="vendor/chart.umd.min.js" defer></script>

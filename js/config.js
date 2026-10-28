@@ -51,6 +51,7 @@
 
     SCORING: {
       POINTS_PER_STAR: 100,
+      QUIZ_POINTS: 20, // puntos al responder correctamente el quiz de una ley (RF-52)
     },
 
     ENGINE: {

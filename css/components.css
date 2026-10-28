@@ -262,3 +262,74 @@
   background: var(--color-primary);
   transition: width 0.05s linear;
 }
+
+/* Modal de explicación y quiz (RF-50 a RF-53) */
+.lesson__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.lesson__statement {
+  color: var(--color-text);
+}
+
+.lesson__formula {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.lesson__example {
+  color: var(--color-text-dim);
+}
+
+.quiz__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.quiz__option {
+  text-align: left;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius);
+  border: 1px solid var(--elevation-1-border);
+  background: var(--elevation-1-bg);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.quiz__option:disabled {
+  cursor: default;
+}
+
+.quiz__option--correct {
+  border-color: var(--color-ok);
+  box-shadow: 0 0 0 1px var(--color-ok) inset;
+}
+
+.quiz__option--incorrect {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 1px var(--color-error) inset;
+}
+
+.quiz__feedback {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-md);
+}
+
+.quiz__feedback--ok {
+  background: rgba(124, 252, 0, 0.12);
+  color: var(--color-ok);
+}
+
+.quiz__feedback--error {
+  background: rgba(255, 59, 92, 0.12);
+  color: var(--color-error);
+}

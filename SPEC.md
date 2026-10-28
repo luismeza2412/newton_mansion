@@ -425,9 +425,9 @@ Marca cada casilla al completar. Cada fase termina con un commit.
 **Aceptación:** existe una combinación ganadora; con `μ = 0` el fantasma nunca se detiene y aparece el mensaje; los intentos y estrellas funcionan.
 
 ### Fase 5: Explicación y quiz
-- [ ] `data/content.js` con el contenido de la sección 10.
-- [ ] Modal de explicación y pantalla de quiz con estados de retroalimentación (RF-50 a RF-53).
-- [ ] Integración con el nivel 1 y desbloqueo del nivel 2.
+- [x] `data/content.js` con el contenido de la sección 10.
+- [x] Modal de explicación y pantalla de quiz con estados de retroalimentación (RF-50 a RF-53).
+- [x] Integración con el nivel 1 y desbloqueo del nivel 2.
 
 **Aceptación:** al ganar el nivel 1 se recorre explicación → quiz → nivel 2 desbloqueado.
 

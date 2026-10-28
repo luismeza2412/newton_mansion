@@ -249,5 +249,11 @@
   }
 
   window.NM = window.NM || {};
-  window.NM.screens = { init: init, navigateTo: navigateTo, registerLifecycle: registerLifecycle };
+  window.NM.screens = {
+    init: init,
+    navigateTo: navigateTo,
+    registerLifecycle: registerLifecycle,
+    openModal: openModal,
+    closeModal: closeModal,
+  };
 })();
