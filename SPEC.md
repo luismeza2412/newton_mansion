@@ -395,9 +395,9 @@ Marca cada casilla al completar. Cada fase termina con un commit.
 **Aceptación:** `index.html` abre sin errores en consola y muestra una página en blanco con el fondo oscuro.
 
 ### Fase 1: Núcleo de física y pruebas
-- [ ] `physics/newton.js`: `acceleration(F, m)`, `kineticFriction(mu, m, g)`, `stoppingDistance(v0, mu, g)`, `launchVelocity(F, m, dt)`, `recoilDelta(m, u, M)`.
-- [ ] `physics/integrator.js`: paso Euler semi-implícito.
-- [ ] `tests/physics.test.js` con casos de las secciones 8.1 a 8.3.
+- [x] `physics/newton.js`: `acceleration(F, m)`, `kineticFriction(mu, m, g)`, `stoppingDistance(v0, mu, g)`, `launchVelocity(F, m, dt)`, `recoilDelta(m, u, M)`.
+- [x] `physics/integrator.js`: paso Euler semi-implícito.
+- [x] `tests/physics.test.js` con casos de las secciones 8.1 a 8.3.
 
 **Aceptación:** `node tests/physics.test.js` termina con código 0. Se prueban al menos: `a = F/m`, frenado hasta cero sin velocidad negativa, `Δv` del caramelo = 1 m/s y del caldero = 4 m/s con los valores iniciales.
 
