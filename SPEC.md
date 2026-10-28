@@ -402,10 +402,10 @@ Marca cada casilla al completar. Cada fase termina con un commit.
 **Aceptación:** `node tests/physics.test.js` termina con código 0. Se prueban al menos: `a = F/m`, frenado hasta cero sin velocidad negativa, `Δv` del caramelo = 1 m/s y del caldero = 4 m/s con los valores iniciales.
 
 ### Fase 2: Motor y ambiente visual
-- [ ] `engine/loop.js` con paso fijo y acumulador.
-- [ ] `engine/background.js`: luna, estrellas, niebla, murciélagos, relámpago.
-- [ ] `engine/particles.js` con tope de partículas.
-- [ ] Canvas con escalado 16:9 y coordenadas lógicas 960×540.
+- [x] `engine/loop.js` con paso fijo y acumulador.
+- [x] `engine/background.js`: luna, estrellas, niebla, murciélagos, relámpago.
+- [x] `engine/particles.js` con tope de partículas.
+- [x] Canvas con escalado 16:9 y coordenadas lógicas 960×540.
 
 **Aceptación:** una página de prueba muestra el fondo animado a 60 FPS, redimensionable sin deformarse.
 

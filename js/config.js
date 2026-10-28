@@ -45,6 +45,18 @@
       PX_PER_M: 25,
       MAX_THROWS: 6,
     },
+
+    ENGINE: {
+      CANVAS_WIDTH: 960, // coordenadas lógicas (RNF-04)
+      CANVAS_HEIGHT: 540,
+      MAX_PARTICLES: 500, // tope de partículas activas (RF-72, RNF-01)
+      STAR_COUNT: 60,
+      FOG_LAYER_COUNT: 3,
+      BAT_COUNT: 4,
+      LIGHTNING_MIN_INTERVAL: 12, // s (RF-71)
+      LIGHTNING_MAX_INTERVAL: 25, // s (RF-71)
+      LIGHTNING_FLASH_DURATION: 0.15, // s
+    },
   };
 
   root.NM = root.NM || {};

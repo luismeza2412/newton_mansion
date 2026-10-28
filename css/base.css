@@ -22,3 +22,13 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
+
+/* Canvas con coordenadas lógicas 960x540, escalado 16:9 sin deformarse (RNF-04) */
+#game-canvas {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
