@@ -14,6 +14,8 @@
 
   var screens = {};
   var activeModal = null;
+  var lifecycles = {};
+  var currentScreenId = null;
 
   function queryScreens() {
     var elements = document.querySelectorAll('[data-screen]');
@@ -32,13 +34,30 @@
     if (!target) {
       return;
     }
+    if (currentScreenId && lifecycles[currentScreenId] && lifecycles[currentScreenId].onExit) {
+      lifecycles[currentScreenId].onExit();
+    }
     for (var id in screens) {
       screens[id].hidden = id !== screenId;
     }
+    currentScreenId = screenId;
     window.NM.state.setState({ currentScreen: screenId });
     if (screenId === 'home') {
       renderLevelCards();
     }
+    if (lifecycles[screenId] && lifecycles[screenId].onEnter) {
+      lifecycles[screenId].onEnter();
+    }
+  }
+
+  /**
+   * Registra callbacks de entrada/salida para una pantalla (usado por los
+   * niveles para arrancar/detener su propio bucle de juego).
+   * @param {string} screenId
+   * @param {{onEnter?: function(): void, onExit?: function(): void}} hooks
+   */
+  function registerLifecycle(screenId, hooks) {
+    lifecycles[screenId] = hooks;
   }
 
   function levelStatus(state, levelId) {
@@ -230,5 +249,5 @@
   }
 
   window.NM = window.NM || {};
-  window.NM.screens = { init: init, navigateTo: navigateTo };
+  window.NM.screens = { init: init, navigateTo: navigateTo, registerLifecycle: registerLifecycle };
 })();

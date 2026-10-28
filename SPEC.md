@@ -418,9 +418,9 @@ Marca cada casilla al completar. Cada fase termina con un commit.
 **Aceptación:** se navega entre todas las pantallas, el modal se cierra con `Esc`, y el progreso sobrevive a recargar.
 
 ### Fase 4: Nivel 1
-- [ ] HUD y panel de datos en vivo (`ui/hud.js`).
-- [ ] Lógica de `level1.js` según RF-20 a RF-26 y la sección 8.1.
-- [ ] Mensajes didácticos para `μ = 0` y para derrota.
+- [x] HUD y panel de datos en vivo (`ui/hud.js`).
+- [x] Lógica de `level1.js` según RF-20 a RF-26 y la sección 8.1.
+- [x] Mensajes didácticos para `μ = 0` y para derrota.
 
 **Aceptación:** existe una combinación ganadora; con `μ = 0` el fantasma nunca se detiene y aparece el mensaje; los intentos y estrellas funcionan.
 

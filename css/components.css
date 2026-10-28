@@ -215,3 +215,50 @@
   padding: var(--space-md) var(--space-lg);
   font-family: var(--font-mono);
 }
+
+.hud__title {
+  font-family: var(--font-display);
+  color: var(--color-text);
+}
+
+.hud__score,
+.hud__attempts {
+  color: var(--color-text-dim);
+}
+
+.hud__field {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.hud__field-label {
+  color: var(--color-text-dim);
+}
+
+.hud__field-value {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.hud__field-value small {
+  color: var(--color-text-dim);
+  font-weight: 400;
+}
+
+/* Barra de carga del soplido (RF-21) */
+.charge-bar {
+  width: 100%;
+  height: 8px;
+  margin-top: var(--space-sm);
+  border-radius: var(--radius);
+  background: var(--elevation-1-border);
+  overflow: hidden;
+}
+
+.charge-bar__fill {
+  height: 100%;
+  width: 0%;
+  background: var(--color-primary);
+  transition: width 0.05s linear;
+}

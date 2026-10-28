@@ -45,6 +45,7 @@
   function main() {
     var canvas = document.getElementById('game-canvas');
     startAmbientBackground(canvas.getContext('2d'));
+    window.NM.levels.level1.init();
     window.NM.screens.init();
   }
 

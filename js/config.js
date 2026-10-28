@@ -16,11 +16,14 @@
       GRAVITY: 9.8, // m/s²
       FRICTION_SLIDER_MAX: 0.6, // mu = slider(0..1) * este valor
       BLOW_V_MAX: 10, // m/s, velocidad inicial máxima del soplido
+      BLOW_CHARGE_SECONDS: 1.2, // s para cargar la potencia de 0 a 100% manteniendo pulsado
       START_POSITION: 2, // m
       STOP_ZONE_MIN: 12.5, // m
       STOP_ZONE_MAX: 14, // m, posición de la puerta
       VELOCITY_EPSILON: 0.02, // m/s, umbral para fijar v = 0
       PX_PER_M: 50,
+      MAX_ATTEMPTS: 3,
+      STARS_BY_ATTEMPT: [3, 2, 1], // índice = intentos fallidos previos a la victoria
     },
 
     LEVEL2: {
@@ -44,6 +47,10 @@
       GRAVITY: 0, // m/s², levitación
       PX_PER_M: 25,
       MAX_THROWS: 6,
+    },
+
+    SCORING: {
+      POINTS_PER_STAR: 100,
     },
 
     ENGINE: {
