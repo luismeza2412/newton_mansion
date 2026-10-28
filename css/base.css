@@ -16,6 +16,16 @@ body {
   height: 100%;
 }
 
+/*
+  Cualquier regla de `display` en una clase de autor vence por especificidad
+  a la hoja de estilos del navegador para `[hidden]`, así que sin esto
+  cualquier componente con `display` propio (botones, paneles) ignora el
+  atributo `hidden` y queda visible igual.
+*/
+[hidden] {
+  display: none !important;
+}
+
 body {
   background: var(--color-bg-black);
   color: var(--color-text);
