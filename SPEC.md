@@ -439,9 +439,9 @@ Marca cada casilla al completar. Cada fase termina con un commit.
 **Aceptación:** la gráfica se actualiza durante el vuelo; con distintas masas y la misma fuerza se observan aceleraciones distintas y la vista previa coincide con el cálculo real.
 
 ### Fase 7: Nivel 3
-- [ ] Bruja, objetos lanzables, control de dirección (RF-40 a RF-47).
-- [ ] Flechas de acción y reacción iguales y opuestas (RF-44).
-- [ ] Conservación de velocidad entre lanzamientos y reinicio por salir del escenario.
+- [x] Bruja, objetos lanzables, control de dirección (RF-40 a RF-47).
+- [x] Flechas de acción y reacción iguales y opuestas (RF-44).
+- [x] Conservación de velocidad entre lanzamientos y reinicio por salir del escenario.
 
 **Aceptación:** la suma de momentos antes y después del lanzamiento se conserva (verificar por prueba automática y en pantalla); las flechas muestran el mismo valor en newtons.
 

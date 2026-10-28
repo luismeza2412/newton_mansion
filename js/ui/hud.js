@@ -7,15 +7,17 @@
   'use strict';
 
   /**
-   * Pinta la barra superior de un nivel: nombre, puntaje e intentos.
+   * Pinta la barra superior de un nivel: nombre, puntaje e intentos (o el
+   * contador que indique `attemptLabel`, p. ej. "Lanzamiento" en el Nivel 3).
    * @param {HTMLElement} el - Contenedor de la barra superior.
-   * @param {{levelId: number, title: string, score: number, attemptNumber: number, maxAttempts: number}} info
+   * @param {{levelId: number, title: string, score: number, attemptNumber: number, maxAttempts: number, attemptLabel: (string|undefined)}} info
    */
   function renderTopBar(el, info) {
+    var label = info.attemptLabel || 'Intento';
     el.innerHTML =
       '<span class="hud__title">Nivel ' + info.levelId + ' · ' + info.title + '</span>' +
       '<span class="hud__score">Puntaje: ' + info.score + '</span>' +
-      '<span class="hud__attempts">Intento ' + info.attemptNumber + ' / ' + info.maxAttempts + '</span>';
+      '<span class="hud__attempts">' + label + ' ' + info.attemptNumber + ' / ' + info.maxAttempts + '</span>';
   }
 
   /**

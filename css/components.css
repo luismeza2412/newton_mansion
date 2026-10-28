@@ -334,13 +334,13 @@
   color: var(--color-error);
 }
 
-/* Selector de calabaza (Nivel 2, RF-33) */
-.pumpkin-select {
+/* Selector de ítem con masa (Nivel 2 RF-33, Nivel 3 RF-41) */
+.item-select {
   display: flex;
   gap: var(--space-sm);
 }
 
-.pumpkin-select__option {
+.item-select__option {
   flex: 1;
   padding: var(--space-sm);
   border-radius: var(--radius);
@@ -351,17 +351,17 @@
   cursor: pointer;
 }
 
-.pumpkin-select__option[aria-pressed='true'] {
+.item-select__option[aria-pressed='true'] {
   border-color: var(--color-primary);
   box-shadow: var(--elevation-3-glow-primary);
 }
 
-.pumpkin-select__option:disabled {
+.item-select__option:disabled {
   opacity: 0.5;
   cursor: default;
 }
 
-.pumpkin-select__mass {
+.item-select__mass {
   display: block;
   font-size: 0.75rem;
   color: var(--color-text-dim);

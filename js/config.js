@@ -70,6 +70,18 @@
       GRAVITY: 0, // m/s², levitación
       PX_PER_M: 25,
       MAX_THROWS: 6,
+      STARS_THRESHOLDS: [2, 4, 6], // máx. lanzamientos usados para 3★, 2★, 1★ (RF-47)
+      WITCH_START_X_M: 4,
+      WITCH_START_Y_M: 17,
+      WITCH_RADIUS_M: 0.5,
+      MOON_X_M: 34,
+      MOON_Y_M: 3,
+      MOON_RADIUS_M: 1.2,
+      BOUNDS_MARGIN_M: 2, // margen fuera del lienzo antes de considerar "fuera del escenario"
+      OBJECT_RADIUS_CANDY_M: 0.15,
+      OBJECT_RADIUS_CAULDRON_M: 0.35,
+      ARROW_DISPLAY_SECONDS: 1.5, // cuánto se muestran las flechas de fuerza tras lanzar
+      THROW_LIFESPAN_S: 2.5, // cuánto dura animado el objeto lanzado
     },
 
     SCORING: {
