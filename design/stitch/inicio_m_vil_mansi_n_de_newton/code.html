@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#1a0b2e;color:#eddcff;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {darkMode: "class",theme: {extend: {"colors": {"on-surface": "#eddcff","background": "#1a0b2e","outline": "#a88b7d","error-container": "#93000a","outline-variant": "#594236","surface-container-high": "#322346","on-tertiary": "#460084","primary-container": "#ff7518","surface-container": "#27183b","on-surface-variant": "#e0c0b1","surface-bright": "#413257","on-error": "#690005","primary": "#ffb691","on-background": "#eddcff","on-primary": "#552100","on-primary-fixed": "#341100","on-secondary-fixed": "#0a2000","tertiary-container": "#bb83ff","surface-container-highest": "#3d2e52","surface-tint": "#ffb691","on-primary-fixed-variant": "#783100","secondary-fixed-dim": "#6ee000","on-tertiary-container": "#4d008f","tertiary-fixed": "#eedbff","surface-dim": "#1a0b2e","surface-container-low": "#231437","on-secondary": "#173800","on-tertiary-fixed": "#2a0053","tertiary": "#dab9ff","surface-container-lowest": "#150629","on-secondary-fixed-variant": "#245100","tertiary-fixed-dim": "#dab9ff","primary-fixed-dim": "#ffb691","secondary-fixed": "#82ff1a","on-secondary-container": "#347000","inverse-primary": "#9e4300","secondary": "#f8ffeb","on-primary-container": "#5c2400","on-tertiary-fixed-variant": "#611baa","secondary-container": "#7cfc01","on-error-container": "#ffdad6","error": "#ffb4ab","surface": "#1a0b2e","primary-fixed": "#ffdbcb","inverse-on-surface": "#38294d","inverse-surface": "#eddcff","surface-variant": "#3d2e52"},"borderRadius": {"DEFAULT": "0.25rem","lg": "0.5rem","xl": "0.75rem","full": "9999px"},"spacing": {"margin-tablet": "2rem","space-sm": "0.5rem","gutter": "1rem","margin-desktop": "3rem","margin": "1rem","gutter-desktop": "1.5rem","space-lg": "1.5rem","space-md": "1rem","space-xl": "2.5rem","space-xs": "0.25rem"},"fontFamily": {"headline-lg-mobile": ["Bricolage Grotesque"],"display-lg": ["Bricolage Grotesque"],"headline-md": ["Bricolage Grotesque"],"formula-lg": ["JetBrains Mono"],"headline-sm": ["Bricolage Grotesque"],"headline-lg": ["Bricolage Grotesque"],"body-lg": ["Inter"],"body-sm": ["Inter"],"label-sm": ["JetBrains Mono"],"display-lg-mobile": ["Bricolage Grotesque"],"label-md": ["JetBrains Mono"],"body-md": ["Inter"],"formula-md": ["JetBrains Mono"]},"fontSize": {"headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],"display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "800"}],"headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],"formula-lg": ["20px", {"lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "500"}],"headline-sm": ["20px", {"lineHeight": "26px", "fontWeight": "600"}],"headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],"body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],"body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],"label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600"}],"display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "800"}],"label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "500"}],"body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],"formula-md": ["15px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_4px_20px_rgba(21,6,41,0.7)]"><div class="h-16 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><button aria-label="Menu Drawer" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-container-high/60 text-primary-container hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined text-[22px]">menu_open</span></button><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary-container leading-none tracking-tight">Newton</span><span class="font-label-sm text-label-sm text-secondary-container uppercase tracking-wider">Mansión Lab</span></div></div><div class="flex items-center gap-space-xs"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-lowest/80"><span class="material-symbols-outlined text-[16px] text-primary-container">favorite</span><span class="font-formula-md text-formula-md text-primary">3</span></div><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-lowest/80"><span class="material-symbols-outlined text-[16px] text-secondary-container">bolt</span><span class="font-formula-md text-formula-md text-secondary-container">2,850</span></div><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-high"><span class="font-label-sm text-label-sm text-tertiary uppercase">LVL</span><span class="font-formula-md text-formula-md text-on-surface font-bold">04</span></div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 shadow-[0_0_12px_rgba(255,182,145,0.4)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex flex-col relative w-full pt-16 pb-20 bg-surface min-h-screen"><div class="flex flex-col w-full text-on-surface">
+<!-- HUD Quick Status & Sound Control Strip -->
+<div class="px-gutter pt-space-sm pb-space-xs flex items-center justify-between">
+<div class="flex items-center gap-space-xs bg-surface-container-high/70 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm">
+<div class="relative flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[18px]">electric_bolt</span>
+<span class="absolute w-2 h-2 rounded-full bg-secondary-container animate-ping opacity-75"></span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-container tracking-wider uppercase">Física v2.4</span>
+</div>
+<!-- Quick Audio & Score HUD Pill -->
+<div class="flex items-center gap-space-xs">
+<div class="flex items-center gap-1.5 bg-surface-container-high/80 px-2.5 py-1 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-formula-md text-formula-md text-primary font-bold">14,850</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">PTS</span>
+</div>
+<button aria-label="Alternar sonido fantasmal" class="w-8 h-8 rounded-full bg-surface-container-high/90 text-on-surface flex items-center justify-center active:scale-95 transition-transform shadow-sm" id="soundToggleBtn">
+<span class="material-symbols-outlined text-[18px] text-secondary-container" id="soundIcon">volume_up</span>
+</button>
+</div>
+</div>
+<!-- Hero Section: Haunted Grounds with Glowing Atmosphere -->
+<div class="relative mx-gutter mt-space-xs rounded-xl overflow-hidden shadow-xl bg-surface-container-lowest">
+<!-- Atmospheric Visual Canvas / Backdrop -->
+<div class="relative w-full h-64 bg-cover bg-center" data-alt="Dark eerie gothic Victorian manor in the background under a huge glowing full moon, glowing spectral green mist flowing around twisted dead trees and stone gargoyles in a misty graveyard, neon pumpkin atom sigil floating in sky, deep purple shadows and toxic green highlights, cinematic moody digital painting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB26Tm2xJ0YZ0TQgwqEtu95_Fy3gsPKib6rJZZiy2A83peL2NJdkI2CJCpklCzxG91GlZqyqmMMU7kZqrlBXGw-UqomK0IwVs6TCdRZbPVLNqSW5BoFpzOGoO8bg2EPlUsWe1JsOYxJ80bOSHSqlZdhp-0hHCAZtBeF-aGMmy87Zx75vDi3YHiMJgVQOTYIpgLE48PRSBcIlAkNCpHOrj6xS3fsky46HQP0CPThbzk9')">
+<!-- Gradient Scrim for Readable Typography -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/60 to-transparent"></div>
+<!-- Spooky Full Moon & Atom Sigil Graphic Badge -->
+<div class="absolute top-3 left-3 flex items-center gap-2 bg-surface-container-lowest/85 backdrop-blur-md px-2.5 py-1 rounded-full shadow-md">
+<span class="material-symbols-outlined text-primary-container text-[16px] animate-spin" style="animation-duration: 8s;">lens_blur</span>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-widest">Gravedad: 9.81 m/s²</span>
+</div>
+<!-- Hero Titles and Callout -->
+<div class="absolute bottom-3 inset-x-3 flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-container text-[20px]">science</span>
+<span class="font-label-sm text-label-sm text-secondary-container font-semibold tracking-widest uppercase">Laboratorio Clásico</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface font-extrabold tracking-tight leading-none drop-shadow-[0_2px_12px_rgba(255,117,24,0.35)]">
+          MANSIÓN DE NEWTON
+        </h1>
+<p class="font-body-sm text-body-sm text-primary font-medium flex items-center gap-1">
+<span>Aprende las 3 leyes de Newton...</span>
+<span class="text-secondary-container font-semibold italic">si te atreves</span>
+<span class="material-symbols-outlined text-[15px] text-primary-container">psychiatry</span>
+</p>
+</div>
+</div>
+<!-- Quick Action Launchpad below Hero Cover -->
+<div class="p-space-sm bg-surface-container-lowest/90 backdrop-blur-xl flex flex-col gap-2.5">
+<div class="grid grid-cols-5 gap-2">
+<!-- Primary Big Button (3 Cols) -->
+<button class="col-span-3 h-12 rounded-lg bg-primary-container text-on-primary flex items-center justify-center gap-2 font-headline-sm text-headline-sm font-bold shadow-[0_0_20px_rgba(255,117,24,0.45)] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">smart_toy</span>
+<span>¡Comenzar!</span>
+</button>
+<!-- Secondary Button (2 Cols) -->
+<button class="col-span-2 h-12 rounded-lg bg-surface-container-high/90 text-secondary-container hover:bg-surface-bright flex items-center justify-center gap-1.5 font-headline-sm text-headline-sm font-semibold active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span>Reglas</span>
+</button>
+</div>
+<!-- Mini Live Metric Strip -->
+<div class="flex items-center justify-between px-space-sm py-1.5 rounded-lg bg-surface-container-high/50">
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary-container">network_check</span>
+<span>Motor Físico Activo</span>
+</div>
+<div class="flex items-center gap-2 font-formula-md text-formula-md">
+<span class="text-on-surface-variant">Δt:</span>
+<span class="text-secondary-container font-semibold">0.016s</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Title: Desafíos Mecánicos -->
+<div class="px-gutter pt-space-lg pb-space-xs flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">stairs</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Cámaras del Saber</h2>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-container bg-surface-container-high px-2 py-0.5 rounded-full">
+      2 / 3 ACTIVAS
+    </span>
+</div>
+<!-- Level Cards Vertical Stack -->
+<div class="px-gutter flex flex-col gap-space-sm">
+<!-- LEVEL 1: INERCIA (UNLOCKED, MASTERED) -->
+<div class="relative rounded-xl bg-surface-container p-space-sm shadow-md overflow-hidden transition-all active:scale-[0.99]">
+<div class="flex items-start gap-space-sm">
+<!-- Thumbnail Illustration Placeholder -->
+<div class="relative w-20 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Chibi ghost gliding eternally through purple dark haunted hallway without stopping, inertia vector arrows glowing neon green, playful halloween physics laboratory concept art, deep purple shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuBfYL_BArwJVkjBpfhy_7zRfpupOkezUkz5vUPPhFuxc2T08OE86lEOgAE8AsWNxgG5UAgKnmk9y4tYsGrTK3f0SbMW2DWG-kr5LlJgQ9G7EYFuqcwRSvvGn9C_qx7L6JNMzhjGXV8GvgRfalTRjd2LVYYxE8GfzoNlr6kwm3WtA4GVkkEDIbxXJ2A9Dk6LMK7E9bI8llPsVtzdLFoJphk_boW8PX2qcpIyv3VDq7"/>
+<div class="absolute bottom-0 inset-x-0 bg-surface-container-lowest/80 text-center py-0.5">
+<span class="font-formula-md text-[11px] text-secondary-container font-bold">1ª LEY</span>
+</div>
+</div>
+<!-- Card Content -->
+<div class="flex-1 min-w-0 flex flex-col justify-between h-24">
+<div>
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-sm text-label-sm text-secondary-container uppercase tracking-wider font-semibold">Inercia Pura</span>
+<!-- Stars Rating -->
+<div class="flex items-center text-primary text-[14px]">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">
+              El Fantasma Eterno
+            </h3>
+<p class="font-formula-md text-formula-md text-on-surface-variant truncate">
+              ∑F = 0 ⟹ v = constante
+            </p>
+</div>
+<!-- Bottom Action within card -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+              Completado 100%
+            </span>
+<button class="h-8 px-3 rounded-lg bg-surface-container-high hover:bg-secondary-container text-secondary-container hover:text-on-secondary font-headline-sm text-[13px] font-bold flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[15px]">replay</span>
+<span>Jugar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- LEVEL 2: FUERZA Y MASA (CURRENT PROGRESS) -->
+<div class="relative rounded-xl bg-surface-container p-space-sm shadow-md overflow-hidden transition-all active:scale-[0.99] shadow-[0_0_16px_rgba(255,117,24,0.15)]">
+<!-- Glow Aura -->
+<div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-primary-container/15 blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-sm">
+<!-- Thumbnail Illustration Placeholder -->
+<div class="relative w-20 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Mechanical wooden haunted catapult flinging a glowing jack-o-lantern pumpkin across stone mansion courtyard, physics parabolic trajectory neon curve lines in orange and green, dark spooky atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMsX16Nm5US20Nlh5ws6SFLGEbwtIRr96fDnE9pda9mohurhDj1KDtB3vUCMO8ESVkQmtov64o0V_rAUBtZR6ALLvFIDhlA50eW5wCLv0DowFlFL15G-Ryo52d93FF1z0EeWMcbOrV0GJuwGTPYYL5eJiYEkojKSp5_Beyvi7bH3DJf7dtFHpCEbo5LTxpC3sRe3EsYY6WVkN-tqUrTofDexQzJR-KGBlcy2b0S_-9"/>
+<div class="absolute bottom-0 inset-x-0 bg-primary-container text-center py-0.5">
+<span class="font-formula-md text-[11px] text-on-primary font-bold">2ª LEY</span>
+</div>
+</div>
+<!-- Card Content -->
+<div class="flex-1 min-w-0 flex flex-col justify-between h-24">
+<div>
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">Dinámica</span>
+<!-- Stars Rating -->
+<div class="flex items-center text-primary text-[14px]">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px] opacity-30">star</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">
+              Catapulta de Calabazas
+            </h3>
+<p class="font-formula-md text-formula-md text-primary truncate font-semibold">
+              F = m · a  |  45° óptimo
+            </p>
+</div>
+<!-- Bottom Action within card -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+              En Curso · Reto 4/6
+            </span>
+<button class="h-8 px-3 rounded-lg bg-primary-container text-on-primary font-headline-sm text-[13px] font-bold flex items-center gap-1 shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[15px]">play_arrow</span>
+<span>Continuar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- LEVEL 3: ACCIÓN Y REACCIÓN (LOCKED) -->
+<div class="relative rounded-xl bg-surface-container-low/70 p-space-sm shadow-sm overflow-hidden opacity-85">
+<div class="flex items-start gap-space-sm">
+<!-- Thumbnail Placeholder (Desaturated/Locked) -->
+<div class="relative w-20 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-lowest flex items-center justify-center">
+<img class="w-full h-full object-cover filter grayscale contrast-125 opacity-40" data-alt="Spectral glowing purple witch broomstick expelling jet thrusters of ectoplasm forward, reaction vector force pairs firing backwards in haunted dark laboratory tower, dynamic educational physics illustration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATL-UQS1Gmkg3uIX0lpj8S5vPZ8fQdqgWSosCvkkAR0xz3setBzAwNCTFlBOxMz0f1mEB0cnKDEOc9_Jud528lp7ih0_ANI50KTdvN0B3dkVuqEO_BQtZl8CTrpNiT6mFvmQRNOE-c_BARKU_xHuG5gSH2Q-uLFJaTLCcqBX0EjN-YJkINHXL-x7bQwGNhlml2d2QDSKCC_281bNmPwQ7OndoSqtshYvjpz7iaaqjk"/>
+<div class="absolute inset-0 bg-surface-container-lowest/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-[28px]">lock</span>
+</div>
+<div class="absolute bottom-0 inset-x-0 bg-surface-container-lowest text-center py-0.5">
+<span class="font-formula-md text-[11px] text-outline font-bold">3ª LEY</span>
+</div>
+</div>
+<!-- Card Content -->
+<div class="flex-1 min-w-0 flex flex-col justify-between h-24">
+<div>
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Fuerzas Mutuas</span>
+<span class="material-symbols-outlined text-outline text-[16px]">lock_clock</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface-variant font-bold truncate">
+              La Bruja y su Escoba
+            </h3>
+<p class="font-formula-md text-formula-md text-outline truncate">
+              F₁₂ = - F₂₁
+            </p>
+</div>
+<!-- Bottom Status for Locked Card -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">
+              Desbloquea al completar Nivel 2
+            </span>
+<div class="w-7 h-7 rounded-md bg-surface-container-high flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[16px]">vpn_key</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Daily Experiment Teaser -->
+<div class="px-gutter pt-space-md">
+<div class="rounded-xl bg-surface-container-high/80 p-space-sm flex items-center justify-between gap-3 shadow-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary-container text-[22px]">timer</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary-container uppercase font-bold tracking-wider">Desafío Diario</span>
+<span class="font-headline-sm text-[15px] font-bold text-on-surface truncate">El Péndulo Maldito</span>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<div class="flex flex-col text-right">
+<span class="font-formula-md text-formula-md text-primary font-bold">+500 PTS</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">04h 22m</span>
+</div>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Educational Formula Footer Summary Bar -->
+<div class="px-gutter pt-space-md pb-space-sm">
+<div class="rounded-xl bg-surface-container-lowest p-space-sm flex flex-col gap-2 shadow-inner">
+<div class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary-container">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-container font-semibold">Grimorio de Precisión</span>
+</div>
+<span class="font-formula-md text-[11px] text-on-surface-variant">Euler / RK4 Integrator</span>
+</div>
+<div class="grid grid-cols-3 gap-2 pt-1">
+<!-- Badge 1 -->
+<div class="rounded-lg bg-surface-container-high/70 p-2 flex flex-col items-center justify-center text-center">
+<span class="font-formula-md text-formula-md text-secondary-container font-bold">RK4</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">Precisión Sim</span>
+</div>
+<!-- Badge 2 -->
+<div class="rounded-lg bg-surface-container-high/70 p-2 flex flex-col items-center justify-center text-center">
+<span class="font-formula-md text-formula-md text-primary font-bold">9 Fórmulas</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">Mecánica Real</span>
+</div>
+<!-- Badge 3 -->
+<div class="rounded-lg bg-surface-container-high/70 p-2 flex flex-col items-center justify-center text-center">
+<span class="font-formula-md text-formula-md text-tertiary font-bold">Isaac</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">Rango Académico</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Client-side Micro-Interactions Script -->
+<script>
+  (function() {
+    // Sound toggle state handler
+    const soundBtn = document.getElementById('soundToggleBtn');
+    const soundIcon = document.getElementById('soundIcon');
+    let isMuted = false;
+
+    if (soundBtn && soundIcon) {
+      soundBtn.addEventListener('click', function() {
+        isMuted = !isMuted;
+        if (isMuted) {
+          soundIcon.textContent = 'volume_off';
+          soundIcon.classList.remove('text-secondary-container');
+          soundIcon.classList.add('text-outline');
+        } else {
+          soundIcon.textContent = 'volume_up';
+          soundIcon.classList.remove('text-outline');
+          soundIcon.classList.add('text-secondary-container');
+        }
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-2xl shadow-[0_-4px_24px_rgba(21,6,41,0.8)]" data-active-classes="text-secondary-container bg-surface-container-high/80 shadow-[0_0_16px_rgba(124,252,1,0.3)]"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center gap-1 w-16 h-14 rounded-xl text-on-surface-variant hover:text-on-surface transition-all" data-path="laboratory" href="#"><span class="material-symbols-outlined text-[24px]">science</span><span class="font-label-sm text-label-sm">Laboratorio</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-1 w-16 h-14 rounded-xl transition-all text-secondary-container bg-surface-container-high/80 shadow-[0_0_16px_rgba(124,252,1,0.3)]" data-path="mansion-map" href="#"><span class="material-symbols-outlined text-[24px]">castle</span><span class="font-label-sm text-label-sm">Mansión</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-14 rounded-xl text-on-surface-variant hover:text-on-surface transition-all" data-path="experiments" href="#"><span class="material-symbols-outlined text-[24px]">biotech</span><span class="font-label-sm text-label-sm">Experimentos</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-14 rounded-xl text-on-surface-variant hover:text-on-surface transition-all" data-path="ghost-grimoire" href="#"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-sm text-label-sm">Grimorio</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-14 rounded-xl text-on-surface-variant hover:text-on-surface transition-all" data-path="physics-codex" href="#"><span class="material-symbols-outlined text-[24px]">calculate</span><span class="font-label-sm text-label-sm">Códice</span></a></div></nav></body></html>

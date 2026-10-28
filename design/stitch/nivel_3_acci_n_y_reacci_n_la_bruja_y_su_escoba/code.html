@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>Mansión de Newton - Consola de Física y Telemetría</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@100..900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#3d2e52","tertiary":"#dab9ff","tertiary-fixed":"#eedbff","on-primary":"#552100","on-secondary-fixed-variant":"#245100","on-secondary-container":"#347000","surface-bright":"#413257","on-primary-container":"#5c2400","primary-container":"#ff7518","on-tertiary-fixed":"#2a0053","on-error-container":"#ffdad6","surface-container-lowest":"#150629","secondary-fixed":"#82ff1a","on-secondary":"#173800","on-background":"#eddcff","tertiary-fixed-dim":"#dab9ff","on-tertiary-fixed-variant":"#611baa","on-tertiary-container":"#4d008f","tertiary-container":"#bb83ff","inverse-surface":"#eddcff","outline-variant":"#594236","error":"#ffb4ab","on-surface":"#eddcff","on-secondary-fixed":"#0a2000","secondary-container":"#7cfc01","on-tertiary":"#460084","primary-fixed":"#ffdbcb","outline":"#a88b7d","background":"#1a0b2e","surface-dim":"#1a0b2e","surface-container":"#27183b","inverse-primary":"#9e4300","on-primary-fixed":"#341100","secondary-fixed-dim":"#6ee000","on-primary-fixed-variant":"#783100","primary":"#ffb691","on-error":"#690005","secondary":"#f8ffeb","inverse-on-surface":"#38294d","primary-fixed-dim":"#ffb691","surface-container-highest":"#3d2e52","surface":"#1a0b2e","surface-container-high":"#322346","on-surface-variant":"#e0c0b1","surface-container-low":"#231437","surface-tint":"#ffb691","error-container":"#93000a"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin-tablet":"2rem","space-md":"1rem","gutter-desktop":"1.5rem","space-xl":"2.5rem","space-sm":"0.5rem",margin:"1rem","space-lg":"1.5rem","margin-desktop":"3rem","space-xs":"0.25rem",gutter:"1rem"},fontFamily:{"label-sm":["JetBrains Mono"],"label-md":["JetBrains Mono"],"body-md":["Inter"],"headline-lg":["Bricolage Grotesque"],"body-lg":["Inter"],"body-sm":["Inter"],"headline-md":["Bricolage Grotesque"],"formula-md":["JetBrains Mono"],"formula-lg":["JetBrains Mono"],"headline-sm":["Bricolage Grotesque"],"headline-lg-mobile":["Bricolage Grotesque"],"display-lg":["Bricolage Grotesque"],"display-lg-mobile":["Bricolage Grotesque"]},fontSize:{"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.08em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.06em",fontWeight:"500"}],"body-md":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"30px",fontWeight:"600"}],"formula-md":["15px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"400"}],"formula-lg":["20px",{lineHeight:"28px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"26px",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"32px",fontWeight:"700"}],"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"800"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.01em",fontWeight:"800"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased relative min-h-screen"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest/90 backdrop-blur-xl z-50 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="px-space-lg flex flex-col gap-space-lg"><div class="flex items-center gap-space-md"><img alt="Mansión de Newton Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnBbCPZilHP7YC0DE08nz0T-X7wAMftAJ8hJj8utfLlHZqLTqVZFXQ1f8iDEvxB63uJqFi4luJelfGVdaUKzdmnCMjuHBKNmenqnA29wfmZWFLEf3nDZLEb_SUFFqCcqZ85Eyo9UIPn9ltzU6S6n66H24UytdUYcGHJVmIu2YoszRIUmNN1s5Zvhi4If0kdvkL--5zIGEvc8NrGrQKK9UVCCQRqXQniJdlrQS1CCrA"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">Newton HUD</span><span class="font-label-sm text-label-sm text-secondary-container mt-space-xs">Modo Laboratorio</span></div></div><div class="h-px w-full bg-surface-container-high"></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="simulador-laboratorio" href="#"><span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>Simulador Activo</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="telemetria-cinematica" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span>Telemetría Vectorial</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="editor-de-fuerzas" href="#"><span class="material-symbols-outlined text-[20px]">tune</span>Editor de Parámetros</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="registro-de-experimentos" href="#"><span class="material-symbols-outlined text-[20px]">history_edu</span>Bitácora de Pruebas</a></nav></div><div class="px-space-lg flex flex-col gap-space-md"><div class="bg-surface-container-low p-space-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center justify-between mb-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Gravedad Activa</span><span class="font-formula-md text-formula-md text-secondary-container">9.81 m/s²</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="w-3/4 h-full bg-secondary-container"></div></div></div><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span>Física Clásica I</span><span>v1.4.0</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface-container-lowest/80 backdrop-blur-xl z-40 flex items-center justify-between px-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-md"><div class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse"></div><span class="font-label-md text-label-md text-on-surface uppercase">Canal Telemetría Sincronizado</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">favorite</span><span class="font-formula-md text-formula-md text-primary font-bold">3/3</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary-container text-[18px]">electric_bolt</span><span class="font-formula-md text-formula-md text-secondary-container font-bold">14,850</span></div><button aria-label="Silenciar Audio" class="flex items-center justify-center w-10 h-10 rounded-xl bg-surface-container-high hover:bg-surface-variant text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">graphic_eq</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-20 w-full px-margin-desktop"><div class="flex flex-col w-full gap-space-lg pb-space-xl">
+<!-- HUD Superior de Nivel y Parámetros Cinemáticos -->
+<section class="grid grid-cols-12 gap-space-md items-stretch">
+<!-- Identificador de Misión y Ley -->
+<div class="col-span-12 xl:col-span-5 bg-surface-container-low rounded-xl p-space-md shadow-md flex items-center justify-between relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-32 h-32 rounded-full bg-primary-container/10 blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs mb-0.5">
+<span class="font-label-sm text-label-sm text-secondary-container bg-surface-container-highest px-1.5 py-0.5 rounded">FASE DINÁMICA III</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">CINEMÁTICA SUB-ORBITAL</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight">La Bruja y su Escoba</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tercera Ley: Principio de Acción y Reacción Mutua</p>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end pl-space-md">
+<span class="font-label-sm text-label-sm text-on-surface-variant">ESTADO DE VUELO</span>
+<span class="font-formula-md text-formula-md text-secondary-container flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+          EN DERIVA
+        </span>
+</div>
+</div>
+<!-- Indicador Vectorial Fundamental F_a = -F_r -->
+<div class="col-span-12 md:col-span-7 xl:col-span-4 bg-surface-container-high rounded-xl p-space-md shadow-md flex flex-col justify-center relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Leyenda Vectorial Canónica</span>
+<span class="font-formula-md text-formula-md text-primary font-semibold tracking-wide">F⃗ᵢ = -F⃗ᵣ</span>
+</div>
+<div class="bg-surface-container-lowest/80 rounded-lg p-space-xs flex items-center justify-between gap-space-sm px-space-md">
+<!-- Vector Acción (Atrás / Lanzamiento) -->
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-error text-[20px] rotate-180">arrow_right_alt</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-error font-bold">F_acción</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Expulsión Proyectil</span>
+</div>
+</div>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Vector Reacción (Adelante / Retroceso Bruja) -->
+<div class="flex items-center gap-space-xs text-right">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-secondary-container font-bold">F_reacción</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Impulso Escoba</span>
+</div>
+<span class="material-symbols-outlined text-secondary-container text-[20px]">arrow_right_alt</span>
+</div>
+</div>
+</div>
+<!-- Telemetría Rápida (Lanzamientos & Altitud) -->
+<div class="col-span-12 md:col-span-5 xl:col-span-3 grid grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Lanzamientos</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">inventory_2</span>
+</div>
+<div>
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-surface font-extrabold leading-none" id="ammo-counter">4</span>
+<span class="font-formula-md text-formula-md text-on-surface-variant">/ 6</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden mt-1">
+<div class="h-full bg-primary-container rounded-full transition-all duration-300" id="ammo-bar" style="width: 66.6%;"></div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Altitud Radar</span>
+<span class="material-symbols-outlined text-secondary-container text-[18px]">height</span>
+</div>
+<div>
+<span class="font-display-lg-mobile text-display-lg-mobile text-secondary-container font-extrabold leading-none" id="altitude-display">85</span>
+<span class="font-formula-md text-formula-md text-on-surface-variant">m</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-secondary-container">+1.2 m/s vert.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Cuerpo Principal: Visor de Simulación y Consola de Telemetría Dinámica -->
+<div class="grid grid-cols-12 gap-space-lg items-start">
+<!-- Escenario de Simulación Física Interactivo (Canvas Relación 16:9 Adaptativo) -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-space-md">
+<div class="relative w-full aspect-[16/9] bg-surface-container-lowest rounded-xl overflow-hidden shadow-xl select-none group">
+<!-- Iluminación de Fondo Espectral -->
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container-lowest via-background to-surface-variant/30 pointer-events-none"></div>
+<div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-tertiary-container/15 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-80 h-48 bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<!-- Malla de Referencia y Coordenadas Isométricas -->
+<svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid-pattern" patternunits="userSpaceOnUse" width="40">
+<path class="text-tertiary" d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.8"></path>
+<circle class="text-secondary-container" cx="0" cy="0" fill="currentColor" r="1"></circle>
+</pattern>
+</defs>
+<rect fill="url(#grid-pattern)" height="100%" width="100%"></rect>
+</svg>
+<!-- Elemento Objetivo: Luna Llena Radiante (Esquina Superior Derecha) -->
+<div class="absolute top-6 right-8 flex flex-col items-center pointer-events-none z-10">
+<div class="relative w-28 h-28 rounded-full bg-secondary shadow-[0_0_50px_rgba(248,255,235,0.45)] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary via-secondary to-tertiary-fixed-dim opacity-90"></div>
+<!-- Cráteres lunares estilizados -->
+<div class="absolute top-4 left-6 w-5 h-5 rounded-full bg-surface-container-highest/20"></div>
+<div class="absolute top-12 left-10 w-8 h-8 rounded-full bg-surface-container-highest/25"></div>
+<div class="absolute bottom-5 right-5 w-6 h-6 rounded-full bg-surface-container-highest/30"></div>
+<div class="absolute bottom-2 left-4 w-4 h-4 rounded-full bg-surface-container-highest/15"></div>
+<!-- Corona de Resplandor Mágico -->
+<div class="w-full h-full rounded-full ring-4 ring-secondary-container/40 animate-pulse"></div>
+</div>
+<div class="mt-2 bg-surface-container-lowest/90 px-2 py-0.5 rounded shadow flex items-center gap-1 backdrop-blur-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+<span class="font-label-sm text-label-sm text-secondary-container">OBJETIVO: APOGEO LUNAR</span>
+</div>
+</div>
+<!-- Capa de Estrellas y Nubes Tenebrosas -->
+<div class="absolute top-10 left-16 w-2 h-2 rounded-full bg-white opacity-80 shadow-[0_0_8px_#ffffff]"></div>
+<div class="absolute top-32 left-48 w-1.5 h-1.5 rounded-full bg-secondary-container opacity-60"></div>
+<div class="absolute top-14 left-1/3 w-2.5 h-2.5 rounded-full bg-tertiary opacity-70 shadow-[0_0_6px_#dab9ff]"></div>
+<div class="absolute top-24 right-1/3 w-1.5 h-1.5 rounded-full bg-white opacity-50"></div>
+<div class="absolute bottom-28 left-20 w-32 h-12 bg-surface-container-highest/40 rounded-full blur-xl pointer-events-none"></div>
+<div class="absolute bottom-16 right-44 w-52 h-16 bg-surface-variant/40 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Eje de Desplazamiento Horizontal (Regla de Coordenadas) -->
+<div class="absolute bottom-6 left-8 right-8 flex items-center justify-between text-on-surface-variant/40 font-label-sm text-label-sm pointer-events-none border-b border-surface-container-high pb-1">
+<span>-40.0 m (Vector F_acción)</span>
+<span class="text-tertiary font-formula-md text-formula-md opacity-80">Eje de Momento Lineal (p = m·v)</span>
+<span>+40.0 m (Vector F_reacción)</span>
+</div>
+<!-- Entidad Principal Dinámica: Bruja sobre Escoba y Vectores -->
+<div class="absolute top-1/2 left-[36%] -translate-x-1/2 -translate-y-1/2 transition-transform duration-700 ease-out z-20 flex flex-col items-center" id="witch-entity">
+<!-- Vectores Gráficos Superpuestos en Tiempo Real -->
+<div class="relative w-64 h-36 flex items-center justify-center">
+<!-- Flecha de Fuerza de Acción (Hacia atrás / Izquierda) -->
+<div class="absolute right-[52%] flex items-center transition-all duration-300 opacity-90" id="vector-action">
+<span class="font-label-sm text-label-sm text-error font-bold pr-1 select-none whitespace-nowrap bg-surface-container-lowest/80 px-1 py-0.5 rounded shadow">-F_acción</span>
+<div class="h-1.5 w-16 bg-error rounded-l-full shadow-[0_0_12px_rgba(255,180,171,0.8)]"></div>
+<div class="w-0 h-0 border-y-[6px] border-y-transparent border-r-[10px] border-r-error"></div>
+</div>
+<!-- Avatar Estilizado de la Bruja & Escoba -->
+<div class="relative z-10 flex flex-col items-center animate-bounce" style="animation-duration: 3.5s;">
+<!-- Resplandor Espectral de la Escoba -->
+<div class="absolute -inset-2 bg-secondary-container/20 rounded-full blur-md"></div>
+<!-- Gráfico de Escoba y Bruja SVG -->
+<svg class="w-28 h-28 drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)]" fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<!-- Palo de Escoba Mágica Inclinado -->
+<line stroke="#ffb691" stroke-linecap="round" stroke-width="4.5" x1="8" x2="92" y1="78" y2="42"></line>
+<!-- Cerdas de la Escoba con Destello -->
+<path d="M6 72 C12 78, 16 85, 2 92 C14 88, 22 84, 20 74 Z" fill="#7cfc01"></path>
+<circle cx="10" cy="80" fill="#7cfc01" filter="blur(2px)" opacity="0.3" r="8"></circle>
+<!-- Capa Morada Oscura -->
+<path d="M38 52 C32 64, 28 74, 44 70 C48 64, 48 56, 46 50 Z" fill="#3d2e52"></path>
+<path d="M42 46 C48 54, 58 52, 60 48 Z" fill="#27183b"></path>
+<!-- Silueta / Cuerpo de la Bruja -->
+<circle cx="50" cy="38" fill="#eddcff" r="7"></circle>
+<!-- Sombrero Puntiagudo de Bruja -->
+<path d="M36 38 L64 38 L54 14 Z" fill="#150629"></path>
+<path d="M34 38 Q50 35 66 38 Q50 40 34 38 Z" fill="#ff7518"></path>
+<!-- Farolillo Mágico Colgante -->
+<circle cx="82" cy="54" fill="#7cfc01" r="3.5"></circle>
+<line stroke="#eddcff" stroke-width="1.5" x1="82" x2="82" y1="46" y2="52"></line>
+</svg>
+<!-- Masa de Bruja Rotulada -->
+<span class="font-label-sm text-label-sm bg-surface-container-high/90 text-on-surface px-2 py-0.5 rounded shadow mt-[-6px] backdrop-blur-sm">
+                M_bruja = 60 kg
+              </span>
+</div>
+<!-- Flecha de Fuerza de Reacción (Hacia adelante / Derecha) -->
+<div class="absolute left-[52%] flex items-center transition-all duration-300 opacity-90" id="vector-reaction">
+<div class="w-0 h-0 border-y-[6px] border-y-transparent border-l-[10px] border-l-secondary-container"></div>
+<div class="h-1.5 w-16 bg-secondary-container rounded-r-full shadow-[0_0_12px_rgba(124,252,1,0.8)]"></div>
+<span class="font-label-sm text-label-sm text-secondary-container font-bold pl-1 select-none whitespace-nowrap bg-surface-container-lowest/80 px-1 py-0.5 rounded shadow">+F_reacción</span>
+</div>
+</div>
+<!-- Trayectoria Vectorial Proyectada -->
+<div class="h-0.5 w-48 border-t-2 border-dashed border-secondary-container/40 mt-[-10px]"></div>
+</div>
+<!-- Proyectil Expulsado en Animación (Contenedor Dinámico) -->
+<div class="absolute top-1/2 left-[32%] -translate-y-1/2 opacity-0 pointer-events-none transition-all duration-700" id="ejected-item">
+<div class="w-8 h-8 rounded-full bg-primary-container shadow-[0_0_20px_#ff7518] flex items-center justify-center text-on-primary font-bold" id="ejected-visual">
+<span class="material-symbols-outlined text-[16px]">cookie</span>
+</div>
+</div>
+<!-- Indicador de Retroceso Inercial en Visor -->
+<div class="absolute bottom-4 left-4 bg-surface-container-low/85 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-space-sm shadow">
+<span class="material-symbols-outlined text-secondary-container text-[18px]">swap_horiz</span>
+<span class="font-label-sm text-label-sm text-on-surface">P_inicial (0 kg·m/s) = P_bruja + P_objeto</span>
+</div>
+<!-- Notificación Flotante de Impacto Físico -->
+<div class="absolute top-4 left-1/2 -translate-x-1/2 bg-surface-container-high/95 backdrop-blur-xl px-4 py-2 rounded-xl shadow-xl flex items-center gap-space-sm opacity-0 transition-opacity duration-300 border-none z-30" id="physics-toast">
+<span class="material-symbols-outlined text-primary-container text-[20px]">electric_bolt</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium" id="toast-text">Impulso aplicado según Tercera Ley</span>
+</div>
+</div>
+<!-- Barra de Controles Inferiores de Lanzamiento y Selección de Masa -->
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Cargador de Masa de Reacción</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Selecciona el Proyectil a Lanzar</h2>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Velocidad Expulsión:</span>
+<span class="font-formula-md text-formula-md text-primary bg-surface-container-highest px-2 py-0.5 rounded">v_exp = 12.0 m/s</span>
+</div>
+</div>
+<!-- Selector de Proyectiles (Opciones Radiales de Tres Masas) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md" id="ammo-selector-group">
+<!-- Opción 1: Dulces Embrujados -->
+<button class="ammo-btn group text-left p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-all flex flex-col justify-between shadow-sm relative overflow-hidden" data-icon="cookie" data-mass="0.5" data-name="Dulces Embrujados" data-recoil="0.10" type="button">
+<div class="flex items-center justify-between w-full mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">cookie</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-lowest px-2 py-0.5 rounded">0.5 kg</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-0.5">Dulces Embrujados</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Masa ínfima: Impulso sutil de maniobra suave.</p>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm">Retroceso esperado</span>
+<span class="font-formula-md text-formula-md text-tertiary">+0.10 m/s</span>
+</div>
+</button>
+<!-- Opción 2: Poción Explosiva -->
+<button class="ammo-btn group text-left p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-all flex flex-col justify-between shadow-sm relative overflow-hidden" data-icon="science" data-mass="2.0" data-name="Poción Explosiva" data-recoil="0.40" type="button">
+<div class="flex items-center justify-between w-full mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary-container group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">science</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-lowest px-2 py-0.5 rounded">2.0 kg</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-0.5">Poción Explosiva</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Masa media: Impulso cinético equilibrado.</p>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm">Retroceso esperado</span>
+<span class="font-formula-md text-formula-md text-secondary-container">+0.40 m/s</span>
+</div>
+</button>
+<!-- Opción 3: Caldero Pesado de Hierro (Seleccionado por Defecto) -->
+<button class="ammo-btn active-choice group text-left p-space-md rounded-xl bg-surface-container-highest text-on-surface shadow-md flex flex-col justify-between relative overflow-hidden ring-2 ring-primary-container" data-icon="skillet" data-mass="12.0" data-name="Caldero de Hierro" data-recoil="2.40" type="button">
+<div class="flex items-center justify-between w-full mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">skillet</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed bg-surface-container-lowest px-2 py-0.5 rounded font-bold">12.0 kg</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary-fixed mb-0.5">Caldero Pesado</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Masa máxima: Enorme empuje reactivo hacia la luna.</p>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Retroceso esperado</span>
+<span class="font-formula-md text-formula-md text-primary font-bold">+2.40 m/s</span>
+</div>
+</button>
+</div>
+<!-- Botones de Acción Primaria e Interacción Operativa -->
+<div class="flex flex-col sm:flex-row items-center gap-space-md pt-space-xs">
+<!-- Botón de Lanzamiento Activo -->
+<button class="w-full sm:flex-1 py-4 px-6 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-space-md transition-all duration-200 active:scale-95 shadow-[0_0_24px_rgba(255,117,24,0.4)]" id="btn-fire" type="button">
+<span class="text-2xl">🧙‍♀️</span>
+<span>Lanzar hacia Atrás (Generar Impulso Adelante)</span>
+<span class="material-symbols-outlined text-[24px]">forward</span>
+</button>
+<!-- Botón de Calibración / Reinicio de Maniobra -->
+<button class="w-full sm:w-auto py-4 px-6 rounded-xl bg-surface-container hover:bg-surface-container-high text-secondary-container font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-space-sm transition-all duration-200 shadow-sm" id="btn-reset" type="button">
+<span class="material-symbols-outlined text-[20px]">restart_alt</span>
+<span>Reiniciar Posición</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Panel Lateral Derecho: Telemetría de Momento y Fuerzas Vectoriales -->
+<aside class="col-span-12 lg:col-span-4 flex flex-col gap-space-md">
+<!-- Tarjeta Principal de Telemetría Dinámica -->
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col gap-space-lg relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary-container text-[22px]">analytics</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Telemetría de Momento</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-container bg-surface-container-highest px-2 py-0.5 rounded">SISTEMA CERRADO</span>
+</div>
+<!-- Desglose de Fórmulas e Igualdad -->
+<div class="bg-surface-container-lowest/90 rounded-xl p-space-md shadow-inner flex flex-col gap-space-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>LEY DE CONSERVACIÓN</span>
+<span>Δp = 0</span>
+</div>
+<div class="bg-surface-container-high p-space-sm rounded-lg text-center font-formula-md text-formula-md text-tertiary">
+            M_bruja × v_bruja = -(m_objeto × v_objeto)
+          </div>
+</div>
+<!-- Lista de Magnitudes Físicas en Tiempo Real -->
+<div class="flex flex-col gap-space-sm">
+<!-- Masa del Objeto Lanzado -->
+<div class="bg-surface-container p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">fitness_center</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Masa Lanzada</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">m_objeto</span>
+</div>
+</div>
+<span class="font-formula-lg text-formula-lg text-primary font-bold" id="tel-mass-obj">12.0 kg</span>
+</div>
+<!-- Masa de la Bruja + Escoba -->
+<div class="bg-surface-container p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary text-[20px]">person</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Masa Bruja + Escoba</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">M_bruja</span>
+</div>
+</div>
+<span class="font-formula-lg text-formula-lg text-tertiary font-bold">60.0 kg</span>
+</div>
+<!-- Velocidad de Retroceso Producida -->
+<div class="bg-surface-container p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary-container text-[20px]">speed</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Velocidad Retroceso</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">v_bruja (Reacción)</span>
+</div>
+</div>
+<span class="font-formula-lg text-formula-lg text-secondary-container font-bold" id="tel-vel-witch">+2.40 m/s</span>
+</div>
+<!-- Conservación de Momento Total -->
+<div class="bg-surface-container p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">balance</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Momento Total</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">p_total (Vectorial)</span>
+</div>
+</div>
+<span class="font-formula-lg text-formula-lg text-on-surface font-bold">0.00 kg·m/s</span>
+</div>
+</div>
+<!-- Monitor Visual de Impulso y Energía Cinética -->
+<div class="bg-surface-container-high/60 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Impulso de Reacción (J)</span>
+<span class="font-formula-md text-formula-md text-primary-container" id="tel-impulse">144.0 N·s</span>
+</div>
+<!-- Barra de Intensidad de Impulso -->
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary-container to-primary-container rounded-full transition-all duration-300" id="impulse-gauge" style="width: 80%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mt-1">
+            Al arrojar masa hacia atrás con velocidad relativa, la fuerza generada empuja la escoba en sentido opuesto con aceleración inversamente proporcional a la masa del sistema.
+          </p>
+</div>
+<!-- Misión y Meta de Desafío -->
+<div class="bg-surface-container-lowest/80 rounded-xl p-space-md flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary uppercase">Desafío del Nivel</span>
+<p class="font-body-sm text-body-sm text-on-surface">Alcanza los <strong class="text-secondary-container font-semibold">120 m</strong> de altitud para ingresar en la órbita de atracción lunar antes de agotar tus proyectiles.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<script>
+  (function() {
+    let currentMass = 12.0;
+    let currentRecoil = 2.40;
+    let currentIcon = "skillet";
+    let shotsAvailable = 4;
+    const maxShots = 6;
+    let currentAltitude = 85;
+    let witchPositionPercent = 36;
+    let isLaunching = false;
+
+    const ammoButtons = document.querySelectorAll('.ammo-btn');
+    const btnFire = document.getElementById('btn-fire');
+    const btnReset = document.getElementById('btn-reset');
+    const witchEntity = document.getElementById('witch-entity');
+    const ejectedItem = document.getElementById('ejected-item');
+    const ejectedVisual = document.getElementById('ejected-visual');
+    const telMassObj = document.getElementById('tel-mass-obj');
+    const telVelWitch = document.getElementById('tel-vel-witch');
+    const telImpulse = document.getElementById('tel-impulse');
+    const impulseGauge = document.getElementById('impulse-gauge');
+    const ammoCounter = document.getElementById('ammo-counter');
+    const ammoBar = document.getElementById('ammo-bar');
+    const altitudeDisplay = document.getElementById('altitude-display');
+    const vectorAction = document.getElementById('vector-action');
+    const vectorReaction = document.getElementById('vector-reaction');
+    const toast = document.getElementById('physics-toast');
+    const toastText = document.getElementById('toast-text');
+
+    function updateTelemetry() {
+      telMassObj.textContent = currentMass.toFixed(1) + ' kg';
+      telVelWitch.textContent = '+' + currentRecoil.toFixed(2) + ' m/s';
+      
+      const impulse = currentMass * 12.0;
+      telImpulse.textContent = impulse.toFixed(1) + ' N·s';
+      
+      const maxImpulse = 12.0 * 12.0;
+      const gaugePercent = Math.min(100, (impulse / maxImpulse) * 100);
+      impulseGauge.style.width = gaugePercent + '%';
+
+      const scaleAction = Math.max(0.6, Math.min(1.8, currentMass / 6.0));
+      vectorAction.style.transform = 'scale(' + scaleAction + ')';
+      vectorReaction.style.transform = 'scale(' + scaleAction + ')';
+    }
+
+    ammoButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        ammoButtons.forEach(b => {
+          b.classList.remove('active-choice', 'bg-surface-container-highest', 'ring-2', 'ring-primary-container');
+          b.classList.add('bg-surface-container');
+        });
+
+        btn.classList.add('active-choice', 'bg-surface-container-highest', 'ring-2', 'ring-primary-container');
+        btn.classList.remove('bg-surface-container');
+
+        currentMass = parseFloat(btn.dataset.mass);
+        currentRecoil = parseFloat(btn.dataset.recoil);
+        currentIcon = btn.dataset.icon;
+
+        updateTelemetry();
+        showToast('Proyectil seleccionado: ' + btn.dataset.name + ' (' + currentMass + ' kg)');
+      });
+    });
+
+    function showToast(msg) {
+      if (!toast || !toastText) return;
+      toastText.textContent = msg;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2200);
+    }
+
+    btnFire.addEventListener('click', () => {
+      if (isLaunching) return;
+      if (shotsAvailable <= 0) {
+        showToast('¡Sin proyectiles restantes! Reinicia la posición.');
+        return;
+      }
+
+      isLaunching = true;
+      shotsAvailable--;
+      ammoCounter.textContent = shotsAvailable;
+      ammoBar.style.width = ((shotsAvailable / maxShots) * 100) + '%';
+
+      // Configurar y disparar proyectil (Acción: hacia atrás/izquierda)
+      ejectedVisual.innerHTML = '<span class="material-symbols-outlined text-[16px]">' + currentIcon + '</span>';
+      ejectedItem.style.left = witchPositionPercent + '%';
+      ejectedItem.style.opacity = '1';
+      ejectedItem.style.transition = 'all 600ms cubic-bezier(0.2, 0.8, 0.2, 1)';
+      ejectedItem.style.transform = 'translate(-160px, 30px) scale(0.6)';
+
+      // Mover bruja hacia adelante (Reacción: hacia adelante/derecha)
+      const forwardDelta = currentRecoil * 5;
+      witchPositionPercent = Math.min(82, witchPositionPercent + forwardDelta);
+      witchEntity.style.left = witchPositionPercent + '%';
+
+      // Incrementar altitud
+      const altitudeGain = Math.round(currentRecoil * 4.5);
+      currentAltitude += altitudeGain;
+      altitudeDisplay.textContent = currentAltitude;
+
+      showToast('Acción: -' + (currentMass * 12).toFixed(1) + ' N·s | Reacción: +' + currentRecoil.toFixed(2) + ' m/s hacia la luna');
+
+      setTimeout(() => {
+        ejectedItem.style.opacity = '0';
+        ejectedItem.style.transform = 'translate(0, 0) scale(1)';
+        isLaunching = false;
+
+        if (currentAltitude >= 120) {
+          showToast('¡Objetivo alcanzado! Órbita lunar capturada exitosamente 🌕✨');
+        }
+      }, 700);
+    });
+
+    btnReset.addEventListener('click', () => {
+      witchPositionPercent = 36;
+      witchEntity.style.left = witchPositionPercent + '%';
+      shotsAvailable = 4;
+      currentAltitude = 85;
+      ammoCounter.textContent = shotsAvailable;
+      ammoBar.style.width = ((shotsAvailable / maxShots) * 100) + '%';
+      altitudeDisplay.textContent = currentAltitude;
+      showToast('Simulación reiniciada a altitud basal (85 m)');
+    });
+
+    updateTelemetry();
+  })();
+</script></main></div></body></html>

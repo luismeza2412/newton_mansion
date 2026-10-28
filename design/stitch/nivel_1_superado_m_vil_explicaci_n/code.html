@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#1a0b2e;color:#eddcff;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {darkMode: "class",theme: {extend: {"colors": {"on-surface": "#eddcff","background": "#1a0b2e","outline": "#a88b7d","error-container": "#93000a","outline-variant": "#594236","surface-container-high": "#322346","on-tertiary": "#460084","primary-container": "#ff7518","surface-container": "#27183b","on-surface-variant": "#e0c0b1","surface-bright": "#413257","on-error": "#690005","primary": "#ffb691","on-background": "#eddcff","on-primary": "#552100","on-primary-fixed": "#341100","on-secondary-fixed": "#0a2000","tertiary-container": "#bb83ff","surface-container-highest": "#3d2e52","surface-tint": "#ffb691","on-primary-fixed-variant": "#783100","secondary-fixed-dim": "#6ee000","on-tertiary-container": "#4d008f","tertiary-fixed": "#eedbff","surface-dim": "#1a0b2e","surface-container-low": "#231437","on-secondary": "#173800","on-tertiary-fixed": "#2a0053","tertiary": "#dab9ff","surface-container-lowest": "#150629","on-secondary-fixed-variant": "#245100","tertiary-fixed-dim": "#dab9ff","primary-fixed-dim": "#ffb691","secondary-fixed": "#82ff1a","on-secondary-container": "#347000","inverse-primary": "#9e4300","secondary": "#f8ffeb","on-primary-container": "#5c2400","on-tertiary-fixed-variant": "#611baa","secondary-container": "#7cfc01","on-error-container": "#ffdad6","error": "#ffb4ab","surface": "#1a0b2e","primary-fixed": "#ffdbcb","inverse-on-surface": "#38294d","inverse-surface": "#eddcff","surface-variant": "#3d2e52"},"borderRadius": {"DEFAULT": "0.25rem","lg": "0.5rem","xl": "0.75rem","full": "9999px"},"spacing": {"margin-tablet": "2rem","space-sm": "0.5rem","gutter": "1rem","margin-desktop": "3rem","margin": "1rem","gutter-desktop": "1.5rem","space-lg": "1.5rem","space-md": "1rem","space-xl": "2.5rem","space-xs": "0.25rem"},"fontFamily": {"headline-lg-mobile": ["Bricolage Grotesque"],"display-lg": ["Bricolage Grotesque"],"headline-md": ["Bricolage Grotesque"],"formula-lg": ["JetBrains Mono"],"headline-sm": ["Bricolage Grotesque"],"headline-lg": ["Bricolage Grotesque"],"body-lg": ["Inter"],"body-sm": ["Inter"],"label-sm": ["JetBrains Mono"],"display-lg-mobile": ["Bricolage Grotesque"],"label-md": ["JetBrains Mono"],"body-md": ["Inter"],"formula-md": ["JetBrains Mono"]},"fontSize": {"headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],"display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "800"}],"headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],"formula-lg": ["20px", {"lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "500"}],"headline-sm": ["20px", {"lineHeight": "26px", "fontWeight": "600"}],"headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],"body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],"body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],"label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600"}],"display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "800"}],"label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "500"}],"body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],"formula-md": ["15px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_4px_20px_rgba(21,6,41,0.7)]"><div class="h-16 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><button aria-label="Retroceder" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-container-high/60 text-secondary-container hover:bg-surface-container-highest transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface truncate max-w-[200px]">Challenge Briefing</h1></div><div class="flex items-center gap-space-xs"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-lowest/80"><span class="material-symbols-outlined text-[16px] text-primary-container">token</span><span class="font-formula-md text-formula-md text-primary">9.81</span><span class="font-label-sm text-label-sm text-on-surface-variant">m/s²</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 shadow-[0_0_12px_rgba(255,182,145,0.4)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full px-gutter pb-safe pt-space-md">
+<!-- Glowing Overlay Card: Level Victory Modal Content -->
+<div class="relative w-full rounded-xl bg-surface-container/95 backdrop-blur-2xl shadow-[0_0_40px_rgba(255,117,24,0.18)] p-space-md flex flex-col gap-space-md overflow-hidden">
+<!-- Ambient Spectral Gradients in Background -->
+<div class="absolute -top-16 -right-16 w-44 h-44 rounded-full bg-primary-container/20 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 -left-20 w-48 h-48 rounded-full bg-secondary-container/15 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-10 right-1/4 w-36 h-36 rounded-full bg-tertiary-container/15 blur-3xl pointer-events-none"></div>
+<!-- Celebration Header & Stars -->
+<div class="relative flex flex-col items-center text-center gap-space-xs z-10">
+<!-- Ghost Spirit Avatar / Triumph Illustration -->
+<div class="relative w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center shadow-[0_0_24px_rgba(124,252,0,0.35)] mb-1">
+<img class="w-full h-full object-cover rounded-full" data-alt="A glowing neon ethereal chibi ghost laboratory apprentice wearing brass cyber goggles grinning joyfully in front of an antique spectral chalkboard, atmospheric dark gothic laboratory with floating toxic green wisps and warm pumpkin light flares." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQjRlrllUnorgz3DynyP7QMEmKkzi6Miqrphuas6tLsQUpDIq2jx1-dhFewVotPvA02Tb5TTi6fRfi-tDlXOYNGS3loxZ0sUqvin8BmrM4z8iFC_JojUwNnC43SB4MtR5sEge09oZNTPaUFyeMuGCGrq23wJS-XrfDDPbsE6OU4kSuhyK7As39gP706FdFXJQVZ51o-0QwmbVrhXI9ddnZjAfLho875c-T123iQGi_"/>
+<div class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-primary-container flex items-center justify-center shadow-[0_0_12px_rgba(255,117,24,0.8)]">
+<span class="material-symbols-outlined text-surface text-[16px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+</div>
+<!-- Rating Stars Row -->
+<div class="flex items-center gap-1.5 text-primary-container">
+<span class="material-symbols-outlined text-[24px] drop-shadow-[0_0_8px_rgba(255,117,24,0.7)]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[30px] drop-shadow-[0_0_12px_rgba(255,117,24,0.9)] -translate-y-0.5" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px] drop-shadow-[0_0_8px_rgba(255,117,24,0.7)]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<!-- Superado Title Badge -->
+<div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-highest shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="font-label-sm text-label-sm text-secondary-container uppercase tracking-wider">¡Enigma Espectral Superado!</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">
+        Nivel 1 Conquistado
+      </h2>
+<p class="font-formula-md text-formula-md text-primary">
+        1ª Ley de Newton • Principio de Inercia
+      </p>
+</div>
+<!-- Performance Stats: 3-Column Glass HUD -->
+<div class="relative grid grid-cols-3 gap-2 z-10">
+<!-- Stat 1: Ectoplasma -->
+<div class="flex flex-col items-center justify-center p-space-sm rounded-lg bg-surface-container-high/80 text-center shadow-md">
+<span class="material-symbols-outlined text-[18px] text-tertiary mb-1">bubble_chart</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ectoplasma</span>
+<span class="font-formula-md text-formula-md text-tertiary-fixed font-bold mt-0.5">+1,450</span>
+</div>
+<!-- Stat 2: Precision -->
+<div class="flex flex-col items-center justify-center p-space-sm rounded-lg bg-surface-container-high/80 text-center shadow-md">
+<span class="material-symbols-outlined text-[18px] text-secondary-container mb-1">track_changes</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Precisión</span>
+<span class="font-formula-md text-formula-md text-secondary-container font-bold mt-0.5">100%</span>
+</div>
+<!-- Stat 3: Impactos -->
+<div class="flex flex-col items-center justify-center p-space-sm rounded-lg bg-surface-container-high/80 text-center shadow-md">
+<span class="material-symbols-outlined text-[18px] text-primary mb-1">shield</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Impactos</span>
+<span class="font-formula-md text-formula-md text-primary font-bold mt-0.5">0 <span class="font-label-sm text-label-sm font-normal text-on-surface-variant">Limpio</span></span>
+</div>
+</div>
+<!-- Educational Grimoire Card ('Desvelación del Grimorio Físico') -->
+<div class="relative rounded-lg bg-surface-container-lowest/90 p-space-md flex flex-col gap-space-sm z-10 shadow-[0_0_24px_rgba(21,6,41,0.9)]">
+<!-- Grimoire Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-secondary-container">auto_stories</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Grimorio Físico</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary-container">CANON I</span>
+</div>
+<!-- Canonical Formula Highlight Box -->
+<div class="flex flex-col items-center justify-center py-2.5 px-space-sm rounded bg-surface-container-high/70 shadow-[0_0_18px_rgba(124,252,0,0.25)] text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">ECUACIÓN CANÓNICA DE INERCIA</span>
+<span class="font-formula-lg text-formula-lg text-secondary-container tracking-wider font-bold">
+          ΣF = 0 ⇒ Δv = 0
+        </span>
+<span class="font-label-md text-label-md text-secondary-fixed-dim mt-0.5">
+          (v = constante)
+        </span>
+</div>
+<!-- Explanation Block -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]">psychology_alt</span>
+<span class="font-label-md text-label-md uppercase font-semibold">¿Por qué sucedió?</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          El fantasma continuó flotando sin detenerse porque en el vacío espectral no actuó ninguna fuerza externa de fricción. Al anularse las perturbaciones, su vector velocidad se conservó inmutable.
+        </p>
+</div>
+<!-- Real World Evidence Block with Image Vignette -->
+<div class="flex flex-col gap-2 pt-1">
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[16px]">public</span>
+<span class="font-label-md text-label-md uppercase font-semibold">Evidencia en el cosmos</span>
+</div>
+<div class="flex items-start gap-space-sm p-2 rounded bg-surface-container-high/40">
+<div class="w-14 h-14 rounded overflow-hidden flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Deep space probe Voyager gliding through silent dark cosmic interstellar void glowing under faint distant star starlight, purple cosmic dust clouds and orange telemetry radar pulses, scientific telemetry HUD style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp5NqVul8YVdtsAhvgcjZIPkh0eHHWJs4KBUjb1gtilF5ji1w34h_bhy3uH96sZZYcyHol0PaLKkkLY3SQhDe3rHeg2UNq4PXEaSEXD2udPGBAPauDpdrkJ8onw7lHFSgmt61CQyUUi4mu_DUsGuMrO9cT9bWC3j2Ss3TddDSdQJfPrQoeIcTj6mzHreuiIaoy9WhdZMm-XUkZiyzSqMcTTI2jhKx4eSuDZfhpr8Gc"/>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+            Las sondas espaciales <strong class="text-on-surface font-semibold">Voyager 1 y 2</strong> viajan a más de 60,000 km/h sin consumir propulsor gracias a la inercia en el espacio profundo.
+          </p>
+</div>
+</div>
+</div>
+<!-- Visual Interactive Mini-Hook: Telemetry Vector Visualizer -->
+<div class="relative flex items-center justify-between px-space-sm py-2 rounded bg-surface-container-lowest/60 z-10">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Vector Inercial Activo</span>
+</div>
+<div class="flex items-center gap-1 text-primary-container font-formula-md text-formula-md">
+<span>v⃗ = 14.2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">m/s</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="relative flex flex-col gap-2.5 pt-1 z-10">
+<!-- Primary Glowing CTA -->
+<button class="w-full h-13 py-3.5 px-space-md rounded-xl bg-primary-container text-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-[0_0_24px_rgba(255,117,24,0.6)] active:scale-[0.98] hover:shadow-[0_0_32px_rgba(255,117,24,0.85)] transition-all" id="btn-quiz-proceed">
+<span>Continuar al Desafío del Quiz</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Secondary Ghost Action -->
+<button class="w-full h-11 py-2 px-space-md rounded-xl bg-secondary-container/10 text-secondary-container font-headline-sm text-headline-sm flex items-center justify-center gap-2 active:scale-[0.98] hover:bg-secondary-container/20 transition-all" id="btn-retry-level">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span>Reintentar Nivel</span>
+</button>
+</div>
+</div>
+<script>
+    (function() {
+      const quizBtn = document.getElementById('btn-quiz-proceed');
+      const retryBtn = document.getElementById('btn-retry-level');
+
+      if (quizBtn) {
+        quizBtn.addEventListener('click', function() {
+          quizBtn.classList.add('scale-95');
+          setTimeout(() => {
+            quizBtn.classList.remove('scale-95');
+          }, 150);
+        });
+      }
+
+      if (retryBtn) {
+        retryBtn.addEventListener('click', function() {
+          retryBtn.classList.add('scale-95');
+          setTimeout(() => {
+            retryBtn.classList.remove('scale-95');
+          }, 150);
+        });
+      }
+    })();
+  </script>
+</div></main></body></html>

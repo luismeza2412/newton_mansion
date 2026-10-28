@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>Mansión de Newton - Consola de Física y Telemetría</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#3d2e52","tertiary":"#dab9ff","tertiary-fixed":"#eedbff","on-primary":"#552100","on-secondary-fixed-variant":"#245100","on-secondary-container":"#347000","surface-bright":"#413257","on-primary-container":"#5c2400","primary-container":"#ff7518","on-tertiary-fixed":"#2a0053","on-error-container":"#ffdad6","surface-container-lowest":"#150629","secondary-fixed":"#82ff1a","on-secondary":"#173800","on-background":"#eddcff","tertiary-fixed-dim":"#dab9ff","on-tertiary-fixed-variant":"#611baa","on-tertiary-container":"#4d008f","tertiary-container":"#bb83ff","inverse-surface":"#eddcff","outline-variant":"#594236","error":"#ffb4ab","on-surface":"#eddcff","on-secondary-fixed":"#0a2000","secondary-container":"#7cfc01","on-tertiary":"#460084","primary-fixed":"#ffdbcb","outline":"#a88b7d","background":"#1a0b2e","surface-dim":"#1a0b2e","surface-container":"#27183b","inverse-primary":"#9e4300","on-primary-fixed":"#341100","secondary-fixed-dim":"#6ee000","on-primary-fixed-variant":"#783100","primary":"#ffb691","on-error":"#690005","secondary":"#f8ffeb","inverse-on-surface":"#38294d","primary-fixed-dim":"#ffb691","surface-container-highest":"#3d2e52","surface":"#1a0b2e","surface-container-high":"#322346","on-surface-variant":"#e0c0b1","surface-container-low":"#231437","surface-tint":"#ffb691","error-container":"#93000a"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin-tablet":"2rem","space-md":"1rem","gutter-desktop":"1.5rem","space-xl":"2.5rem","space-sm":"0.5rem",margin:"1rem","space-lg":"1.5rem","margin-desktop":"3rem","space-xs":"0.25rem",gutter:"1rem"},fontFamily:{"label-sm":["JetBrains Mono"],"label-md":["JetBrains Mono"],"body-md":["Inter"],"headline-lg":["Bricolage Grotesque"],"body-lg":["Inter"],"body-sm":["Inter"],"headline-md":["Bricolage Grotesque"],"formula-md":["JetBrains Mono"],"formula-lg":["JetBrains Mono"],"headline-sm":["Bricolage Grotesque"],"headline-lg-mobile":["Bricolage Grotesque"],"display-lg":["Bricolage Grotesque"],"display-lg-mobile":["Bricolage Grotesque"]},fontSize:{"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.08em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.06em",fontWeight:"500"}],"body-md":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"30px",fontWeight:"600"}],"formula-md":["15px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"400"}],"formula-lg":["20px",{lineHeight:"28px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"26px",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"32px",fontWeight:"700"}],"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"800"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.01em",fontWeight:"800"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased relative min-h-screen"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest/90 backdrop-blur-xl z-50 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="px-space-lg flex flex-col gap-space-lg"><div class="flex items-center gap-space-md"><img alt="Mansión de Newton Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnBbCPZilHP7YC0DE08nz0T-X7wAMftAJ8hJj8utfLlHZqLTqVZFXQ1f8iDEvxB63uJqFi4luJelfGVdaUKzdmnCMjuHBKNmenqnA29wfmZWFLEf3nDZLEb_SUFFqCcqZ85Eyo9UIPn9ltzU6S6n66H24UytdUYcGHJVmIu2YoszRIUmNN1s5Zvhi4If0kdvkL--5zIGEvc8NrGrQKK9UVCCQRqXQniJdlrQS1CCrA"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">Newton HUD</span><span class="font-label-sm text-label-sm text-secondary-container mt-space-xs">Modo Laboratorio</span></div></div><div class="h-px w-full bg-surface-container-high"></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="simulador-laboratorio" href="#"><span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>Simulador Activo</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="telemetria-cinematica" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span>Telemetría Vectorial</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="editor-de-fuerzas" href="#"><span class="material-symbols-outlined text-[20px]">tune</span>Editor de Parámetros</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="registro-de-experimentos" href="#"><span class="material-symbols-outlined text-[20px]">history_edu</span>Bitácora de Pruebas</a></nav></div><div class="px-space-lg flex flex-col gap-space-md"><div class="bg-surface-container-low p-space-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center justify-between mb-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Gravedad Activa</span><span class="font-formula-md text-formula-md text-secondary-container">9.81 m/s²</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="w-3/4 h-full bg-secondary-container"></div></div></div><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span>Física Clásica I</span><span>v1.4.0</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface-container-lowest/80 backdrop-blur-xl z-40 flex items-center justify-between px-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-md"><div class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse"></div><span class="font-label-md text-label-md text-on-surface uppercase">Canal Telemetría Sincronizado</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">favorite</span><span class="font-formula-md text-formula-md text-primary font-bold">3/3</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary-container text-[18px]">electric_bolt</span><span class="font-formula-md text-formula-md text-secondary-container font-bold">14,850</span></div><button aria-label="Silenciar Audio" class="flex items-center justify-center w-10 h-10 rounded-xl bg-surface-container-high hover:bg-surface-variant text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">graphic_eq</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-20 w-full px-margin-desktop"><div class="flex flex-col w-full pb-space-xl">
+<!-- Dynamic Spectral Background Layer with Ambient Glow -->
+<div class="relative w-full overflow-hidden rounded-xl bg-surface-container-lowest shadow-2xl p-space-md md:p-space-xl">
+<!-- Ethereal Fog & Radial Energy Flares -->
+<div class="pointer-events-none absolute -top-40 -left-40 w-96 h-96 rounded-full bg-secondary-container/10 blur-[120px]"></div>
+<div class="pointer-events-none absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-primary-container/15 blur-[120px]"></div>
+<div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-tertiary-container/10 blur-[150px]"></div>
+<!-- HUD Control Bar: Progress, Spectral Flames, Kinematic Timer -->
+<div class="relative z-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md mb-space-lg bg-surface-container-low/80 backdrop-blur-xl p-space-md rounded-xl shadow-md">
+<!-- Quiz Stage & Progress -->
+<div class="flex flex-col gap-space-xs flex-1 max-w-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-md text-label-md text-primary uppercase">Fase Alquímica</span>
+</div>
+<span class="font-formula-md text-formula-md text-secondary-container font-semibold">Pregunta 1 de 3</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden flex">
+<div class="bg-secondary-container w-1/3 h-full shadow-[0_0_12px_#7cfc01]"></div>
+<div class="bg-surface-container-high w-2/3 h-full"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Reto de Inercia y Momento • Mecánica Cuántica Gótica</span>
+</div>
+<!-- Center Metrology: Kinematic Chrono -->
+<div class="flex items-center justify-center gap-space-md px-space-lg py-space-xs bg-surface-container-highest/60 rounded-lg">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">hourglass_top</span>
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Cronómetro</span>
+<span class="font-formula-lg text-formula-lg text-secondary tracking-widest font-bold" id="quiz-timer">00:42.85</span>
+</div>
+</div>
+<!-- Spectral Life Torches (3 Alchemical Green Flames) -->
+<div class="flex items-center gap-space-md justify-end">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Llamas Espectrales</span>
+<span class="font-formula-md text-formula-md text-secondary-container">3 / 3 Activas</span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container-highest/50 p-space-xs rounded-lg">
+<!-- Torch 1 -->
+<div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-secondary-container/20">
+<span class="material-symbols-outlined text-secondary-container animate-pulse" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="absolute inset-0 rounded-full bg-secondary-container/30 blur-sm"></div>
+</div>
+<!-- Torch 2 -->
+<div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-secondary-container/20">
+<span class="material-symbols-outlined text-secondary-container animate-pulse" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="absolute inset-0 rounded-full bg-secondary-container/30 blur-sm"></div>
+</div>
+<!-- Torch 3 -->
+<div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-secondary-container/20">
+<span class="material-symbols-outlined text-secondary-container animate-pulse" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="absolute inset-0 rounded-full bg-secondary-container/30 blur-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Ritual Stage: Dark Grimorio Sanctuary -->
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-lg">
+<!-- Central Enigma Codex (Grimorio Presentation) -->
+<div class="lg:col-span-12 relative rounded-xl bg-surface-container/90 backdrop-blur-2xl p-space-lg md:p-space-xl overflow-hidden shadow-2xl">
+<!-- Dual Spectral Energy Aura Rings -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-container via-tertiary to-secondary-container"></div>
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Overline Tag & Physical System Signature -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-highest">
+<span class="material-symbols-outlined text-primary-container text-sm">auto_fix_high</span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Códice de Isaac Newton • Ley I</span>
+</div>
+<div class="flex items-center gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+<span>Coeficiente Fricción: <strong class="text-secondary-container font-formula-md">μ = 0.00</strong></span>
+<span>•</span>
+<span>Masa: <strong class="text-primary font-formula-md">25 kg</strong></span>
+<span>•</span>
+<span>Velocidad: <strong class="text-tertiary-fixed font-formula-md">8 m/s</strong></span>
+</div>
+</div>
+<!-- The Central Prompt / Paradox -->
+<div class="flex flex-col md:flex-row items-start md:items-center gap-space-lg">
+<div class="hidden md:flex flex-col items-center justify-center p-space-md rounded-xl bg-surface-container-highest text-primary-container shadow-inner">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">skateboarding</span>
+<span class="font-formula-md text-formula-md mt-space-xs text-on-surface">v = cte</span>
+</div>
+<div class="flex flex-col flex-1">
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight leading-snug">
+              Si un caldero espectral de <span class="text-primary">25 kg</span> se desliza sobre un lago de hielo encantado totalmente <span class="text-secondary-container">libre de fricción</span> a <span class="text-tertiary-fixed">8 m/s</span>, ¿qué fuerza horizontal neta se necesita aplicar para mantenerlo a esa velocidad constante de 8 m/s?
+            </h2>
+</div>
+</div>
+<!-- Alchemical Vector Visual Scheme -->
+<div class="mt-space-lg pt-space-md bg-surface-container-lowest/70 rounded-xl p-space-md flex flex-wrap items-center justify-around gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary-container">north</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Normal (N = m·g)</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary">south</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Gravedad (P = 245.25 N)</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary">east</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Vector Velocidad (v⃗ = 8î m/s)</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-error">close</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fuerza Disipativa (f_r = 0)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- The 2x2 Interactive Grimoire Glyphs (Answers Grid) -->
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-space-md mb-space-lg">
+<!-- Option A (Distractor 1) -->
+<button class="group text-left relative flex items-start gap-space-md p-space-lg rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-300 shadow-md" type="button">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface font-headline-md shrink-0 group-hover:scale-105 transition-transform">
+          A
+        </div>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-formula-md text-formula-md text-primary font-bold">200 N</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">trending_flat</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">En la dirección del movimiento para contrarrestar la masa de inercia inicial.</p>
+</div>
+</button>
+<!-- Option B (Selected & CORRECT - Radiant Ectoplasmic Glow) -->
+<button class="relative text-left flex items-start gap-space-md p-space-lg rounded-xl bg-surface-container-high transition-all duration-300 shadow-[0_0_35px_rgba(124,252,1,0.35)] scale-[1.01] overflow-hidden" type="button">
+<!-- Glowing Accent Indicator Ribbon -->
+<div class="absolute inset-y-0 left-0 w-1.5 bg-secondary-container shadow-[0_0_12px_#7cfc01]"></div>
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container font-headline-md shrink-0 shadow-[0_0_16px_rgba(124,252,1,0.6)]">
+<span class="material-symbols-outlined text-2xl font-bold" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex flex-col flex-1 pl-space-xs">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-formula-md text-formula-md text-secondary-container font-extrabold tracking-wide">0 N</span>
+<span class="font-label-sm text-label-sm text-secondary-container bg-surface-container-lowest px-space-xs py-0.5 rounded uppercase">Seleccionada</span>
+</div>
+<span class="material-symbols-outlined text-secondary-container text-lg animate-bounce">verified</span>
+</div>
+<p class="font-body-md text-body-md text-secondary font-medium">
+            Ninguna fuerza requerida (<span class="font-formula-md font-bold text-secondary-container">ΣF = 0</span>). El caldero permanece en MRU por ley natural.
+          </p>
+</div>
+</button>
+<!-- Option C (Distractor 2) -->
+<button class="group text-left relative flex items-start gap-space-md p-space-lg rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-300 shadow-md" type="button">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface font-headline-md shrink-0 group-hover:scale-105 transition-transform">
+          C
+        </div>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-formula-md text-formula-md text-primary font-bold">25 N</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">fitness_center</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Para vencer la masa inercial neta del caldero a escala unitaria (1 N por kg).</p>
+</div>
+</button>
+<!-- Option D (Distractor 3) -->
+<button class="group text-left relative flex items-start gap-space-md p-space-lg rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-300 shadow-md" type="button">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface font-headline-md shrink-0 group-hover:scale-105 transition-transform">
+          D
+        </div>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-formula-md text-formula-md text-primary font-bold">9.8 N</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">public</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Debido a la atracción gravitatoria del plano espectral subyacente.</p>
+</div>
+</button>
+</div>
+<!-- Immediate Feedback Panel: Alchemical Revelation Activated -->
+<div class="relative z-10 flex flex-col lg:flex-row items-stretch justify-between gap-space-lg p-space-lg rounded-xl bg-surface-container-high shadow-2xl overflow-hidden mb-space-lg">
+<!-- Glow ambient background -->
+<div class="absolute top-0 right-0 w-80 h-full bg-secondary-container/10 blur-2xl pointer-events-none"></div>
+<!-- Feedback Revelation Core -->
+<div class="flex items-start gap-space-md flex-1">
+<div class="p-space-sm rounded-xl bg-secondary-container/20 text-secondary-container shrink-0 mt-1 shadow-inner">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">¡Respuesta Correcta! Revelación de Inercia</span>
+<span class="font-label-sm text-label-sm bg-secondary-container/20 text-secondary-container px-space-sm py-0.5 rounded-full font-bold">LEY DE NEWTON I</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+            Por la <strong>Primera Ley de Newton</strong> (Principio de Inercia), todo cuerpo preserva su estado de reposo o movimiento rectilíneo uniforme a menos que sea obligado a cambiarlo por fuerzas externas netas. Al no existir fricción en el hielo encantado, <strong>la suma de fuerzas es cero (<span class="font-formula-md text-secondary-container">ΣF = 0</span>)</strong>. Aplicar cualquier fuerza adicional causaría aceleración (<span class="font-formula-md text-primary">F = m · a</span>), alterando los 8 m/s.
+          </p>
+</div>
+</div>
+<!-- Reward & Mastery Metric -->
+<div class="flex flex-row lg:flex-col items-center justify-center gap-space-xs px-space-lg py-space-md rounded-xl bg-surface-container-lowest shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-primary-container text-2xl animate-spin" style="animation-duration: 6s;">magic_button</span>
+<span class="font-formula-lg text-formula-lg text-secondary-container font-extrabold">+500 PTS</span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Alquimia Física</span>
+</div>
+</div>
+<!-- Navigation Deck: Spectral Level Advancer -->
+<div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-sm">
+<!-- Ghost Utility Actions -->
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<button class="flex items-center justify-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-body-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>Ver Demostración Vectorial</span>
+</button>
+<button class="flex items-center justify-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-body-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">menu_book</span>
+<span>Códice Teórico</span>
+</button>
+</div>
+<!-- Radiant Primary Leap: Siguiente Desafío / Nivel 2 -->
+<a class="group relative flex items-center justify-center gap-space-md w-full sm:w-auto px-space-xl py-space-md rounded-xl bg-primary-container text-on-primary-container font-headline-md text-headline-md tracking-wide transition-all duration-300 hover:scale-105 shadow-[0_0_35px_rgba(255,117,24,0.65)] hover:shadow-[0_0_50px_rgba(255,117,24,0.85)]" href="#">
+<!-- Incandescent Pulsing Aura -->
+<span class="flex items-center gap-space-xs font-bold">
+          Siguiente Desafío / Nivel 2
+        </span>
+<span class="material-symbols-outlined text-2xl group-hover:translate-x-1 transition-transform">
+          arrow_forward
+        </span>
+</a>
+</div>
+</div>
+</div>
+<script>
+  // Precision Kinematic Chronometer Simulation
+  (function() {
+    const timerElem = document.getElementById('quiz-timer');
+    if (!timerElem) return;
+    let seconds = 42;
+    let hundredths = 85;
+    
+    setInterval(() => {
+      hundredths += 1;
+      if (hundredths >= 100) {
+        hundredths = 0;
+        seconds += 1;
+      }
+      const sStr = seconds < 10 ? '0' + seconds : seconds;
+      const hStr = hundredths < 10 ? '0' + hundredths : hundredths;
+      timerElem.textContent = `00:${sStr}.${hStr}`;
+    }, 10);
+  })();
+</script></main></div></body></html>

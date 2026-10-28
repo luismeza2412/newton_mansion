@@ -1,0 +1,70 @@
+/*
+  Variables de diseño de Mansión de Newton.
+  Colores y tipografía tomados del export real de Stitch
+  (design/stitch/mansi_n_de_newton/DESIGN.md), que prevalece
+  sobre SPEC.md sección 5 cuando hay diferencias (SPEC.md 0.1.2 y 5).
+  Fuentes autohospedadas en /assets/fonts para cumplir RNF-06 (offline).
+*/
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../assets/fonts/bricolage-grotesque-variable.woff2") format("woff2");
+  font-weight: 600 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter-variable.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/jetbrains-mono-variable.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Colores base */
+  --color-bg-black: #0d0517;
+  --color-bg-deep: #1a0b2e;
+  --color-primary: #ff7518;
+  --color-secondary: #7cfc00;
+  --color-glow: #9b5de5;
+  --color-text: #f4f1ff;
+  --color-text-dim: #a89bb9;
+  --color-ok: #7cfc00;
+  --color-error: #ff3b5c;
+
+  /* Tipografía (sustituye Creepster/Poppins de SPEC.md 5 por el diseño real) */
+  --font-display: "Bricolage Grotesque", cursive;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Forma */
+  --radius: 0.5rem;
+  --radius-lg: 1rem;
+  --glass: rgba(26, 11, 46, 0.65);
+
+  /* Espaciado (escala base 4px/8px, DESIGN.md "Layout & Spacing") */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+
+  /* Niveles de elevación — Gothic Cyber-Glassmorphism (DESIGN.md "Elevation & Depth") */
+  --elevation-1-bg: rgba(26, 11, 46, 0.7);
+  --elevation-1-border: rgba(155, 93, 229, 0.25);
+  --elevation-2-bg: rgba(38, 16, 66, 0.85);
+  --elevation-2-glow: 0 0 20px -5px rgba(155, 93, 229, 0.35);
+  --elevation-3-bg: rgba(26, 11, 46, 0.95);
+  --elevation-3-glow-primary: 0 0 24px rgba(255, 117, 24, 0.4);
+  --elevation-3-glow-secondary: 0 0 24px rgba(124, 252, 0, 0.4);
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mansión de Newton</title>
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/screens.css" />
+  </head>
+  <body>
+    <!-- Librerías de terceros -->
+    <script src="vendor/matter.min.js" defer></script>
+    <script src="vendor/chart.umd.min.js" defer></script>
+
+    <!-- Núcleo físico (puro, sin DOM) -->
+    <script src="js/config.js" defer></script>
+    <script src="js/physics/newton.js" defer></script>
+    <script src="js/physics/integrator.js" defer></script>
+
+    <!-- Motor -->
+    <script src="js/engine/loop.js" defer></script>
+    <script src="js/engine/particles.js" defer></script>
+    <script src="js/engine/background.js" defer></script>
+    <script src="js/engine/audio.js" defer></script>
+
+    <!-- Estado y datos -->
+    <script src="js/state.js" defer></script>
+    <script src="js/data/content.js" defer></script>
+
+    <!-- UI -->
+    <script src="js/ui/hud.js" defer></script>
+    <script src="js/ui/chart.js" defer></script>
+    <script src="js/ui/quiz.js" defer></script>
+    <script src="js/ui/screens.js" defer></script>
+
+    <!-- Niveles -->
+    <script src="js/levels/level1.js" defer></script>
+    <script src="js/levels/level2.js" defer></script>
+    <script src="js/levels/level3.js" defer></script>
+
+    <!-- Arranque -->
+    <script src="js/main.js" defer></script>
+  </body>
+</html>

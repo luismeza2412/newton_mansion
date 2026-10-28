@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>Mansión de Newton - Consola de Física y Telemetría</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#3d2e52","tertiary":"#dab9ff","tertiary-fixed":"#eedbff","on-primary":"#552100","on-secondary-fixed-variant":"#245100","on-secondary-container":"#347000","surface-bright":"#413257","on-primary-container":"#5c2400","primary-container":"#ff7518","on-tertiary-fixed":"#2a0053","on-error-container":"#ffdad6","surface-container-lowest":"#150629","secondary-fixed":"#82ff1a","on-secondary":"#173800","on-background":"#eddcff","tertiary-fixed-dim":"#dab9ff","on-tertiary-fixed-variant":"#611baa","on-tertiary-container":"#4d008f","tertiary-container":"#bb83ff","inverse-surface":"#eddcff","outline-variant":"#594236","error":"#ffb4ab","on-surface":"#eddcff","on-secondary-fixed":"#0a2000","secondary-container":"#7cfc01","on-tertiary":"#460084","primary-fixed":"#ffdbcb","outline":"#a88b7d","background":"#1a0b2e","surface-dim":"#1a0b2e","surface-container":"#27183b","inverse-primary":"#9e4300","on-primary-fixed":"#341100","secondary-fixed-dim":"#6ee000","on-primary-fixed-variant":"#783100","primary":"#ffb691","on-error":"#690005","secondary":"#f8ffeb","inverse-on-surface":"#38294d","primary-fixed-dim":"#ffb691","surface-container-highest":"#3d2e52","surface":"#1a0b2e","surface-container-high":"#322346","on-surface-variant":"#e0c0b1","surface-container-low":"#231437","surface-tint":"#ffb691","error-container":"#93000a"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin-tablet":"2rem","space-md":"1rem","gutter-desktop":"1.5rem","space-xl":"2.5rem","space-sm":"0.5rem",margin:"1rem","space-lg":"1.5rem","margin-desktop":"3rem","space-xs":"0.25rem",gutter:"1rem"},fontFamily:{"label-sm":["JetBrains Mono"],"label-md":["JetBrains Mono"],"body-md":["Inter"],"headline-lg":["Bricolage Grotesque"],"body-lg":["Inter"],"body-sm":["Inter"],"headline-md":["Bricolage Grotesque"],"formula-md":["JetBrains Mono"],"formula-lg":["JetBrains Mono"],"headline-sm":["Bricolage Grotesque"],"headline-lg-mobile":["Bricolage Grotesque"],"display-lg":["Bricolage Grotesque"],"display-lg-mobile":["Bricolage Grotesque"]},fontSize:{"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.08em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.06em",fontWeight:"500"}],"body-md":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"30px",fontWeight:"600"}],"formula-md":["15px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"400"}],"formula-lg":["20px",{lineHeight:"28px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"26px",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"32px",fontWeight:"700"}],"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"800"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.01em",fontWeight:"800"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased relative min-h-screen"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest/90 backdrop-blur-xl z-50 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="px-space-lg flex flex-col gap-space-lg"><div class="flex items-center gap-space-md"><img alt="Mansión de Newton Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnBbCPZilHP7YC0DE08nz0T-X7wAMftAJ8hJj8utfLlHZqLTqVZFXQ1f8iDEvxB63uJqFi4luJelfGVdaUKzdmnCMjuHBKNmenqnA29wfmZWFLEf3nDZLEb_SUFFqCcqZ85Eyo9UIPn9ltzU6S6n66H24UytdUYcGHJVmIu2YoszRIUmNN1s5Zvhi4If0kdvkL--5zIGEvc8NrGrQKK9UVCCQRqXQniJdlrQS1CCrA"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">Newton HUD</span><span class="font-label-sm text-label-sm text-secondary-container mt-space-xs">Modo Laboratorio</span></div></div><div class="h-px w-full bg-surface-container-high"></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="simulador-laboratorio" href="#"><span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>Simulador Activo</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="telemetria-cinematica" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span>Telemetría Vectorial</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="editor-de-fuerzas" href="#"><span class="material-symbols-outlined text-[20px]">tune</span>Editor de Parámetros</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="registro-de-experimentos" href="#"><span class="material-symbols-outlined text-[20px]">history_edu</span>Bitácora de Pruebas</a></nav></div><div class="px-space-lg flex flex-col gap-space-md"><div class="bg-surface-container-low p-space-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center justify-between mb-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Gravedad Activa</span><span class="font-formula-md text-formula-md text-secondary-container">9.81 m/s²</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="w-3/4 h-full bg-secondary-container"></div></div></div><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span>Física Clásica I</span><span>v1.4.0</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface-container-lowest/80 backdrop-blur-xl z-40 flex items-center justify-between px-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-md"><div class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse"></div><span class="font-label-md text-label-md text-on-surface uppercase">Canal Telemetría Sincronizado</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">favorite</span><span class="font-formula-md text-formula-md text-primary font-bold">3/3</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary-container text-[18px]">electric_bolt</span><span class="font-formula-md text-formula-md text-secondary-container font-bold">14,850</span></div><button aria-label="Silenciar Audio" class="flex items-center justify-center w-10 h-10 rounded-xl bg-surface-container-high hover:bg-surface-variant text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">graphic_eq</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-20 w-full px-margin-desktop"><div class="flex flex-col w-full relative pb-space-xl">
+<!-- Fondo cinemático de Mansión Gótica & Cementerio Espectral -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center opacity-30 scale-105 filter blur-[2px]" data-alt="Cinematic gothic mansion graveyard at midnight, thick glowing violet mist, massive luminous full moon, silhouettes of ancient twisted oak trees, gothic spires and flying bats in dark royal purple and eerie neon spectral atmosphere, photorealistic physics laboratory backdrop" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDbGPOrJHU3yf6AmwbVaurPDoqVxx_2ve-2O4cpySPEDWFatWpGRIoDm4s3_QYNXDZPzNkbkoYSQAOkdBu2jT4OsyP-EV9h4lHqpi1QtWGAcFebtwmqJCIh2C2f7k9aRowoHqYYo8kfzpcdwskwzBszfJTzNAMHBXvg7MEinsZWccBgQJiYrynclHw4PkGVMlRxC_amv_RcR9ZIGaUbNDnln6iKcrSZ8zP6-NEsmueM')">
+</div>
+<!-- Luces volumétricas y partículas etéreas -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface/85 to-surface-container-lowest/90 mix-blend-multiply"></div>
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[720px] bg-tertiary-container/10 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-24 right-1/4 w-[480px] h-[480px] bg-primary-container/15 rounded-full blur-[100px]"></div>
+</div>
+<!-- Contenedor Central Modal Flotante -->
+<div class="relative z-10 w-full max-w-4xl mx-auto my-space-md flex flex-col items-center">
+<!-- Insignia Superior: Medalla Espectral Flotante de Cera con Calabaza y Resplandor -->
+<div class="relative -mb-12 z-20 flex flex-col items-center group">
+<!-- Glow espectral concéntrico -->
+<div class="absolute inset-0 rounded-full bg-gradient-to-b from-primary-container to-secondary-container opacity-40 blur-2xl scale-125 animate-pulse"></div>
+<div class="relative w-28 h-28 rounded-full bg-surface-container-lowest shadow-[0_0_50px_rgba(255,117,24,0.45)] flex items-center justify-center p-1.5 transition-transform duration-500 hover:scale-110">
+<!-- Aro exterior dorado/naranja -->
+<div class="w-full h-full rounded-full bg-gradient-to-br from-primary-container via-surface-container-high to-secondary-container p-1 flex items-center justify-center">
+<div class="w-full h-full rounded-full bg-surface-container-lowest flex flex-col items-center justify-center relative overflow-hidden shadow-inner">
+<span class="material-symbols-outlined text-[48px] text-primary-container filter drop-shadow-[0_0_12px_rgba(255,117,24,0.8)]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="absolute bottom-1.5 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px] text-secondary-container">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-secondary-container">100%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tríada de Estrellas Ectoplásmicas Triunfales -->
+<div class="flex items-center gap-space-sm -mt-3 bg-surface-container-lowest/90 px-space-md py-1 rounded-full shadow-[0_0_20px_rgba(124,252,1,0.3)]">
+<span class="material-symbols-outlined text-[24px] text-secondary-container filter drop-shadow-[0_0_8px_rgba(124,252,1,0.9)] animate-bounce" style="animation-delay: 0.1s; font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[30px] text-secondary-container filter drop-shadow-[0_0_12px_rgba(124,252,1,1)] animate-bounce" style="animation-delay: 0.25s; font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px] text-secondary-container filter drop-shadow-[0_0_8px_rgba(124,252,1,0.9)] animate-bounce" style="animation-delay: 0.4s; font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- Cuerpo de Cristal Gótico del Modal -->
+<div class="w-full bg-surface-container-lowest/90 backdrop-blur-2xl rounded-2xl pt-16 pb-space-lg px-space-xl shadow-[0_0_60px_rgba(155,93,229,0.25),0_0_30px_rgba(255,117,24,0.2)] flex flex-col gap-space-lg relative overflow-hidden">
+<!-- Marco luminiscente degradado (Gothic Cyber Glass Edge) -->
+<div class="absolute inset-0 rounded-2xl pointer-events-none p-px bg-gradient-to-b from-primary-container via-tertiary-container/30 to-secondary-container/40 [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] [mask-composite:exclude]"></div>
+<!-- Destellos de fondo -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-tertiary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 bottom-10 w-64 h-64 bg-secondary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Cabecera de Impacto -->
+<div class="flex flex-col items-center text-center gap-space-xs z-10">
+<!-- Badges Superiores -->
+<div class="flex flex-wrap items-center justify-center gap-space-sm mb-space-xs">
+<div class="flex items-center gap-1.5 px-space-md py-1 rounded-full bg-surface-container-high/70 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="font-label-sm text-label-sm text-secondary-container uppercase">Teoría Validada: 1/3</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-md py-1 rounded-full bg-surface-container-high/70 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary">timer</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase">Tiempo: 00:38s</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-md py-1 rounded-full bg-surface-container-high/70 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">science</span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Cámara de Vacío Alfa</span>
+</div>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-headline-lg text-on-surface tracking-tight font-extrabold max-w-2xl leading-none">
+          ¡Enigma Espectral Superado!
+        </h1>
+<p class="font-headline-sm text-headline-sm text-primary-container font-semibold mt-1">
+          1ª Ley de Newton • Principio de Inercia
+        </p>
+</div>
+<!-- Rejilla de Telemetría y Rendimiento (Score Breakdown) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md z-10">
+<!-- Métrica 1: Ectoplasma Ganado -->
+<div class="relative bg-surface-container-low/80 backdrop-blur-md p-space-md rounded-xl shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container/90 transition-colors">
+<div class="absolute -right-6 -bottom-6 w-20 h-20 bg-secondary-container/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Ectoplasma Obtenido</span>
+<span class="material-symbols-outlined text-secondary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-display-lg text-headline-lg text-secondary-container font-extrabold tracking-tight">+1,450</span>
+<span class="font-formula-md text-formula-md text-on-surface-variant">puntos</span>
+</div>
+<div class="mt-space-xs w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary-container h-full w-full shadow-[0_0_8px_rgba(124,252,1,0.8)]"></div>
+</div>
+</div>
+<!-- Métrica 2: Precisión de Trayectoria -->
+<div class="relative bg-surface-container-low/80 backdrop-blur-md p-space-md rounded-xl shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container/90 transition-colors">
+<div class="absolute -right-6 -bottom-6 w-20 h-20 bg-primary-container/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Precisión Vectorial</span>
+<span class="material-symbols-outlined text-primary-container text-[20px]">my_location</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-display-lg text-headline-lg text-primary-container font-extrabold tracking-tight">100%</span>
+<span class="font-formula-md text-formula-md text-on-surface-variant">sin desvío</span>
+</div>
+<div class="mt-space-xs w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary-container h-full w-full shadow-[0_0_8px_rgba(255,117,24,0.8)]"></div>
+</div>
+</div>
+<!-- Métrica 3: Choques Innecesarios -->
+<div class="relative bg-surface-container-low/80 backdrop-blur-md p-space-md rounded-xl shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container/90 transition-colors">
+<div class="absolute -right-6 -bottom-6 w-20 h-20 bg-tertiary-container/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Impactos Parásitos</span>
+<span class="material-symbols-outlined text-tertiary-container text-[20px]">shield</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-display-lg text-headline-lg text-on-surface font-extrabold tracking-tight">0</span>
+<span class="font-formula-md text-formula-md text-secondary-container">Vuelo Limpio</span>
+</div>
+<div class="mt-space-xs w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary-container h-full w-full"></div>
+</div>
+</div>
+</div>
+<!-- Sección Didáctica: Desvelación del Grimorio Físico -->
+<div class="relative bg-surface-container/70 backdrop-blur-xl rounded-xl p-space-lg shadow-xl flex flex-col gap-space-md z-10 overflow-hidden">
+<!-- Encabezado del Grimorio -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">
+                Desvelación del Grimorio Físico
+              </h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Codex Isaac Newton • Anotaciones del Mas Allá</span>
+</div>
+</div>
+<div class="px-space-md py-0.5 rounded-full bg-secondary-container/15 text-secondary-container font-label-sm text-label-sm self-start sm:self-auto flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Hipótesis Comprobada</span>
+</div>
+</div>
+<!-- Caja de Fórmula en Cristal de Neón Tóxico -->
+<div class="bg-surface-container-lowest/90 rounded-lg p-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md shadow-[0_0_25px_rgba(124,252,1,0.15)] relative overflow-hidden">
+<div class="flex items-center gap-space-md w-full sm:w-auto">
+<div class="w-10 h-10 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary-container shrink-0">
+<span class="material-symbols-outlined text-[22px]">functions</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Ecuación Fundamental de Inercia</span>
+<span class="font-formula-lg text-formula-lg text-secondary-container font-semibold tracking-wide drop-shadow-[0_0_10px_rgba(124,252,1,0.6)]">
+                ΣF⃗ = 0 ⇒ Δv⃗ = 0  (v = constante)
+              </span>
+</div>
+</div>
+<!-- Micro Gráfico SVG Vectorial de Fuerzas Equilibradas -->
+<div class="shrink-0 flex items-center gap-space-sm bg-surface-container-high/60 px-space-md py-1.5 rounded-lg shadow-inner">
+<svg class="w-24 h-8 text-secondary-container" fill="none" viewbox="0 0 100 32">
+<!-- Línea de trayectoria inercial -->
+<line opacity="0.4" stroke="currentColor" stroke-dasharray="3 3" stroke-width="1.5" x1="5" x2="95" y1="16" y2="16"></line>
+<!-- Partícula espectral -->
+<circle class="filter drop-shadow-[0_0_4px_rgba(124,252,1,0.8)]" cx="50" cy="16" fill="currentColor" r="4.5"></circle>
+<!-- Vector velocidad -->
+<path d="M54 16H88M88 16L82 12M88 16L82 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">F_neta = 0N</span>
+</div>
+</div>
+<!-- Explicación Conceptual en 2 Columnas -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md mt-space-xs">
+<!-- Columna A: Explicación Didáctica -->
+<div class="bg-surface-container-low/50 p-space-md rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+<span class="font-label-md text-label-md font-semibold uppercase">¿Por qué sucedió en el simulador?</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              El fantasma continuó flotando sin detenerse porque en el <strong class="text-on-surface font-semibold">vacío espectral</strong> no actuó ninguna fuerza externa de fricción. La inercia preserva el estado de reposo o movimiento rectilíneo uniforme hasta que una fuerza resultante distinta de cero intervenga.
+            </p>
+</div>
+<!-- Columna B: Conexión con el Mundo Real -->
+<div class="bg-surface-container-low/50 p-space-md rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-tertiary">
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+<span class="font-label-md text-label-md font-semibold uppercase">Evidencia en el Mundo Real</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Las sondas espaciales <strong class="text-on-surface font-semibold">Voyager 1 y 2</strong> viajan hoy por el espacio interestelar a más de 60,000 km/h sin consumir una sola gota de propulsor, deslizándose eternamente gracias al principio inercial de Newton.
+            </p>
+</div>
+</div>
+</div>
+<!-- Barra de Acciones Inferiores (CTAs de Alto Contraste) -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-sm z-10">
+<!-- Botón Secundario: Reintentar con estilo vidrio gótico -->
+<button class="w-full sm:w-auto flex items-center justify-center gap-space-sm px-space-xl py-3.5 rounded-xl bg-surface-container-high/60 hover:bg-surface-container-highest text-tertiary hover:text-on-surface shadow-md transition-all duration-200 active:scale-95 group" onclick="console.log('Reiniciando nivel...')" type="button">
+<span class="material-symbols-outlined text-[20px] transition-transform duration-300 group-hover:-rotate-90">replay</span>
+<span class="font-headline-sm text-headline-sm text-[16px] font-semibold">Reintentar Nivel</span>
+</button>
+<!-- Botón Primario: Continuar al Quiz (Fuego de Calabaza Resplandeciente) -->
+<button class="w-full sm:w-auto flex items-center justify-center gap-space-md px-space-xl py-3.5 rounded-xl bg-primary-container text-on-primary-container font-headline-sm text-headline-sm text-[16px] font-bold shadow-[0_0_30px_rgba(255,117,24,0.65)] hover:shadow-[0_0_45px_rgba(255,117,24,0.9)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group" onclick="console.log('Navegando al quiz...')" type="button">
+<span>Continuar al Desafío del Quiz</span>
+<span class="material-symbols-outlined text-[20px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Indicador de Navegación Rápida con Teclado -->
+<div class="mt-space-md flex items-center gap-space-sm text-on-surface-variant/70 font-label-sm text-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-mono">ESPACIO</span>
+<span>o</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-mono">ENTER</span>
+<span>para avanzar inmediatamente</span>
+</div>
+</div>
+<script>
+    document.addEventListener('keydown', function(event) {
+      if (event.code === 'Space' || event.code === 'Enter') {
+        event.preventDefault();
+        const primaryBtn = document.querySelector('button.bg-primary-container');
+        if (primaryBtn) {
+          primaryBtn.classList.add('scale-95');
+          setTimeout(() => {
+            primaryBtn.classList.remove('scale-95');
+            primaryBtn.click();
+          }, 150);
+        }
+      }
+    });
+  </script>
+</div></main></div></body></html>

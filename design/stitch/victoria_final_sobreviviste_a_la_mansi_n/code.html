@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Mansión de Newton - Simulador y Videojuego de Física</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#3d2e52","tertiary":"#dab9ff","tertiary-fixed":"#eedbff","on-primary":"#552100","on-secondary-fixed-variant":"#245100","on-secondary-container":"#347000","surface-bright":"#413257","on-primary-container":"#5c2400","primary-container":"#ff7518","on-tertiary-fixed":"#2a0053","on-error-container":"#ffdad6","surface-container-lowest":"#150629","secondary-fixed":"#82ff1a","on-secondary":"#173800","on-background":"#eddcff","tertiary-fixed-dim":"#dab9ff","on-tertiary-fixed-variant":"#611baa","on-tertiary-container":"#4d008f","tertiary-container":"#bb83ff","inverse-surface":"#eddcff","outline-variant":"#594236","error":"#ffb4ab","on-surface":"#eddcff","on-secondary-fixed":"#0a2000","secondary-container":"#7cfc01","on-tertiary":"#460084","primary-fixed":"#ffdbcb","outline":"#a88b7d","background":"#1a0b2e","surface-dim":"#1a0b2e","surface-container":"#27183b","inverse-primary":"#9e4300","on-primary-fixed":"#341100","secondary-fixed-dim":"#6ee000","on-primary-fixed-variant":"#783100","primary":"#ffb691","on-error":"#690005","secondary":"#f8ffeb","inverse-on-surface":"#38294d","primary-fixed-dim":"#ffb691","surface-container-highest":"#3d2e52","surface":"#1a0b2e","surface-container-high":"#322346","on-surface-variant":"#e0c0b1","surface-container-low":"#231437","surface-tint":"#ffb691","error-container":"#93000a"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin-tablet":"2rem","space-md":"1rem","gutter-desktop":"1.5rem","space-xl":"2.5rem","space-sm":"0.5rem",margin:"1rem","space-lg":"1.5rem","margin-desktop":"3rem","space-xs":"0.25rem",gutter:"1rem"},fontFamily:{"label-sm":["JetBrains Mono"],"label-md":["JetBrains Mono"],"body-md":["Inter"],"headline-lg":["Bricolage Grotesque"],"body-lg":["Inter"],"body-sm":["Inter"],"headline-md":["Bricolage Grotesque"],"formula-md":["JetBrains Mono"],"formula-lg":["JetBrains Mono"],"headline-sm":["Bricolage Grotesque"],"headline-lg-mobile":["Bricolage Grotesque"],"display-lg":["Bricolage Grotesque"],"display-lg-mobile":["Bricolage Grotesque"]},fontSize:{"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.08em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.06em",fontWeight:"500"}],"body-md":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"30px",fontWeight:"600"}],"formula-md":["15px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"400"}],"formula-lg":["20px",{lineHeight:"28px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"26px",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"32px",fontWeight:"700"}],"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"800"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.01em",fontWeight:"800"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container relative min-h-screen"><div class="pointer-events-none fixed inset-0 z-0 overflow-hidden"><div class="absolute -top-16 right-16 w-56 h-56 rounded-full bg-secondary-container/10 blur-[80px]"></div><div class="absolute -top-24 right-28 w-44 h-44 rounded-full bg-tertiary-container/15 blur-[60px]"></div><div class="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-t from-surface-container-lowest via-surface/40 to-transparent"></div></div><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md"><img alt="Mansión de Newton Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnBbCPZilHP7YC0DE08nz0T-X7wAMftAJ8hJj8utfLlHZqLTqVZFXQ1f8iDEvxB63uJqFi4luJelfGVdaUKzdmnCMjuHBKNmenqnA29wfmZWFLEf3nDZLEb_SUFFqCcqZ85Eyo9UIPn9ltzU6S6n66H24UytdUYcGHJVmIu2YoszRIUmNN1s5Zvhi4If0kdvkL--5zIGEvc8NrGrQKK9UVCCQRqXQniJdlrQS1CCrA"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Mansión de Newton</span><span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest">Laboratorio Espectral</span></div></div><div class="hidden xl:flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-xs rounded-full shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-primary text-[18px]">favorite</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Vidas</span><span class="font-formula-md text-formula-md text-primary font-bold ml-space-xs">3/3</span></div><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-xs rounded-full shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-secondary-container text-[18px]">electric_bolt</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Puntuación</span><span class="font-formula-md text-formula-md text-secondary-container font-bold ml-space-xs">14,850</span></div><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-xs rounded-full shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-tertiary text-[18px]">science</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Nivel</span><span class="font-formula-md text-formula-md text-tertiary font-bold ml-space-xs">II: Gravitación</span></div></div><nav class="hidden md:flex items-center gap-space-md" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg px-space-md py-space-xs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors px-space-sm py-space-xs" data-path="inicio" href="#">Inicio</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors px-space-sm py-space-xs" data-path="niveles" href="#">Niveles</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors px-space-sm py-space-xs" data-path="como-jugar" href="#">Cómo Jugar</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors px-space-sm py-space-xs" data-path="creditos" href="#">Créditos</a></nav><div class="flex items-center gap-space-md"><button aria-label="Silenciar Audio Espectral" class="flex items-center justify-center w-10 h-10 rounded-xl bg-surface-container-high hover:bg-surface-variant text-on-surface-variant hover:text-on-surface transition-colors shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button"><span class="material-symbols-outlined text-[20px]">graphic_eq</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 relative z-10 px-margin-desktop"><div class="flex flex-col w-full">
+<div class="relative w-full overflow-hidden rounded-xl bg-surface-container-lowest shadow-2xl pb-space-xl">
+<div class="absolute inset-0 z-0 pointer-events-none opacity-40">
+<div class="bg-cover bg-center w-full h-full" data-alt="A grand gothic Victorian haunted mansion courtyard bathed in the supernatural glow of an enormous golden full moon. Glowing toxic green ectoplasmic fireworks burst in the midnight purple sky. Smiling carved pumpkins with vibrant orange flame interiors line the stone parapets and spectral energy wisps spiral upward in an apocalyptic celebration of triumph." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDy4hgaMBsgPZ5IcvcZjudwRZ0IUJAniSmTu6iyQ4ROBtPjIjwf3-ixUWfrvKv4ND9a9Tgs9tx9n2Jt__K6QWXrdSVHaXv9MrXbvKaU3RVSfPvR8UDKSWS14WGFbqAmnj4TqwAXNn7g6CqTDNRcJFxVYJyjXSql9Bg2xlkZBcKlh5c40LOM7cLYVpO9IMqZc2mFa8g8sYP7TQJ4WztIbijR2Qi5sy0qsov9yIeWeHUz')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-surface-container-lowest/70 via-surface-container-lowest/85 to-surface-container-lowest"></div>
+</div>
+<div class="relative z-10 w-full px-gutter-desktop pt-space-xl flex flex-col items-center">
+<div class="flex items-center gap-space-sm bg-surface-container-high/90 px-space-md py-space-xs rounded-full shadow-lg backdrop-blur-md mb-space-md">
+<span class="material-symbols-outlined text-secondary-container text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm text-secondary-container uppercase tracking-widest">Rito de Iniciación Culminado</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary-container animate-ping"></span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary text-center max-w-4xl tracking-tight drop-shadow-[0_10px_20px_rgba(255,117,24,0.35)] leading-tight">
+        ¡Has Roto la Maldición de la Mansión de Newton!
+      </h1>
+<p class="font-body-lg text-body-lg text-tertiary-fixed text-center max-w-2xl mt-space-xs">
+        Has dominado con maestría absoluta las 3 leyes fundamentales que rigen las fuerzas del cosmos espectral y terrenal.
+      </p>
+<div class="relative mt-space-xl mb-space-lg flex items-center justify-center">
+<div class="absolute -inset-6 rounded-full bg-gradient-to-r from-secondary-container/20 via-primary-container/30 to-tertiary/25 blur-2xl animate-pulse"></div>
+<div class="relative flex flex-col items-center bg-surface-container-high/90 backdrop-blur-xl p-space-lg rounded-xl shadow-2xl">
+<div class="relative w-36 h-36 rounded-full overflow-hidden shadow-inner bg-surface-container-lowest flex items-center justify-center">
+<img class="object-cover w-full h-full scale-105" data-alt="An ornate gilded mystical medallion displaying a dapper scholar skull wearing a lavish 17th-century wig and academic graduation mortarboard cap representing Sir Isaac Newton. Luminous emerald laureles encircle the relic while crackling electric violet energy orbs orbit its perimeter in a dark gothic scientific fantasy aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvEO6n1qZSkUmuBxm910DMQxJbpO9X1icgKUVnF6n4kQQ_v_5U4Y_JDvujEp-v_54CK5JFiGodfS39Cm3xJCpcp7TbI3WKQI1D5hG-5gz396kkkC0i-NEBNAPVCbe4dhr4nmeuOMYee6nmMDv-zI9SGTkqI4tZn-nzSvgYUbBth-cyfo1hM1vNF9uvTEngxDDehXv7vj_WcpxJtrpdNHEYyJTfN--Txgh2wS--lZKW"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/60 via-transparent to-transparent pointer-events-none"></div>
+</div>
+<div class="mt-space-sm flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm text-secondary-container">Sir Isaac Newton Redimido</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase mt-space-xs">Cátedra Suprema de Mecánica Racional</span>
+</div>
+<div class="absolute -left-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-end gap-space-xs">
+<span class="font-formula-md text-formula-md text-tertiary">d/dt(p) = ΣF</span>
+<span class="font-label-sm text-label-sm text-outline">Principio Infinitesimal</span>
+</div>
+<div class="absolute -right-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-start gap-space-xs">
+<span class="font-formula-md text-formula-md text-primary-container">∇²Φ = 4πGρ</span>
+<span class="font-label-sm text-label-sm text-outline">Campo Gravitatorio</span>
+</div>
+</div>
+</div>
+<div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-gutter-desktop mt-space-md">
+<div class="relative bg-surface-container-low/90 backdrop-blur-lg rounded-xl p-space-md shadow-xl flex flex-col justify-between overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary-container/5 rounded-full blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary-container bg-surface-container px-space-sm py-space-xs rounded-full uppercase">Prueba Superada</span>
+<div class="flex text-secondary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-space-md">Nivel 1: Inercia</h2>
+<div class="bg-surface-container-lowest/80 px-space-sm py-space-xs rounded-lg mt-space-xs">
+<code class="font-formula-md text-formula-md text-secondary-fixed">ΣF = 0 ⟹ v = cte</code>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+              El espectro errante recuperó su estado de reposo absoluto al calibrar los vectores de fricción fantasmal.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container/60 rounded-lg px-space-sm py-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estado Meta</span>
+<span class="font-formula-md text-formula-md text-secondary-container flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">lock_open</span> Fantasma Liberado
+            </span>
+</div>
+</div>
+<div class="relative bg-surface-container-low/90 backdrop-blur-lg rounded-xl p-space-md shadow-xl flex flex-col justify-between overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary bg-surface-container px-space-sm py-space-xs rounded-full uppercase">Prueba Superada</span>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-space-md">Nivel 2: Dinámica</h2>
+<div class="bg-surface-container-lowest/80 px-space-sm py-space-xs rounded-lg mt-space-xs">
+<code class="font-formula-md text-formula-md text-primary-fixed">F = m · a</code>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+              Proyectiles de calabaza maciza colisionaron con la masa crítica requerida para quebrar las murallas encantadas.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container/60 rounded-lg px-space-sm py-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estado Meta</span>
+<span class="font-formula-md text-formula-md text-primary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">explosion</span> Bastión Derribado
+            </span>
+</div>
+</div>
+<div class="relative bg-surface-container-low/90 backdrop-blur-lg rounded-xl p-space-md shadow-xl flex flex-col justify-between overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary bg-surface-container px-space-sm py-space-xs rounded-full uppercase">Prueba Superada</span>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-space-md">Nivel 3: Interacción</h2>
+<div class="bg-surface-container-lowest/80 px-space-sm py-space-xs rounded-lg mt-space-xs">
+<code class="font-formula-md text-formula-md text-tertiary-fixed">F_A = -F_B</code>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+              La fuerza de reacción del cañón etéreo catapultó a la matriarca espectral fuera del campo de atracción gravitacional.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container/60 rounded-lg px-space-sm py-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estado Meta</span>
+<span class="font-formula-md text-formula-md text-tertiary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">public</span> Órbita Lunar Alcanzada
+            </span>
+</div>
+</div>
+</div>
+<div class="w-full max-w-5xl mt-space-xl bg-surface-container-high/70 backdrop-blur-xl rounded-xl p-space-lg shadow-2xl flex flex-col md:flex-row items-center justify-around gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-14 h-14 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container shadow-md">
+<span class="material-symbols-outlined text-[32px]">local_fire_department</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Puntuación de Récord</span>
+<span class="font-formula-lg text-formula-lg text-primary-container font-extrabold tracking-wider">18,750 PTS</span>
+<span class="font-label-sm text-label-sm text-secondary-container">+3,500 Bonus Celeridad</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="w-14 h-14 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary shadow-md">
+<span class="material-symbols-outlined text-[32px]">workspace_premium</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Rango Obtenido</span>
+<span class="font-headline-sm text-headline-sm text-tertiary-fixed">Gran Físico del Más Allá</span>
+<span class="font-label-sm text-label-sm text-outline">Categoría Legendaria</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="w-14 h-14 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary-container shadow-md">
+<span class="material-symbols-outlined text-[32px]">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Precisión Experimental</span>
+<span class="font-formula-lg text-formula-lg text-secondary-container font-extrabold">100% de Aciertos</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">0 Desviación Relativista</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-md mt-space-xl w-full max-w-3xl justify-center">
+<button class="w-full sm:w-auto px-space-lg py-space-md rounded-xl bg-primary-container text-on-primary font-headline-md text-headline-md flex items-center justify-center gap-space-xs shadow-[0_0_24px_rgba(255,117,24,0.4)] hover:shadow-[0_0_32px_rgba(255,117,24,0.7)] hover:scale-105 active:scale-95 transition-all duration-200" id="btn-nightmare">
+<span class="material-symbols-outlined text-[24px]">skull</span>
+<span>Jugar Modo Pesadilla</span>
+</button>
+<button class="w-full sm:w-auto px-space-lg py-space-md rounded-xl bg-surface-container-high text-secondary-container font-body-md text-body-md flex items-center justify-center gap-space-xs shadow-lg hover:bg-secondary-container hover:text-on-secondary-fixed transition-colors duration-200" id="btn-pdf">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Descargar Certificado (PDF)</span>
+</button>
+<button class="w-full sm:w-auto px-space-md py-space-md rounded-xl bg-surface-container-low text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container transition-colors duration-200 flex items-center justify-center gap-space-xs" id="btn-lobby">
+<span class="material-symbols-outlined text-[20px]">door_front</span>
+<span>Volver al Vestíbulo</span>
+</button>
+</div>
+<div class="mt-space-lg flex items-center gap-space-xs text-outline">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span class="font-label-sm text-label-sm">Certificación expedida bajo la constante universal G = 6.67430 × 10⁻¹¹ m³·kg⁻¹·s⁻²</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const btnNightmare = document.getElementById('btn-nightmare');
+    const btnPdf = document.getElementById('btn-pdf');
+    const btnLobby = document.getElementById('btn-lobby');
+
+    if (btnNightmare) {
+      btnNightmare.addEventListener('click', function() {
+        this.innerHTML = '<span class="material-symbols-outlined text-[24px] animate-spin">refresh</span><span>Invocando Pesadilla...</span>';
+        setTimeout(() => {
+          alert('¡Preparando la Mansión en Modo Pesadilla! Gravedad fluctuante y fricción negativa activadas.');
+          this.innerHTML = '<span class="material-symbols-outlined text-[24px]">skull</span><span>Jugar Modo Pesadilla</span>';
+        }, 1200);
+      });
+    }
+
+    if (btnPdf) {
+      btnPdf.addEventListener('click', function() {
+        const originalText = this.innerHTML;
+        this.innerHTML = '<span class="material-symbols-outlined text-[20px]">hourglass_top</span><span>Sellando Certificado...</span>';
+        setTimeout(() => {
+          alert('Certificado Académico de "Gran Físico del Más Allá" generado para su archivo doctoral.');
+          this.innerHTML = originalText;
+        }, 1000);
+      });
+    }
+
+    if (btnLobby) {
+      btnLobby.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest/90 backdrop-blur-xl relative z-10 py-space-md mt-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-secondary-container text-[20px]">auto_stories</span><span class="font-formula-md text-formula-md text-on-surface">Leyes del Movimiento de Isaac Newton — Física I</span><span class="font-label-sm text-label-sm text-on-surface-variant hidden lg:inline">v1.4.0 HUD Telemetría</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">volume_up</span><span class="font-label-sm text-label-sm">Ambiente 85%</span></div><button class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">fullscreen</span><span class="font-label-sm text-label-sm uppercase">Pantalla Completa</span></button></div></div></footer></body></html>

@@ -1,0 +1,24 @@
+/*
+  Reset y base tipográfica. Los estilos de pantallas/componentes
+  se añaden en fases posteriores (components.css, screens.css).
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg-black);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
