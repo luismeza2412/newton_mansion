@@ -191,6 +191,7 @@
         unlockedLevel: Math.max(state.unlockedLevel, LEVEL_ID + 1),
         totalScore: recomputeTotalScore(newLevels),
       });
+      window.NM.audio.play('win');
       showMessage('win', starsEarned);
       window.NM.quiz.showLesson(LEVEL_ID, {
         onDone: function () {
@@ -212,6 +213,7 @@
           attempts: attemptsUsed,
         }),
       });
+      window.NM.audio.play('lose');
       if (attemptsUsed >= cfg().MAX_ATTEMPTS) {
         showMessage('final-defeat', hintKey);
       } else {

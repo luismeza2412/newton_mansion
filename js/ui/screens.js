@@ -45,6 +45,9 @@
     if (screenId === 'home') {
       renderLevelCards();
     }
+    if (screenId === 'final') {
+      renderFinalScreen();
+    }
     if (lifecycles[screenId] && lifecycles[screenId].onEnter) {
       lifecycles[screenId].onEnter();
     }
@@ -116,6 +119,75 @@
     }
     container.innerHTML = html;
     wireNavButtons(container);
+  }
+
+  function finalLevelCardMarkup(levelId, levelState) {
+    return (
+      '<article class="card card--completed">' +
+      '<p class="card__eyebrow">Nivel ' + levelId + '</p>' +
+      '<h3 class="card__title">' + LEVEL_TITLES[levelId] + '</h3>' +
+      '<div class="card__stars">' + starsMarkup(levelState.stars) + '</div>' +
+      '</article>'
+    );
+  }
+
+  function lawCardMarkup(law) {
+    return (
+      '<article class="card final__law-card">' +
+      '<h3 class="card__title">' + law.name + '</h3>' +
+      '<p class="final__law-statement">' + law.statement + '</p>' +
+      '<p class="final__law-formula">' + law.formula + '</p>' +
+      '</article>'
+    );
+  }
+
+  /**
+   * Reconstruye la pantalla final: puntaje total, estrellas por nivel y
+   * resumen de las tres leyes en tarjetas (RF-60).
+   */
+  function renderFinalScreen() {
+    var state = window.NM.state.getState();
+
+    var totalScoreEl = document.querySelector('[data-final="total-score"]');
+    if (totalScoreEl) {
+      totalScoreEl.textContent = state.totalScore;
+    }
+
+    var levelCardsEl = document.querySelector('[data-final="level-cards"]');
+    if (levelCardsEl) {
+      var levelsHtml = '';
+      for (var i = 0; i < LEVEL_IDS.length; i += 1) {
+        var levelId = LEVEL_IDS[i];
+        levelsHtml += finalLevelCardMarkup(levelId, state.levels[levelId]);
+      }
+      levelCardsEl.innerHTML = levelsHtml;
+    }
+
+    var lawCardsEl = document.querySelector('[data-final="law-cards"]');
+    if (lawCardsEl) {
+      var lawsHtml = '';
+      for (var j = 0; j < LEVEL_IDS.length; j += 1) {
+        lawsHtml += lawCardMarkup(window.NM.content.laws[LEVEL_IDS[j]]);
+      }
+      lawCardsEl.innerHTML = lawsHtml;
+    }
+  }
+
+  /**
+   * Wirea "Jugar de nuevo" de la pantalla final: reinicia el progreso tras
+   * confirmar y vuelve al inicio (RF-61).
+   */
+  function wireFinalReplay() {
+    var replayButton = document.querySelector('[data-final-replay]');
+    if (!replayButton) {
+      return;
+    }
+    replayButton.addEventListener('click', function () {
+      if (window.confirm('¿Seguro que querés borrar tu progreso y jugar de nuevo desde el Nivel 1?')) {
+        window.NM.state.resetProgress();
+        navigateTo('home');
+      }
+    });
   }
 
   function handleNavClick(event) {
@@ -244,6 +316,7 @@
     wireStartButton();
     wireModals();
     wireResetProgress();
+    wireFinalReplay();
     wireSoundToggle();
     navigateTo(window.NM.state.getState().currentScreen);
   }

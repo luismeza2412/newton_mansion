@@ -93,7 +93,7 @@
   /**
    * Abre el modal de explicación + quiz para el nivel indicado (RF-50 a RF-53).
    * @param {number} levelId
-   * @param {{onDone: function(): void}} options
+   * @param {{onDone: function(): void, nextLabel?: string}} options
    */
   function showLesson(levelId, options) {
     var law = window.NM.content.laws[levelId];
@@ -103,6 +103,7 @@
     explanationPanel.hidden = false;
     quizPanel.hidden = true;
     pendingDone = options.onDone;
+    nextButton.textContent = options.nextLabel || 'Siguiente nivel';
 
     continueButton.onclick = function () {
       showQuizPanel(quiz);

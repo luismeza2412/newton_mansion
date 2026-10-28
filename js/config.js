@@ -89,6 +89,14 @@
       QUIZ_POINTS: 20, // puntos al responder correctamente el quiz de una ley (RF-52)
     },
 
+    AUDIO: {
+      // Osciladores sintetizados (RF-05, Fase 8). freq/freqEnd en Hz, duration en s.
+      CLICK: { freq: 440, freqEnd: 440, duration: 0.08, type: 'sine', gain: 0.15 },
+      LAUNCH: { freq: 200, freqEnd: 320, duration: 0.15, type: 'sawtooth', gain: 0.18 },
+      WIN: { freq: 440, freqEnd: 880, duration: 0.3, type: 'triangle', gain: 0.2 },
+      LOSE: { freq: 300, freqEnd: 120, duration: 0.35, type: 'square', gain: 0.15 },
+    },
+
     ENGINE: {
       CANVAS_WIDTH: 960, // coordenadas lógicas (RNF-04)
       CANVAS_HEIGHT: 540,

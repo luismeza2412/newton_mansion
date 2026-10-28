@@ -446,9 +446,9 @@ Marca cada casilla al completar. Cada fase termina con un commit.
 **Aceptación:** la suma de momentos antes y después del lanzamiento se conserva (verificar por prueba automática y en pantalla); las flechas muestran el mismo valor en newtons.
 
 ### Fase 8: Pantalla final, sonido y pulido
-- [ ] Pantalla final (RF-60, RF-61).
-- [ ] `engine/audio.js` con sonidos sintetizados y botón de silencio.
-- [ ] Relámpagos, `prefers-reduced-motion`, accesibilidad por teclado (RNF-05, RNF-07).
+- [x] Pantalla final (RF-60, RF-61).
+- [x] `engine/audio.js` con sonidos sintetizados y botón de silencio.
+- [x] Relámpagos, `prefers-reduced-motion`, accesibilidad por teclado (RNF-05, RNF-07).
 - [ ] Revisión de balance de los tres niveles con partidas de prueba.
 
 **Aceptación:** una partida completa de principio a fin sin errores en consola (RNF-09).

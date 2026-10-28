@@ -17,6 +17,7 @@
   var topbarEl, telemetryEl, statusEl, messageEl;
   var loop = null;
   var particleSystem = null;
+  var reducedMotion = false;
 
   var phase = PHASE_ACTIVE;
   var selectedObjectKey = 'candy';
@@ -186,18 +187,16 @@
         unlockedLevel: Math.max(state.unlockedLevel, LEVEL_ID + 1),
         totalScore: recomputeTotalScore(newLevels),
       });
+      window.NM.audio.play('win');
       showMessage('win', starsEarned);
       window.NM.quiz.showLesson(LEVEL_ID, {
+        nextLabel: 'Ver resultado final',
         onDone: function () {
-          var nextScreenId = 'level-' + (LEVEL_ID + 1);
-          if (document.querySelector('[data-screen="' + nextScreenId + '"]')) {
-            window.NM.screens.navigateTo(nextScreenId);
-          } else {
-            window.NM.screens.navigateTo('home');
-          }
+          window.NM.screens.navigateTo('final');
         },
       });
     } else {
+      window.NM.audio.play('lose');
       showMessage('defeat');
     }
     updateTopBar();
@@ -287,7 +286,8 @@
     particleSystem.emit({
       x: witch.x * cfg().PX_PER_M,
       y: witch.y * cfg().PX_PER_M,
-      count: 16,
+      count: reducedMotion ? 4 : 16, // RNF-05: reducir partículas con reduced-motion
+
       color: '#c77dff',
       size: 2,
       life: 0.6,
@@ -482,6 +482,7 @@
     queryDom();
     wire();
     particleSystem = window.NM.particles.createSystem(window.NM.config.ENGINE.MAX_PARTICLES);
+    reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     directionDeg = parseInt(directionInput.value, 10);
     updateDirectionLabel();
     updateObjectButtonsUI();

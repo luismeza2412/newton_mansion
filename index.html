@@ -183,6 +183,20 @@
         </div>
       </section>
 
+      <section class="screen" data-screen="final" hidden>
+        <h1 class="screen__title">¡Newton estaría orgulloso!</h1>
+        <p class="final__subtitle">
+          Superaste las tres leyes de la Mansión. Puntaje total:
+          <strong data-final="total-score">0</strong>
+        </p>
+        <div class="final__levels" data-final="level-cards"></div>
+        <div class="final__laws" data-final="law-cards"></div>
+        <div class="final__actions">
+          <button type="button" class="btn btn--primary" data-final-replay>Jugar de nuevo</button>
+          <button type="button" class="btn btn--ghost" data-nav-to="home">Volver al inicio</button>
+        </div>
+      </section>
+
       <section class="screen" data-screen="credits" hidden>
         <h1 class="screen__title">Créditos</h1>
         <div class="panel credits__list">
@@ -238,7 +252,7 @@
           <p class="lesson__eyebrow">Quiz</p>
           <h2 data-lesson="quiz-question"></h2>
           <div class="quiz__options" data-lesson="quiz-options"></div>
-          <p class="quiz__feedback" data-lesson="quiz-feedback" hidden></p>
+          <p class="quiz__feedback" data-lesson="quiz-feedback" aria-live="polite" hidden></p>
           <button type="button" class="btn btn--primary" data-lesson="next-level" hidden>Siguiente nivel</button>
         </div>
       </div>
