@@ -410,10 +410,10 @@ Marca cada casilla al completar. Cada fase termina con un commit.
 **Aceptación:** una página de prueba muestra el fondo animado a 60 FPS, redimensionable sin deformarse.
 
 ### Fase 3: UI base y navegación
-- [ ] `components.css`, `screens.css` según el diseño de Stitch.
-- [ ] `ui/screens.js`: navegación entre pantallas.
-- [ ] `state.js` con persistencia y recuperación.
-- [ ] Pantalla de inicio, modal "Cómo jugar" y créditos (RF-01 a RF-06).
+- [x] `components.css`, `screens.css` según el diseño de Stitch.
+- [x] `ui/screens.js`: navegación entre pantallas.
+- [x] `state.js` con persistencia y recuperación.
+- [x] Pantalla de inicio, modal "Cómo jugar" y créditos (RF-01 a RF-06).
 
 **Aceptación:** se navega entre todas las pantallas, el modal se cierra con `Esc`, y el progreso sobrevive a recargar.
 

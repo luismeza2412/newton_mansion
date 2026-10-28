@@ -1,8 +1,6 @@
 /**
- * Arranque de Mansión de Newton.
- * Por ahora solo monta el motor (fondo + partículas) sobre el canvas,
- * como banco de pruebas visual de la Fase 2. La navegación entre
- * pantallas y los niveles se conectan en fases posteriores.
+ * Arranque de Mansión de Newton: fondo ambiental persistente detrás de la UI,
+ * más la inicialización de estado y navegación entre pantallas.
  */
 (function () {
   'use strict';
@@ -11,16 +9,18 @@
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
-  function main() {
-    var canvas = document.getElementById('game-canvas');
-    var ctx = canvas.getContext('2d');
+  /**
+   * Monta el fondo animado (luna, estrellas, niebla, murciélagos, relámpago)
+   * y lo deja corriendo detrás de todas las pantallas (RF-70, RF-71).
+   * @param {CanvasRenderingContext2D} ctx
+   */
+  function startAmbientBackground(ctx) {
     var config = window.NM.config.ENGINE;
-    var reducedMotion = detectReducedMotion();
 
     var background = window.NM.background.createBackground({
       width: config.CANVAS_WIDTH,
       height: config.CANVAS_HEIGHT,
-      reducedMotion: reducedMotion,
+      reducedMotion: detectReducedMotion(),
       flashDuration: config.LIGHTNING_FLASH_DURATION,
     });
 
@@ -40,6 +40,12 @@
     });
 
     loop.start();
+  }
+
+  function main() {
+    var canvas = document.getElementById('game-canvas');
+    startAmbientBackground(canvas.getContext('2d'));
+    window.NM.screens.init();
   }
 
   window.addEventListener('DOMContentLoaded', main);

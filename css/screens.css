@@ -1,0 +1,84 @@
+/*
+  Estilos por pantalla. La visibilidad se controla con el atributo nativo
+  `hidden` (ver js/ui/screens.js), no con clases.
+*/
+
+#app {
+  position: relative;
+  min-height: 100vh;
+  padding: var(--space-xl) var(--space-md);
+}
+
+.screen {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.screen__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  text-align: center;
+  margin: 0 0 var(--space-md);
+}
+
+.screen__title em {
+  color: var(--color-secondary);
+  font-style: normal;
+}
+
+/* Pantalla de inicio */
+.home__eyebrow {
+  font-family: var(--font-mono);
+  color: var(--color-glow);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: 0 0 var(--space-sm);
+}
+
+.home__subtitle {
+  text-align: center;
+  color: var(--color-text-dim);
+  max-width: 36rem;
+  margin: 0 auto var(--space-xl);
+}
+
+.home__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.home__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .home__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .home__cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Créditos */
+.credits__list {
+  color: var(--color-text-dim);
+  line-height: 1.8;
+}
+
+.credits__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}

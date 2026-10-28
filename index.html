@@ -12,6 +12,61 @@
   <body>
     <canvas id="game-canvas" width="960" height="540"></canvas>
 
+    <button type="button" class="btn btn--ghost sound-toggle" data-sound-toggle aria-label="Silenciar sonido"></button>
+
+    <div id="app">
+      <section class="screen" data-screen="home" hidden>
+        <p class="home__eyebrow">Laboratorio de Mecánica Sobrenatural</p>
+        <h1 class="screen__title">Mansión de <em>Newton</em></h1>
+        <p class="home__subtitle">
+          Aprendé las 3 leyes de Newton... si te atrevés a desafiar los espectros
+          que habitan este santuario cinemático.
+        </p>
+        <div class="home__actions">
+          <button type="button" class="btn btn--primary" data-start-game>Comenzar Aventura</button>
+          <button type="button" class="btn btn--secondary" data-modal-open="how-to-play">Cómo Jugar</button>
+          <button type="button" class="btn btn--ghost" data-nav-to="credits">Créditos</button>
+        </div>
+        <div class="home__cards" data-level-cards></div>
+      </section>
+
+      <section class="screen" data-screen="credits" hidden>
+        <h1 class="screen__title">Créditos</h1>
+        <div class="panel credits__list">
+          <p><strong>Materia:</strong> Física</p>
+          <p><strong>Institución:</strong> Universidad de Cartagena, CT El Carmen de Bolívar</p>
+          <p><strong>CIPA:</strong> Los Inges</p>
+        </div>
+        <div class="credits__actions">
+          <button type="button" class="btn btn--ghost" data-nav-to="home">Volver al inicio</button>
+          <button type="button" class="btn btn--secondary" data-reset-progress>Reiniciar progreso</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="modal" data-modal="how-to-play" hidden>
+      <div class="modal__backdrop"></div>
+      <div class="modal__content panel" role="dialog" aria-modal="true" aria-labelledby="how-to-play-title">
+        <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">&times;</button>
+        <h2 id="how-to-play-title">Cómo jugar</h2>
+        <p>
+          <strong>Nivel 1 — El fantasma que no se detiene:</strong> cargá potencia con el
+          botón "Soplar" (o la tecla Espacio) y ajustá la fricción con el slider. El
+          fantasma debe detenerse dentro de la alfombra, frente a la puerta.
+        </p>
+        <p>
+          <strong>Nivel 2 — Catapulta de calabazas:</strong> elegí el tamaño de la
+          calabaza, ajustá la fuerza de lanzamiento y derribá al menos 3 de los 4
+          esqueletos en un máximo de 3 lanzamientos.
+        </p>
+        <p>
+          <strong>Nivel 3 — La bruja y su escoba:</strong> elegí qué objeto lanzar y en
+          qué dirección. La bruja retrocede en sentido contrario: usá el impulso para
+          llegar hasta la luna.
+        </p>
+      </div>
+    </div>
+
     <!-- Librerías de terceros -->
     <script src="vendor/matter.min.js" defer></script>
     <script src="vendor/chart.umd.min.js" defer></script>

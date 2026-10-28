@@ -1,0 +1,217 @@
+/*
+  Componentes reutilizables: botones, paneles, modal, tarjetas, slider, hud.
+  Ver DESIGN.md (Stitch) para el sistema de elevación y estados de botón.
+*/
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-glow);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-bg-black);
+  box-shadow: var(--elevation-3-glow-primary);
+}
+
+.btn--primary:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+
+.btn--primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn--secondary {
+  background: rgba(124, 252, 0, 0.1);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--color-secondary);
+  color: var(--color-bg-black);
+}
+
+.btn--ghost {
+  background: transparent;
+  border: 1px solid var(--elevation-1-border);
+  color: var(--color-text);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: rgba(155, 93, 229, 0.2);
+}
+
+/* Botón flotante de sonido (RF-05), visible en todas las pantallas */
+.sound-toggle {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 10;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+/* Paneles (efecto cristal, niveles de elevación de DESIGN.md) */
+.panel {
+  background: var(--elevation-1-bg);
+  border: 1px solid var(--elevation-1-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+  padding: var(--space-lg);
+}
+
+.panel--raised {
+  background: var(--elevation-2-bg);
+  box-shadow: var(--elevation-2-glow);
+  backdrop-filter: blur(24px);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 5, 23, 0.75);
+}
+
+.modal__content {
+  position: relative;
+  background: var(--elevation-3-bg);
+  box-shadow: var(--elevation-3-glow-primary);
+  max-width: 32rem;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: var(--space-xl);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  background: transparent;
+  border: none;
+  color: var(--color-text-dim);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  color: var(--color-text);
+}
+
+/* Tarjetas de nivel (RF-02) */
+.card {
+  background: var(--elevation-1-bg);
+  border: 1px solid var(--elevation-1-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.card--locked {
+  opacity: 0.6;
+}
+
+.card--completed {
+  border-color: var(--color-secondary);
+  box-shadow: var(--elevation-3-glow-secondary);
+}
+
+.card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.card__title {
+  font-family: var(--font-display);
+  margin: var(--space-sm) 0 var(--space-md);
+}
+
+.card__stars {
+  margin-bottom: var(--space-md);
+}
+
+.card__star {
+  color: var(--color-text-dim);
+  opacity: 0.4;
+}
+
+.card__star--filled {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.card__hint {
+  font-size: 0.875rem;
+  color: var(--color-text-dim);
+}
+
+/* Slider */
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius);
+  background: var(--elevation-1-border);
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.slider:focus-visible {
+  outline: 2px solid var(--color-glow);
+  outline-offset: 2px;
+}
+
+/* HUD */
+.hud {
+  background: var(--elevation-2-bg);
+  box-shadow: var(--elevation-2-glow);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-mono);
+}
