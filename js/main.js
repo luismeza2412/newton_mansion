@@ -47,6 +47,7 @@
     startAmbientBackground(canvas.getContext('2d'));
     window.NM.quiz.init();
     window.NM.levels.level1.init();
+    window.NM.levels.level2.init();
     window.NM.screens.init();
   }
 

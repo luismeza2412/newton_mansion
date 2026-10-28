@@ -432,9 +432,9 @@ Marca cada casilla al completar. Cada fase termina con un commit.
 **Aceptación:** al ganar el nivel 1 se recorre explicación → quiz → nivel 2 desbloqueado.
 
 ### Fase 6: Nivel 2
-- [ ] `ui/chart.js` (velocidad vs. tiempo con Chart.js).
-- [ ] Catapulta, calabazas, torre con Matter.js (RF-30 a RF-38).
-- [ ] Vista previa en vivo de `a = F/m` con valores sustituidos.
+- [x] `ui/chart.js` (velocidad vs. tiempo con Chart.js).
+- [x] Catapulta, calabazas, torre con Matter.js (RF-30 a RF-38).
+- [x] Vista previa en vivo de `a = F/m` con valores sustituidos.
 
 **Aceptación:** la gráfica se actualiza durante el vuelo; con distintas masas y la misma fuerza se observan aceleraciones distintas y la vista previa coincide con el cálculo real.
 

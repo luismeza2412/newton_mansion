@@ -333,3 +333,49 @@
   background: rgba(255, 59, 92, 0.12);
   color: var(--color-error);
 }
+
+/* Selector de calabaza (Nivel 2, RF-33) */
+.pumpkin-select {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.pumpkin-select__option {
+  flex: 1;
+  padding: var(--space-sm);
+  border-radius: var(--radius);
+  border: 1px solid var(--elevation-1-border);
+  background: var(--elevation-1-bg);
+  color: var(--color-text);
+  text-align: center;
+  cursor: pointer;
+}
+
+.pumpkin-select__option[aria-pressed='true'] {
+  border-color: var(--color-primary);
+  box-shadow: var(--elevation-3-glow-primary);
+}
+
+.pumpkin-select__option:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.pumpkin-select__mass {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+}
+
+/* Panel de instrumentos del Nivel 2 (RF-34, RF-36) */
+.level2-instrument__formula {
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+}
+
+.level2-chart {
+  position: relative;
+  height: 140px;
+}

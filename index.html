@@ -76,6 +76,64 @@
         </div>
       </section>
 
+      <section class="screen level" data-screen="level-2" hidden>
+        <div class="level__topbar hud" data-level2="topbar"></div>
+        <div class="level__layout">
+          <div class="level__stage-wrap">
+            <canvas class="level__canvas" data-level2="canvas" width="960" height="540"></canvas>
+            <div class="level__message panel" data-level2="message" hidden></div>
+          </div>
+          <aside class="level__sidebar">
+            <div class="level__mission panel">
+              <h2 class="level__mission-title">Misión</h2>
+              <p>
+                Elegí la calabaza y la fuerza de la catapulta para derribar al menos 3
+                de los 4 esqueletos de la torre. Tenés 3 lanzamientos: usá la vista
+                previa para calcular antes de disparar.
+              </p>
+            </div>
+            <div class="level__control">
+              <span class="level__control-label">Calabaza</span>
+              <div class="pumpkin-select">
+                <button type="button" class="pumpkin-select__option" data-level2-mass="small">
+                  Pequeña <span class="pumpkin-select__mass">1 kg</span>
+                </button>
+                <button type="button" class="pumpkin-select__option" data-level2-mass="medium">
+                  Mediana <span class="pumpkin-select__mass">3 kg</span>
+                </button>
+                <button type="button" class="pumpkin-select__option" data-level2-mass="giant">
+                  Gigante <span class="pumpkin-select__mass">8 kg</span>
+                </button>
+              </div>
+            </div>
+            <div class="level__control">
+              <label class="level__control-label" for="level2-force">
+                Fuerza (<span data-level2="force-value">150 N</span>)
+              </label>
+              <input
+                id="level2-force"
+                class="slider"
+                type="range"
+                min="50"
+                max="500"
+                step="10"
+                value="150"
+                data-level2="force"
+              />
+            </div>
+            <div class="level2-instrument panel panel--raised" data-level2="preview">
+              <div class="hud level__telemetry" data-level2="telemetry"></div>
+              <p class="level2-instrument__formula" data-level2="formula"></p>
+            </div>
+            <div class="level2-chart">
+              <canvas data-level2="chart" height="140"></canvas>
+            </div>
+            <button type="button" class="btn btn--primary" data-level2="launch">Lanzar</button>
+            <p class="level__status" data-level2="status">Estado: catapulta lista</p>
+          </aside>
+        </div>
+      </section>
+
       <section class="screen" data-screen="credits" hidden>
         <h1 class="screen__title">Créditos</h1>
         <div class="panel credits__list">

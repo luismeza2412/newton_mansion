@@ -36,6 +36,29 @@
       PUSH_DT: 0.1, // s, duración del empuje de la catapulta
       LAUNCH_ANGLE_DEG: 35, // grados, fijo
       GRAVITY: 9.8, // m/s²
+      PX_PER_M: 150,
+      TOWER_DISTANCE_M: 4, // distancia catapulta-torre, en m
+      MAX_ATTEMPTS: 3,
+      STARS_BY_ATTEMPT: [3, 2, 1], // índice = lanzamientos previos a la victoria
+      SKELETON_COUNT: 4,
+      SKELETON_WIN_COUNT: 3, // mínimo de esqueletos derribados para ganar (RF-37)
+      SKELETON_SPACING_M: 0.3, // separación entre esqueletos parados en la torre
+      SKELETON_TOPPLE_ANGLE_RAD: 0.8, // ángulo de inclinación a partir del cual se considera "derribado"
+      PUMPKIN_RADIUS_SMALL_M: 0.16,
+      PUMPKIN_RADIUS_MEDIUM_M: 0.24,
+      PUMPKIN_RADIUS_GIANT_M: 0.34,
+      PUMPKIN_RESTITUTION: 0.15,
+      PUMPKIN_FRICTION: 0.4,
+      BLOCK_WIDTH_M: 0.45, // bloques estáticos de la torre (decorativos, no caen)
+      BLOCK_HEIGHT_M: 0.35,
+      BLOCK_FRICTION: 0.8,
+      BLOCK_RESTITUTION: 0,
+      SKELETON_WIDTH_M: 0.14,
+      SKELETON_HEIGHT_M: 0.45,
+      SKELETON_FRICTION: 0.3,
+      SKELETON_RESTITUTION: 0.05,
+      SKELETON_DENSITY: 0.0004, // livianos, para que el impacto los derribe con facilidad
+      GROUND_FRICTION: 0.9,
     },
 
     LEVEL3: {
