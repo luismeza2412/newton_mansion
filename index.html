@@ -57,25 +57,25 @@
         <div class="level__layout">
           <div class="level1-main">
           <div class="level__stage-wrap">
+            <div class="level1-mission panel">
+              <p class="level1-mission__label">
+                <span class="level1-mission__dot"></span>
+                Objetivo de laboratorio
+              </p>
+              <p class="level1-mission__text">
+                Hay que soplar al fantasma para que se detenga justo sobre la alfombra,
+                frente a la puerta. Hay que ajustar la niebla de fricción antes de soplar:
+                una vez que el fantasma vuela, ya no se puede cambiar.
+              </p>
+            </div>
+
+            <p class="level1-hint">
+              <span aria-hidden="true">👉</span>
+              Mantener presionado "Soplar" para cargar el impulso inicial
+            </p>
+
             <div class="level1-stage" data-level1="stage">
               <div class="level1-fog"></div>
-
-              <div class="level1-mission panel">
-                <p class="level1-mission__label">
-                  <span class="level1-mission__dot"></span>
-                  Objetivo de laboratorio
-                </p>
-                <p class="level1-mission__text">
-                  Hay que soplar al fantasma para que se detenga justo sobre la alfombra,
-                  frente a la puerta. Hay que ajustar la niebla de fricción antes de soplar:
-                  una vez que el fantasma vuela, ya no se puede cambiar.
-                </p>
-              </div>
-
-              <p class="level1-hint">
-                <span aria-hidden="true">👉</span>
-                Mantener presionado "Soplar" para cargar el impulso inicial
-              </p>
 
               <div class="level1-track" data-level1="track">
                 <div class="level1-track__line"></div>
@@ -109,8 +109,8 @@
               </div>
 
               <p class="level1-status" data-level1="status">Estado: en reposo (inercia estática)</p>
+              <div class="level__message panel" data-level1="message" hidden></div>
             </div>
-            <div class="level__message panel" data-level1="message" hidden></div>
           </div>
 
           <div class="level1-console">

@@ -225,6 +225,16 @@
   gap: var(--space-lg);
 }
 
+/* min-width:auto es el valor por defecto de un ítem de grid/flex y lo fija
+   al ancho mínimo de su contenido (min-content). Si algún descendiente no
+   puede achicarse (ej. un <canvas> con ancho fijado por JS), ese mínimo
+   empuja la columna entera más ancha que el viewport y aparece scroll
+   horizontal real en toda la página. min-width:0 permite que el ítem se
+   achique al espacio disponible. */
+.level__layout > * {
+  min-width: 0;
+}
+
 .level__stage-wrap {
   position: relative;
 }
@@ -280,6 +290,13 @@
   gap: var(--space-md);
 }
 
+/* Mismo problema que en .level__layout, un nivel más abajo: los paneles
+   del sidebar (instrumento, gráfico) son ítems de flex con min-width:auto
+   y no se achican por debajo de su contenido. */
+.level__sidebar > * {
+  min-width: 0;
+}
+
 .level__mission-title {
   font-family: var(--font-display);
   margin: 0 0 var(--space-sm);
@@ -300,6 +317,20 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-sm);
+}
+
+/* Mismo problema, ahora en las celdas del HUD de telemetría. */
+.level__telemetry > * {
+  min-width: 0;
+}
+
+/* Con 2 columnas, cada celda queda demasiado angosta en mobile y la
+   etiqueta se pisa con el valor. Una sola columna le da a cada campo el
+   ancho completo para acomodar "etiqueta ... valor" sin solaparse. */
+@media (max-width: 639px) {
+  .level__telemetry {
+    grid-template-columns: 1fr;
+  }
 }
 
 .level__status {
@@ -539,6 +570,26 @@
   font-size: 0.75rem;
   color: var(--color-text-dim);
   text-align: center;
+}
+
+/* Mobile: la misión y el hint salen del stage (como bloques apilados arriba)
+   para no competir por la poca altura disponible y dejar bien visible la
+   pista de juego (fantasma, alfombra, puerta). Sin cambios de física. */
+@media (max-width: 639px) {
+  .level1-mission,
+  .level1-hint {
+    position: static;
+    max-width: none;
+    margin: 0 0 var(--space-sm);
+  }
+
+  .level1-stage {
+    aspect-ratio: 4 / 5;
+  }
+
+  .level1-track {
+    top: 62%;
+  }
 }
 
 .level1-topbar {
@@ -923,6 +974,26 @@
 .level2-pumpkin__glyph {
   font-size: 70px;
   dominant-baseline: middle;
+}
+
+/* Mobile: las etiquetas en nowrap (ancho fijo en rem) ya no caben dentro del
+   stage angosto y se recortaban contra el borde (overflow: hidden). Se
+   reduce el tamaño y se permite ajuste de línea para que queden adentro.
+   Sin cambios de física ni de posiciones del mundo. */
+@media (max-width: 639px) {
+  .level2-catapult__label,
+  .level2-tower__label {
+    max-width: 5rem;
+    white-space: normal;
+    text-align: center;
+    font-size: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .level2-block {
+    font-size: 0.5rem;
+    letter-spacing: 0;
+  }
 }
 
 /* Consola de mando debajo del visor (RF-33, RF-34) */
