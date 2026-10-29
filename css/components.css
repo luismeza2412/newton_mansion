@@ -79,6 +79,42 @@
   font-size: 1.1rem;
 }
 
+/* Botón flotante del mapa de niveles, visible en todas las pantallas */
+.level-menu-toggle {
+  position: fixed;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 10;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+/* Listado de navegación dentro del modal "Mapa de la mansión" */
+.level-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.level-menu__item {
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.level-menu__item--locked {
+  margin: 0;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-lg);
+  background: var(--elevation-1-bg);
+  color: var(--color-text-dim);
+  opacity: 0.6;
+}
+
 /* Paneles (efecto cristal, niveles de elevación de DESIGN.md) */
 .panel {
   background: var(--elevation-1-bg);
@@ -370,12 +406,41 @@
 /* Panel de instrumentos del Nivel 2 (RF-34, RF-36) */
 .level2-instrument__formula {
   font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--color-primary);
+  text-shadow: 0 0 10px rgba(255, 117, 24, 0.5);
   margin-top: var(--space-sm);
   margin-bottom: 0;
 }
 
+/* Gráfico estilo osciloscopio: el trazo lo dibuja js/ui/chart.js sobre el
+   canvas, este fondo solo aporta la grilla y el resplandor del contenedor. */
 .level2-chart {
   position: relative;
   height: 140px;
+  padding: var(--space-xs);
+  border-radius: var(--radius);
+  background-color: var(--color-bg-black);
+  background-image: linear-gradient(rgba(124, 252, 0, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 252, 0, 0.12) 1px, transparent 1px);
+  background-size: 16px 16px;
+  box-shadow: inset 0 0 20px rgba(124, 252, 0, 0.08);
+}
+
+/* Iconos Material Symbols Outlined (subset autohospedado, ver tokens.css) */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
 }

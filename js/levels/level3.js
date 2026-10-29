@@ -7,12 +7,14 @@
 
   var LEVEL_ID = 3;
   var TITLE = 'La bruja y su escoba';
-  var EXIT_HINT = 'La bruja se alejó demasiado y se perdió en la oscuridad: calculá mejor la dirección y el objeto a lanzar.';
+  var EXIT_HINT = 'La bruja se alejó demasiado y se perdió en la oscuridad: hay que calcular mejor la dirección y el objeto a lanzar.';
 
   var PHASE_ACTIVE = 'active';
   var PHASE_RESOLVED = 'resolved';
 
-  var root, canvas, ctx;
+  var root, stageEl, moonEl, witchEl, witchMassEl, objectsContainerEl;
+  var aimArrowEl, arrowObjectEl, arrowObjectLabelEl, arrowWitchEl, arrowWitchLabelEl;
+  var particlesCanvas, particlesCtx;
   var objectButtons, directionInput, directionValueEl, launchButton;
   var topbarEl, telemetryEl, statusEl, messageEl;
   var loop = null;
@@ -32,10 +34,28 @@
     return window.NM.config.LEVEL3;
   }
 
+  function toPercentX(px) {
+    return (px / window.NM.config.ENGINE.CANVAS_WIDTH) * 100;
+  }
+
+  function toPercentY(px) {
+    return (px / window.NM.config.ENGINE.CANVAS_HEIGHT) * 100;
+  }
+
   function queryDom() {
     root = document.querySelector('[data-screen="level-3"]');
-    canvas = root.querySelector('[data-level3="canvas"]');
-    ctx = canvas.getContext('2d');
+    stageEl = root.querySelector('[data-level3="stage"]');
+    moonEl = root.querySelector('[data-level3="moon"]');
+    witchEl = root.querySelector('[data-level3="witch"]');
+    witchMassEl = root.querySelector('[data-level3="witch-mass"]');
+    objectsContainerEl = root.querySelector('[data-level3="objects"]');
+    aimArrowEl = root.querySelector('[data-level3="aim-arrow"]');
+    arrowObjectEl = root.querySelector('[data-level3="arrow-object"]');
+    arrowObjectLabelEl = root.querySelector('[data-level3="arrow-object-label"]');
+    arrowWitchEl = root.querySelector('[data-level3="arrow-witch"]');
+    arrowWitchLabelEl = root.querySelector('[data-level3="arrow-witch-label"]');
+    particlesCanvas = root.querySelector('[data-level3="particles"]');
+    particlesCtx = particlesCanvas.getContext('2d');
     objectButtons = root.querySelectorAll('[data-level3-object]');
     directionInput = root.querySelector('[data-level3="direction"]');
     directionValueEl = root.querySelector('[data-level3="direction-value"]');
@@ -69,10 +89,6 @@
 
   function objectRadiusForKey(key) {
     return key === 'cauldron' ? cfg().OBJECT_RADIUS_CAULDRON_M : cfg().OBJECT_RADIUS_CANDY_M;
-  }
-
-  function objectColorForKey(key) {
-    return key === 'cauldron' ? '#4a4a4a' : '#ff5fa2';
   }
 
   function updateObjectButtonsUI() {
@@ -210,9 +226,13 @@
     witch.vy = 0;
     throwsUsed = 0;
     simTime = 0;
+    for (var j = 0; j < flyingObjects.length; j += 1) {
+      flyingObjects[j].el.remove();
+    }
     flyingObjects = [];
     activeThrow = null;
     particleSystem.clear();
+    witchMassEl.textContent = cfg().MASS_WITCH.toFixed(0) + ' kg';
     directionInput.disabled = false;
     launchButton.disabled = false;
     for (var i = 0; i < objectButtons.length; i += 1) {
@@ -272,9 +292,12 @@
       vx: witch.vx + u * dirX,
       vy: witch.vy + u * dirY,
       radius: objectRadiusForKey(selectedObjectKey),
-      color: objectColorForKey(selectedObjectKey),
+      key: selectedObjectKey,
       bornAt: simTime,
     };
+    obj.el = document.createElement('div');
+    obj.el.className = 'level3-object level3-object--' + obj.key;
+    objectsContainerEl.appendChild(obj.el);
     flyingObjects.push(obj);
 
     witch.vx -= deltaV * dirX;
@@ -307,6 +330,7 @@
   function removeExpiredObjects() {
     for (var i = flyingObjects.length - 1; i >= 0; i -= 1) {
       if (simTime - flyingObjects[i].bornAt > cfg().THROW_LIFESPAN_S) {
+        flyingObjects[i].el.remove();
         flyingObjects.splice(i, 1);
       }
     }
@@ -346,117 +370,65 @@
     }
   }
 
-  function drawArrow(x, y, angleRad, length, color, label) {
-    var ex = x + Math.cos(angleRad) * length;
-    var ey = y + Math.sin(angleRad) * length;
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(ex, ey);
-    ctx.stroke();
+  function layoutStage() {
+    var pxPerM = cfg().PX_PER_M;
+    moonEl.style.left = toPercentX(cfg().MOON_X_M * pxPerM) + '%';
+    moonEl.style.top = toPercentY(cfg().MOON_Y_M * pxPerM) + '%';
+    moonEl.style.width = toPercentX(cfg().MOON_RADIUS_M * 2 * pxPerM) + '%';
+    moonEl.style.height = toPercentY(cfg().MOON_RADIUS_M * 2 * pxPerM) + '%';
+  }
 
-    var headLen = 8;
-    var headAngle = Math.PI / 7;
-    ctx.beginPath();
-    ctx.moveTo(ex, ey);
-    ctx.lineTo(ex - headLen * Math.cos(angleRad - headAngle), ey - headLen * Math.sin(angleRad - headAngle));
-    ctx.lineTo(ex - headLen * Math.cos(angleRad + headAngle), ey - headLen * Math.sin(angleRad + headAngle));
-    ctx.closePath();
-    ctx.fillStyle = color;
-    ctx.fill();
-
-    if (label) {
-      ctx.font = '12px sans-serif';
-      ctx.fillStyle = color;
-      ctx.fillText(label, ex + 4, ey);
+  function positionCircle(el, xM, yM, radiusM) {
+    var pxPerM = cfg().PX_PER_M;
+    el.style.left = toPercentX(xM * pxPerM) + '%';
+    el.style.top = toPercentY(yM * pxPerM) + '%';
+    if (radiusM !== undefined) {
+      el.style.width = toPercentX(radiusM * 2 * pxPerM) + '%';
+      el.style.height = toPercentY(radiusM * 2 * pxPerM) + '%';
     }
   }
 
-  function drawMoon() {
+  function positionArrow(el, xM, yM, angleRad) {
     var pxPerM = cfg().PX_PER_M;
-    var x = cfg().MOON_X_M * pxPerM;
-    var y = cfg().MOON_Y_M * pxPerM;
-    var radius = cfg().MOON_RADIUS_M * pxPerM;
-    ctx.shadowColor = 'rgba(244, 241, 215, 0.9)';
-    ctx.shadowBlur = 25;
-    ctx.fillStyle = '#f4f1d7';
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
+    el.style.left = toPercentX(xM * pxPerM) + '%';
+    el.style.top = toPercentY(yM * pxPerM) + '%';
+    el.style.transform = 'translateY(-50%) rotate(' + (angleRad * 180) / Math.PI + 'deg)';
   }
 
-  function drawWitch() {
-    var pxPerM = cfg().PX_PER_M;
-    var x = witch.x * pxPerM;
-    var y = witch.y * pxPerM;
-    var radius = cfg().WITCH_RADIUS_M * pxPerM;
-    ctx.shadowColor = '#9b5de5';
-    ctx.shadowBlur = 16;
-    ctx.fillStyle = 'rgba(26, 11, 46, 0.95)';
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
-    ctx.fillStyle = '#1a0b2e';
-    ctx.beginPath();
-    ctx.moveTo(x - radius * 0.9, y - radius * 0.3);
-    ctx.lineTo(x + radius * 0.9, y - radius * 0.3);
-    ctx.lineTo(x, y - radius * 1.8);
-    ctx.closePath();
-    ctx.fill();
-  }
+  function renderStage() {
+    positionCircle(witchEl, witch.x, witch.y);
 
-  function drawFlyingObjects() {
-    var pxPerM = cfg().PX_PER_M;
     for (var i = 0; i < flyingObjects.length; i += 1) {
       var obj = flyingObjects[i];
-      ctx.fillStyle = obj.color;
-      ctx.beginPath();
-      ctx.arc(obj.x * pxPerM, obj.y * pxPerM, obj.radius * pxPerM, 0, Math.PI * 2);
-      ctx.fill();
+      positionCircle(obj.el, obj.x, obj.y, obj.radius);
     }
-  }
 
-  function drawAimArrow() {
-    var pxPerM = cfg().PX_PER_M;
-    var angleRad = (directionDeg * Math.PI) / 180;
-    drawArrow(witch.x * pxPerM, witch.y * pxPerM, angleRad, 40, 'rgba(244, 241, 255, 0.8)', null);
-  }
-
-  function drawThrowArrows() {
-    var pxPerM = cfg().PX_PER_M;
-    var objPx = { x: activeThrow.objectRef.x * pxPerM, y: activeThrow.objectRef.y * pxPerM };
-    var witchPx = { x: witch.x * pxPerM, y: witch.y * pxPerM };
-    var label = 'F = ' + activeThrow.forceN.toFixed(0) + ' N';
-    drawArrow(objPx.x, objPx.y, activeThrow.dirAngleRad, 36, '#ff7518', label);
-    drawArrow(witchPx.x, witchPx.y, activeThrow.dirAngleRad + Math.PI, 36, '#9b5de5', label);
-  }
-
-  function drawScene() {
-    var w = canvas.width;
-    var h = canvas.height;
-    var gradient = ctx.createLinearGradient(0, 0, 0, h);
-    gradient.addColorStop(0, '#0d0517');
-    gradient.addColorStop(1, '#1a0b2e');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, w, h);
-
-    drawMoon();
-    drawFlyingObjects();
-    drawWitch();
-    particleSystem.render(ctx);
     if (phase === PHASE_ACTIVE) {
-      drawAimArrow();
+      aimArrowEl.hidden = false;
+      positionArrow(aimArrowEl, witch.x, witch.y, (directionDeg * Math.PI) / 180);
+    } else {
+      aimArrowEl.hidden = true;
     }
+
     if (activeThrow && simTime <= activeThrow.until) {
-      drawThrowArrows();
+      var label = 'F = ' + activeThrow.forceN.toFixed(0) + ' N';
+      arrowObjectLabelEl.textContent = label;
+      arrowWitchLabelEl.textContent = label;
+      positionArrow(arrowObjectEl, activeThrow.objectRef.x, activeThrow.objectRef.y, activeThrow.dirAngleRad);
+      positionArrow(arrowWitchEl, witch.x, witch.y, activeThrow.dirAngleRad + Math.PI);
+      arrowObjectEl.hidden = false;
+      arrowWitchEl.hidden = false;
+    } else {
+      arrowObjectEl.hidden = true;
+      arrowWitchEl.hidden = true;
     }
+
+    particlesCtx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
+    particleSystem.render(particlesCtx);
   }
 
   function render() {
-    drawScene();
+    renderStage();
     renderTelemetry();
   }
 
@@ -483,6 +455,7 @@
     wire();
     particleSystem = window.NM.particles.createSystem(window.NM.config.ENGINE.MAX_PARTICLES);
     reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    layoutStage();
     directionDeg = parseInt(directionInput.value, 10);
     updateDirectionLabel();
     updateObjectButtonsUI();

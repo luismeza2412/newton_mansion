@@ -90,11 +90,54 @@
     },
 
     AUDIO: {
-      // Osciladores sintetizados (RF-05, Fase 8). freq/freqEnd en Hz, duration en s.
-      CLICK: { freq: 440, freqEnd: 440, duration: 0.08, type: 'sine', gain: 0.15 },
-      LAUNCH: { freq: 200, freqEnd: 320, duration: 0.15, type: 'sawtooth', gain: 0.18 },
-      WIN: { freq: 440, freqEnd: 880, duration: 0.3, type: 'triangle', gain: 0.2 },
-      LOSE: { freq: 300, freqEnd: 120, duration: 0.35, type: 'square', gain: 0.15 },
+      // Ambientación de terror sintetizada con Web Audio API (RF-05). Dron grave
+      // + "viento" filtrado, siempre sonando de fondo mientras soundOn = true.
+      AMBIENT: {
+        DRONE_FREQ_LOW: 48, // Hz, voz grave 1 del dron
+        DRONE_FREQ_MID: 51, // Hz, voz grave 2, intervalo disonante con la grave 1 (inquietud)
+        DRONE_GAIN: 0.045,
+        FILTER_MIN: 180, // Hz, extremo grave del barrido del filtro (respiración)
+        FILTER_MAX: 460, // Hz, extremo agudo del barrido
+        FILTER_LFO_HZ: 0.035, // ciclos/s del barrido, muy lento
+
+        // Silbido fantasmal: tono fino cuya altura deriva de forma irregular
+        // (dos LFOs a velocidades distintas) y aparece/desaparece solo.
+        WHISTLE_FREQ_BASE: 1100, // Hz
+        WHISTLE_GAIN: 0.04,
+        WHISTLE_DRIFT_HZ_1: 0.023, // ciclos/s, deriva lenta de tono 1
+        WHISTLE_DRIFT_DEPTH_1: 180, // Hz
+        WHISTLE_DRIFT_HZ_2: 0.037, // ciclos/s, deriva lenta de tono 2 (no coincide con la 1: deriva irregular)
+        WHISTLE_DRIFT_DEPTH_2: 90, // Hz
+        WHISTLE_TREMOLO_HZ: 0.11, // el silbido aparece y desaparece
+        WHISTLE_TREMOLO_DEPTH: 0.025,
+
+        // Susurro de fondo continuo: ruido filtrado por 3 "formantes" (como
+        // una voz) que derivan despacio, con envolvente en frases.
+        WHISPER_GAIN: 0.05,
+        WHISPER_FORMANT_1: 650, // Hz
+        WHISPER_FORMANT_2: 1300, // Hz
+        WHISPER_FORMANT_3: 2200, // Hz
+        WHISPER_FORMANT_Q: 6,
+        WHISPER_MOD_HZ_1: 0.09,
+        WHISPER_MOD_HZ_2: 0.15,
+        WHISPER_MOD_HZ_3: 0.21,
+        WHISPER_MOD_DEPTH: 120, // Hz, deriva de cada formante
+        WHISPER_ENVELOPE_HZ: 0.2, // ritmo de "frases" del susurro
+        WHISPER_ENVELOPE_DEPTH: 0.04,
+        ECHO_DELAY_S: 0.9, // s, eco del susurro (sensación de espacio vacío)
+        ECHO_FEEDBACK: 0.35,
+
+        // Susurro más intenso y esporádico, encima de la capa continua.
+        WHISPER_BURST_MIN_INTERVAL: 14, // s
+        WHISPER_BURST_MAX_INTERVAL: 30,
+        WHISPER_BURST_DURATION: 1.8, // s
+        WHISPER_BURST_GAIN: 0.09,
+      },
+      // Efectos puntuales (stingers). Duraciones en s, ganancias 0..1.
+      CLICK: { freq: 160, duration: 0.05, gain: 0.12, type: 'square' },
+      LAUNCH: { filterStart: 2600, filterEnd: 260, duration: 0.32, gain: 0.16 },
+      WIN: { f1: 523.25, f2: 1443.3, duration: 1.0, gain: 0.16 }, // campana: fundamental + parcial inarmónico
+      LOSE: { freqStart: 160, freqEnd: 65, detune: 17, duration: 0.85, gain: 0.15, type: 'sawtooth' },
     },
 
     ENGINE: {

@@ -11,9 +11,9 @@
   var TITLE = 'Catapulta de calabazas';
 
   var HINTS = {
-    'too-weak': 'La calabaza cayó antes de llegar a la torre: probá con más fuerza o una calabaza más liviana.',
-    'too-strong': 'La calabaza pasó de largo sin golpear la torre: probá con menos fuerza o una calabaza más pesada.',
-    'no-topple': 'El golpe no derribó al menos 3 esqueletos: ajustá la combinación de masa y fuerza.',
+    'too-weak': 'La calabaza cayó antes de llegar a la torre: hay que probar con más fuerza o una calabaza más liviana.',
+    'too-strong': 'La calabaza pasó de largo sin golpear la torre: hay que probar con menos fuerza o una calabaza más pesada.',
+    'no-topple': 'El golpe no derribó al menos 3 esqueletos: hay que ajustar la combinación de masa y fuerza.',
   };
 
   var PHASE_READY = 'ready';
@@ -33,12 +33,16 @@
   var CATAPULT_X_PX = 130;
   var TOWER_COLS = 3;
   var TOWER_ROWS = 2;
+  var TOWER_CORE_INDEX = 1;
+  var TOWER_ROMAN = ['I', 'II', 'III', 'IV', 'V'];
 
-  var root, canvas, ctx;
+  var root, stageEl, catapultEl, pumpkinEl, towerLabelEl;
   var massButtons, forceInput, forceValueEl, launchButton;
   var topbarEl, telemetryEl, statusEl, messageEl, formulaEl;
   var loop = null;
   var chart = null;
+  var blockEls = [];
+  var skeletonEls = [];
 
   var phase = PHASE_READY;
   var selectedMassKey = 'medium';
@@ -61,8 +65,10 @@
 
   function queryDom() {
     root = document.querySelector('[data-screen="level-2"]');
-    canvas = root.querySelector('[data-level2="canvas"]');
-    ctx = canvas.getContext('2d');
+    stageEl = root.querySelector('[data-level2="stage"]');
+    catapultEl = root.querySelector('[data-level2="catapult"]');
+    pumpkinEl = root.querySelector('[data-level2="pumpkin"]');
+    towerLabelEl = root.querySelector('[data-level2="tower-label"]');
     massButtons = root.querySelectorAll('[data-level2-mass]');
     forceInput = root.querySelector('[data-level2="force"]');
     forceValueEl = root.querySelector('[data-level2="force-value"]');
@@ -112,7 +118,17 @@
   }
 
   function groundY() {
-    return canvas.height * 0.75;
+    return window.NM.config.ENGINE.CANVAS_HEIGHT * 0.75;
+  }
+
+  /** Convierte una coordenada x del mundo (px) a % de ancho del stage. */
+  function toPercentX(px) {
+    return (px / window.NM.config.ENGINE.CANVAS_WIDTH) * 100;
+  }
+
+  /** Convierte una coordenada y del mundo (px) a % de alto del stage. */
+  function toPercentY(px) {
+    return (px / window.NM.config.ENGINE.CANVAS_HEIGHT) * 100;
   }
 
   function towerCenterXPx() {
@@ -151,7 +167,8 @@
       }
     }
 
-    var groundBody = Matter.Bodies.rectangle(canvas.width / 2, groundY() + 20, canvas.width, 40, {
+    var canvasWidthPx = window.NM.config.ENGINE.CANVAS_WIDTH;
+    var groundBody = Matter.Bodies.rectangle(canvasWidthPx / 2, groundY() + 20, canvasWidthPx, 40, {
       isStatic: true,
       label: 'ground',
       friction: cfg().GROUND_FRICTION,
@@ -180,6 +197,59 @@
     }
 
     Matter.World.add(engine.world, bodies);
+  }
+
+  /**
+   * Posiciona la catapulta y el rótulo de la torre, y crea los elementos DOM
+   * de bloques y esqueletos a partir de la geometría de `buildStaticWorld`.
+   * Se llama una sola vez en `init`.
+   */
+  function layoutStage() {
+    var blockHPx = cfg().BLOCK_HEIGHT_M * cfg().PX_PER_M;
+
+    catapultEl.style.left = toPercentX(CATAPULT_X_PX) + '%';
+    catapultEl.style.top = toPercentY(groundY()) + '%';
+
+    towerLabelEl.style.left = toPercentX(towerCenterXPx()) + '%';
+    towerLabelEl.style.top = toPercentY(groundY() - blockHPx * TOWER_ROWS) + '%';
+
+    blockEls = [];
+    var romanIdx = 0;
+    for (var i = 0; i < blockLayout.length; i += 1) {
+      var block = blockLayout[i];
+      var isCore = i === TOWER_CORE_INDEX;
+      var blockEl = document.createElement('div');
+      blockEl.className = isCore ? 'level2-block level2-block--core' : 'level2-block';
+      blockEl.textContent = isCore ? 'NÚCLEO' : TOWER_ROMAN[romanIdx];
+      if (!isCore) {
+        romanIdx += 1;
+      }
+      blockEl.style.left = toPercentX(block.x) + '%';
+      blockEl.style.top = toPercentY(block.y) + '%';
+      blockEl.style.width = toPercentX(block.w) + '%';
+      blockEl.style.height = toPercentY(block.h) + '%';
+      stageEl.insertBefore(blockEl, pumpkinEl);
+      blockEls.push(blockEl);
+    }
+
+    skeletonEls = [];
+    for (var j = 0; j < skeletonStates.length; j += 1) {
+      var state = skeletonStates[j];
+      var skeletonEl = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      skeletonEl.setAttribute('class', 'level2-skeleton');
+      skeletonEl.setAttribute('viewBox', '0 0 100 100');
+      skeletonEl.style.width = toPercentX(state.w) + '%';
+      skeletonEl.style.height = toPercentY(state.h) + '%';
+      var skullGlyph = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      skullGlyph.setAttribute('class', 'level2-skeleton__glyph');
+      skullGlyph.setAttribute('x', '50');
+      skullGlyph.setAttribute('y', '70');
+      skullGlyph.setAttribute('text-anchor', 'middle');
+      skullGlyph.textContent = '💀';
+      skeletonEl.appendChild(skullGlyph);
+      stageEl.insertBefore(skeletonEl, pumpkinEl);
+      skeletonEls.push(skeletonEl);
+    }
   }
 
   function resetSkeletons() {
@@ -249,6 +319,7 @@
     lastSpeedMs = 0;
     settleTicks = 0;
     contactedTower = false;
+    catapultEl.classList.remove('level2-catapult--firing');
     for (var i = 0; i < massButtons.length; i += 1) {
       massButtons[i].disabled = false;
     }
@@ -258,6 +329,7 @@
     messageEl.innerHTML = '';
     chart.reset();
     updateMassButtonsUI();
+    renderStage();
   }
 
   function updateMassButtonsUI() {
@@ -467,6 +539,7 @@
     settleTicks = 0;
     contactedTower = false;
     chart.reset();
+    catapultEl.classList.add('level2-catapult--firing');
 
     for (var i = 0; i < massButtons.length; i += 1) {
       massButtons[i].disabled = true;
@@ -532,7 +605,7 @@
 
     var x = pumpkinBody.position.x;
     var y = pumpkinBody.position.y;
-    var offScreen = x < -50 || x > canvas.width + 50;
+    var offScreen = x < -50 || x > window.NM.config.ENGINE.CANVAS_WIDTH + 50;
     var nearGround = y >= groundY() - pumpkinRadiusPx - 2;
     var settled = nearGround && lastSpeedMs < SETTLE_SPEED_EPSILON_MS;
     settleTicks = settled ? settleTicks + 1 : 0;
@@ -543,87 +616,43 @@
     }
   }
 
-  function drawBlocks() {
-    ctx.fillStyle = 'rgba(120, 104, 140, 0.85)';
-    for (var i = 0; i < blockLayout.length; i += 1) {
-      var block = blockLayout[i];
-      ctx.fillRect(block.x - block.w / 2, block.y - block.h / 2, block.w, block.h);
-    }
-  }
-
-  function drawSkeletons() {
+  /**
+   * Refleja el estado físico (posiciones/ángulos de Matter.js) en los
+   * elementos DOM del stage. Se llama cada frame y una vez al final de
+   * `resetSim` para feedback visual inmediato.
+   */
+  function renderStage() {
     for (var i = 0; i < skeletonStates.length; i += 1) {
       var state = skeletonStates[i];
+      var el = skeletonEls[i];
       var pos = state.body.position;
-      ctx.save();
-      ctx.translate(pos.x, pos.y);
-      ctx.rotate(state.body.angle);
-      ctx.fillStyle = 'rgba(232, 227, 216, 0.95)';
-      ctx.fillRect(-state.w / 2, -state.h / 2, state.w, state.h);
-      ctx.beginPath();
-      ctx.arc(0, -state.h / 2 - 6, 7, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
+      el.style.left = toPercentX(pos.x) + '%';
+      el.style.top = toPercentY(pos.y) + '%';
+      el.style.transform = 'translate(-50%, -50%) rotate(' + state.body.angle + 'rad)';
+      el.classList.toggle('level2-skeleton--toppled', state.toppled);
     }
-  }
 
-  function drawPumpkin() {
-    if (!pumpkinBody) {
-      return;
+    if (pumpkinBody) {
+      var ppos = pumpkinBody.position;
+      pumpkinEl.style.left = toPercentX(ppos.x) + '%';
+      pumpkinEl.style.top = toPercentY(ppos.y) + '%';
+      pumpkinEl.style.width = toPercentX(pumpkinRadiusPx * 2) + '%';
+      pumpkinEl.style.height = toPercentY(pumpkinRadiusPx * 2) + '%';
+      pumpkinEl.style.transform = 'translate(-50%, -50%) rotate(' + pumpkinBody.angle + 'rad)';
+    } else {
+      var radiusM = radiusForKey(selectedMassKey);
+      var radiusPx = radiusM * cfg().PX_PER_M;
+      var yPx = groundY() - LAUNCH_HEIGHT_M * cfg().PX_PER_M;
+      pumpkinEl.style.left = toPercentX(CATAPULT_X_PX) + '%';
+      pumpkinEl.style.top = toPercentY(yPx) + '%';
+      pumpkinEl.style.width = toPercentX(radiusPx * 2) + '%';
+      pumpkinEl.style.height = toPercentY(radiusPx * 2) + '%';
+      pumpkinEl.style.transform = 'translate(-50%, -50%)';
     }
-    var pos = pumpkinBody.position;
-    ctx.save();
-    ctx.translate(pos.x, pos.y);
-    ctx.rotate(pumpkinBody.angle);
-    ctx.shadowColor = '#ff7518';
-    ctx.shadowBlur = 16;
-    ctx.fillStyle = '#ff7518';
-    ctx.beginPath();
-    ctx.arc(0, 0, pumpkinRadiusPx, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
-    ctx.fillStyle = 'rgba(26, 11, 46, 0.85)';
-    ctx.beginPath();
-    ctx.arc(-pumpkinRadiusPx * 0.35, -pumpkinRadiusPx * 0.15, pumpkinRadiusPx * 0.15, 0, Math.PI * 2);
-    ctx.arc(pumpkinRadiusPx * 0.35, -pumpkinRadiusPx * 0.15, pumpkinRadiusPx * 0.15, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-  }
-
-  function drawCatapult() {
-    var gy = groundY();
-    ctx.fillStyle = '#4a2f1f';
-    ctx.fillRect(CATAPULT_X_PX - 30, gy - 10, 60, 10);
-    ctx.save();
-    ctx.translate(CATAPULT_X_PX, gy - 10);
-    ctx.rotate(-0.5);
-    ctx.fillStyle = '#6b4530';
-    ctx.fillRect(-6, -60, 12, 60);
-    ctx.restore();
-  }
-
-  function drawScene() {
-    var w = canvas.width;
-    var h = canvas.height;
-    var gy = groundY();
-
-    var gradient = ctx.createLinearGradient(0, 0, 0, h);
-    gradient.addColorStop(0, '#1a0b2e');
-    gradient.addColorStop(1, '#0d0517');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, w, h);
-
-    ctx.fillStyle = 'rgba(13, 5, 23, 0.9)';
-    ctx.fillRect(0, gy, w, h - gy);
-
-    drawCatapult();
-    drawBlocks();
-    drawSkeletons();
-    drawPumpkin();
   }
 
   function render() {
-    drawScene();
+    renderStage();
     if (phase === PHASE_READY) {
       var preview = computePreview();
       renderPreviewPanel(preview);
@@ -665,6 +694,7 @@
     engine.world.gravity.y = (cfg().GRAVITY * cfg().PX_PER_M) / MATTER_GRAVITY_PX_S2_PER_UNIT;
     Matter.Events.on(engine, 'collisionStart', handleCollisionStart);
     buildStaticWorld();
+    layoutStage();
 
     chart = window.NM.chart.createLineChart(root.querySelector('[data-level2="chart"]'), {
       label: 'Velocidad',

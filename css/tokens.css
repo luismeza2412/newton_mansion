@@ -30,6 +30,19 @@
   font-display: swap;
 }
 
+/*
+  Subset de Material Symbols Outlined con solo los glifos usados en la UI real
+  (map, volume_up/off, lock, home, skull, menu_book, church, play_arrow,
+  restart_alt, close). Autohospedado por RNF-06, igual que las fuentes de arriba.
+*/
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("../assets/fonts/material-symbols-outlined.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Colores base */
   --color-bg-black: #0d0517;

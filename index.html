@@ -13,65 +13,147 @@
     <canvas id="game-canvas" width="960" height="540"></canvas>
 
     <button type="button" class="btn btn--ghost sound-toggle" data-sound-toggle aria-label="Silenciar sonido"></button>
+    <button type="button" class="btn btn--ghost level-menu-toggle" data-modal-open="level-menu" aria-label="Mapa de niveles">
+      <span class="material-symbols-outlined" aria-hidden="true">map</span>
+    </button>
 
     <div id="app">
       <section class="screen" data-screen="home" hidden>
-        <p class="home__eyebrow">Laboratorio de Mecánica Sobrenatural</p>
-        <h1 class="screen__title">Mansión de <em>Newton</em></h1>
-        <p class="home__subtitle">
-          Aprendé las 3 leyes de Newton... si te atrevés a desafiar los espectros
-          que habitan este santuario cinemático.
-        </p>
-        <div class="home__actions">
-          <button type="button" class="btn btn--primary" data-start-game>Comenzar Aventura</button>
-          <button type="button" class="btn btn--secondary" data-modal-open="how-to-play">Cómo Jugar</button>
-          <button type="button" class="btn btn--ghost" data-nav-to="credits">Créditos</button>
+        <div class="home__hero">
+          <div class="home__hero-glow" aria-hidden="true"></div>
+          <div class="home__hero-content">
+            <h1 class="screen__title">Mansión de <em>Newton</em></h1>
+            <p class="home__subtitle">
+              Aprende las 3 leyes de Newton
+              <span class="home__subtitle-emphasis">resolviendo los misterios</span>
+              de esta mansión embrujada.
+            </p>
+            <div class="home__actions">
+              <button type="button" class="btn btn--primary" data-start-game>
+                <span class="material-symbols-outlined" aria-hidden="true">skull</span>
+                Comenzar Aventura
+              </button>
+              <button type="button" class="btn btn--secondary" data-modal-open="how-to-play">
+                <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
+                Cómo Jugar
+              </button>
+              <button type="button" class="btn btn--ghost" data-nav-to="credits">
+                <span class="material-symbols-outlined" aria-hidden="true">church</span>
+                Créditos
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="home__section-head">
+          <h2 class="home__section-title">Niveles</h2>
+          <span class="home__section-badge" data-home="levels-progress"></span>
         </div>
         <div class="home__cards" data-level-cards></div>
       </section>
 
-      <section class="screen level" data-screen="level-1" hidden>
-        <div class="level__topbar hud" data-level1="topbar"></div>
+      <section class="screen level level1" data-screen="level-1" hidden>
+        <div class="level1-topbar" data-level1="topbar"></div>
         <div class="level__layout">
+          <div class="level1-main">
           <div class="level__stage-wrap">
-            <canvas class="level__canvas" data-level1="canvas" width="960" height="540"></canvas>
+            <div class="level1-stage" data-level1="stage">
+              <div class="level1-fog"></div>
+
+              <div class="level1-mission panel">
+                <p class="level1-mission__label">
+                  <span class="level1-mission__dot"></span>
+                  Objetivo de laboratorio
+                </p>
+                <p class="level1-mission__text">
+                  Hay que soplar al fantasma para que se detenga justo sobre la alfombra,
+                  frente a la puerta. Hay que ajustar la niebla de fricción antes de soplar:
+                  una vez que el fantasma vuela, ya no se puede cambiar.
+                </p>
+              </div>
+
+              <p class="level1-hint">
+                <span aria-hidden="true">👉</span>
+                Mantener presionado "Soplar" para cargar el impulso inicial
+              </p>
+
+              <div class="level1-track" data-level1="track">
+                <div class="level1-track__line"></div>
+                <div class="level1-carpet" data-level1="carpet"></div>
+                <div class="level1-track__markers" data-level1="markers"></div>
+
+                <div class="level1-ghost" data-level1="ghost">
+                  <div class="level1-vector" data-level1="vector" hidden>
+                    <span class="level1-vector__line"></span>
+                    <span class="level1-vector__label">v⃗</span>
+                  </div>
+                  <svg class="level1-ghost__svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                    <path
+                      d="M32 8C20.9543 8 12 16.9543 12 28V52C12 53.6569 13.7913 54.6909 15.228 53.8699L20.8 50.686L26.4 53.886C27.9942 54.7969 30 53.6491 30 51.8198V50H34V51.8198C34 53.6491 36.0058 54.7969 37.6 53.886L43.2 50.686L48.772 53.8699C50.2087 54.6909 52 53.6569 52 52V28C52 16.9543 43.0457 8 32 8Z"
+                      fill="#7CFC00"
+                      fill-opacity="0.9"
+                    />
+                    <circle cx="26" cy="26" r="4" fill="#150629" />
+                    <circle cx="38" cy="26" r="4" fill="#150629" />
+                    <circle cx="27" cy="25" r="1.5" fill="#FFFFFF" />
+                    <circle cx="39" cy="25" r="1.5" fill="#FFFFFF" />
+                    <ellipse cx="32" cy="36" rx="3" ry="5" fill="#150629" />
+                  </svg>
+                  <span class="level1-ghost__mass" data-level1="ghost-mass"></span>
+                </div>
+
+                <div class="level1-door" data-level1="door">
+                  <div class="level1-door__keyhole"></div>
+                  <span class="level1-door__label">Puerta</span>
+                </div>
+              </div>
+
+              <p class="level1-status" data-level1="status">Estado: en reposo (inercia estática)</p>
+            </div>
             <div class="level__message panel" data-level1="message" hidden></div>
           </div>
-          <aside class="level__sidebar">
-            <div class="level__mission panel">
-              <h2 class="level__mission-title">Misión</h2>
-              <p>
-                Soplá al fantasma para que se detenga justo sobre la alfombra, frente a
-                la puerta. Ajustá la niebla de fricción antes de soplar: una vez que el
-                fantasma vuela, ya no podés cambiarla.
-              </p>
+
+          <div class="level1-console">
+            <div class="level1-console__panel panel">
+              <div class="level1-control">
+                <div class="level1-control__header">
+                  <label class="level1-control__label" for="level1-friction">Niebla de fricción</label>
+                  <span class="level1-control__value" data-level1="friction-value">μ = 0.00</span>
+                </div>
+                <input
+                  id="level1-friction"
+                  class="slider"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="0.3"
+                  data-level1="friction"
+                />
+                <div class="level1-control__scale" data-level1="friction-scale">
+                  <span>0.00 (vacío)</span>
+                  <span data-level1="friction-scale-mid"></span>
+                  <span data-level1="friction-scale-max"></span>
+                </div>
+              </div>
             </div>
-            <div class="level__control">
-              <label class="level__control-label" for="level1-friction">
-                Niebla de fricción (<span data-level1="friction-value">μ = 0.00</span>)
-              </label>
-              <input
-                id="level1-friction"
-                class="slider"
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value="0.3"
-                data-level1="friction"
-              />
-            </div>
-            <div class="level__control">
-              <button type="button" class="btn btn--primary level__blow" data-level1="blow">
-                Mantené para soplar
+            <div class="level1-console__panel panel level1-console__actions">
+              <button type="button" class="btn btn--primary level1-blow" data-level1="blow">
+                <span aria-hidden="true">💨</span>
+                Mantener presionado para soplar
               </button>
               <div class="charge-bar">
                 <div class="charge-bar__fill" data-level1="charge-fill"></div>
               </div>
+              <button type="button" class="btn btn--ghost" data-level1="reset">Reiniciar</button>
             </div>
-            <div class="hud level__telemetry" data-level1="telemetry"></div>
-            <p class="level__status" data-level1="status">Estado: en reposo (inercia estática)</p>
-            <button type="button" class="btn btn--ghost" data-level1="reset">Reiniciar</button>
+          </div>
+
+          <p class="level1-tip" data-level1="tip"></p>
+          </div>
+
+          <aside class="level__sidebar">
+            <div class="level1-telemetry panel" data-level1="telemetry"></div>
           </aside>
         </div>
       </section>
@@ -79,47 +161,96 @@
       <section class="screen level" data-screen="level-2" hidden>
         <div class="level__topbar hud" data-level2="topbar"></div>
         <div class="level__layout">
-          <div class="level__stage-wrap">
-            <canvas class="level__canvas" data-level2="canvas" width="960" height="540"></canvas>
-            <div class="level__message panel" data-level2="message" hidden></div>
+          <div class="level2-main">
+            <div class="level__stage-wrap">
+              <div class="level2-stage" data-level2="stage">
+                <div class="level2-fog"></div>
+                <div class="level2-ground"></div>
+
+                <span class="level2-tower__label" data-level2="tower-label">Bastión de Osamentas</span>
+
+                <div class="level2-catapult" data-level2="catapult">
+                  <span class="level2-catapult__label">Catapulta Sanguínea</span>
+                  <svg class="level2-catapult__rig" viewBox="0 0 120 90" fill="none" aria-hidden="true">
+                    <circle class="level2-catapult__wheel" cx="25" cy="75" r="12" stroke-width="2"></circle>
+                    <circle class="level2-catapult__hub" cx="25" cy="75" r="3"></circle>
+                    <circle class="level2-catapult__wheel" cx="95" cy="75" r="12" stroke-width="2"></circle>
+                    <circle class="level2-catapult__hub" cx="95" cy="75" r="3"></circle>
+                    <path class="level2-catapult__chassis" d="M15 75 L105 75 L85 55 L35 55 Z"></path>
+                    <line class="level2-catapult__string" x1="40" y1="50" x2="72" y2="28" stroke-dasharray="3 2" stroke-width="2.5"></line>
+                    <g class="level2-catapult__arm-group">
+                      <line class="level2-catapult__arm" x1="45" y1="65" x2="70" y2="25" stroke-width="5" stroke-linecap="round"></line>
+                      <circle class="level2-catapult__cup" cx="70" cy="25" r="7" stroke-width="1.5"></circle>
+                    </g>
+                    <rect class="level2-catapult__base" x="10" y="84" width="100" height="4" rx="2"></rect>
+                  </svg>
+                </div>
+
+                <svg class="level2-pumpkin" data-level2="pumpkin" viewBox="0 0 100 100" aria-hidden="true">
+                  <text class="level2-pumpkin__glyph" x="50" y="70" text-anchor="middle">🎃</text>
+                </svg>
+              </div>
+              <div class="level__message panel" data-level2="message" hidden></div>
+            </div>
+
+            <div class="level2-console">
+              <div class="level2-console__panel panel">
+                <div class="level2-console__header">
+                  <span class="level2-console__title">1. Masa del proyectil (m)</span>
+                </div>
+                <div class="level2-mass-select">
+                  <button type="button" class="item-select__option level2-mass-select__option" data-level2-mass="small">
+                    <span class="level2-mass-select__emoji">🎃</span>
+                    <span class="level2-mass-select__name">Pequeña</span>
+                    <span class="level2-mass-select__kg">1 kg</span>
+                  </button>
+                  <button type="button" class="item-select__option level2-mass-select__option" data-level2-mass="medium">
+                    <span class="level2-mass-select__emoji">🎃</span>
+                    <span class="level2-mass-select__name">Mediana</span>
+                    <span class="level2-mass-select__kg">3 kg</span>
+                  </button>
+                  <button type="button" class="item-select__option level2-mass-select__option" data-level2-mass="giant">
+                    <span class="level2-mass-select__emoji">🎃</span>
+                    <span class="level2-mass-select__name">Gigante</span>
+                    <span class="level2-mass-select__kg">8 kg</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="level2-console__panel panel">
+                <div class="level2-console__header">
+                  <span class="level2-console__title">2. Fuerza de la catapulta (F)</span>
+                  <span class="level2-console__force-value" data-level2="force-value">150 N</span>
+                </div>
+                <input
+                  id="level2-force"
+                  class="slider level2-console__slider"
+                  type="range"
+                  min="50"
+                  max="500"
+                  step="10"
+                  value="150"
+                  data-level2="force"
+                />
+                <div class="level2-console__range-labels">
+                  <span>50 N</span>
+                  <span>500 N</span>
+                </div>
+                <button type="button" class="btn btn--primary level2-console__fire" data-level2="launch">
+                  🎃 Lanzar calabaza
+                </button>
+              </div>
+            </div>
           </div>
+
           <aside class="level__sidebar">
             <div class="level__mission panel">
               <h2 class="level__mission-title">Misión</h2>
               <p>
-                Elegí la calabaza y la fuerza de la catapulta para derribar al menos 3
-                de los 4 esqueletos de la torre. Tenés 3 lanzamientos: usá la vista
-                previa para calcular antes de disparar.
+                Hay que elegir la calabaza y la fuerza de la catapulta para derribar al
+                menos 3 de los 4 esqueletos de la torre. Hay 3 lanzamientos disponibles:
+                se puede usar la vista previa para calcular antes de disparar.
               </p>
-            </div>
-            <div class="level__control">
-              <span class="level__control-label">Calabaza</span>
-              <div class="item-select">
-                <button type="button" class="item-select__option" data-level2-mass="small">
-                  Pequeña <span class="item-select__mass">1 kg</span>
-                </button>
-                <button type="button" class="item-select__option" data-level2-mass="medium">
-                  Mediana <span class="item-select__mass">3 kg</span>
-                </button>
-                <button type="button" class="item-select__option" data-level2-mass="giant">
-                  Gigante <span class="item-select__mass">8 kg</span>
-                </button>
-              </div>
-            </div>
-            <div class="level__control">
-              <label class="level__control-label" for="level2-force">
-                Fuerza (<span data-level2="force-value">150 N</span>)
-              </label>
-              <input
-                id="level2-force"
-                class="slider"
-                type="range"
-                min="50"
-                max="500"
-                step="10"
-                value="150"
-                data-level2="force"
-              />
             </div>
             <div class="level2-instrument panel panel--raised" data-level2="preview">
               <div class="hud level__telemetry" data-level2="telemetry"></div>
@@ -128,7 +259,6 @@
             <div class="level2-chart">
               <canvas data-level2="chart" height="140"></canvas>
             </div>
-            <button type="button" class="btn btn--primary" data-level2="launch">Lanzar</button>
             <p class="level__status" data-level2="status">Estado: catapulta lista</p>
           </aside>
         </div>
@@ -137,47 +267,92 @@
       <section class="screen level" data-screen="level-3" hidden>
         <div class="level__topbar hud" data-level3="topbar"></div>
         <div class="level__layout">
-          <div class="level__stage-wrap">
-            <canvas class="level__canvas" data-level3="canvas" width="960" height="540"></canvas>
-            <div class="level__message panel" data-level3="message" hidden></div>
+          <div class="level3-main">
+            <div class="level__stage-wrap">
+              <div class="level3-stage" data-level3="stage">
+                <div class="level3-stars"></div>
+
+                <div class="level3-moon" data-level3="moon">
+                  <span class="level3-moon__label">Luna llena</span>
+                </div>
+
+                <div class="level3-objects" data-level3="objects"></div>
+
+                <div class="level3-arrow level3-arrow--aim" data-level3="aim-arrow" hidden>
+                  <span class="level3-arrow__shaft"></span>
+                </div>
+                <div class="level3-arrow level3-arrow--action" data-level3="arrow-object" hidden>
+                  <span class="level3-arrow__shaft"></span>
+                  <span class="level3-arrow__label" data-level3="arrow-object-label"></span>
+                </div>
+                <div class="level3-arrow level3-arrow--reaction" data-level3="arrow-witch" hidden>
+                  <span class="level3-arrow__shaft"></span>
+                  <span class="level3-arrow__label" data-level3="arrow-witch-label"></span>
+                </div>
+
+                <div class="level3-witch" data-level3="witch">
+                  <svg class="level3-witch__svg" viewBox="0 0 100 100" aria-hidden="true">
+                    <text class="level3-witch__glyph" x="50" y="68" text-anchor="middle">🧙‍♀️</text>
+                  </svg>
+                  <span class="level3-witch__mass" data-level3="witch-mass"></span>
+                </div>
+
+                <canvas class="level3-particles" data-level3="particles" width="960" height="540"></canvas>
+              </div>
+              <div class="level__message panel" data-level3="message" hidden></div>
+            </div>
+
+            <div class="level3-console">
+              <div class="level3-console__panel panel">
+                <div class="level3-console__header">
+                  <span class="level3-console__title">Objeto a lanzar</span>
+                </div>
+                <div class="item-select">
+                  <button type="button" class="item-select__option level3-object-select__option" data-level3-object="candy">
+                    <span class="level3-object-select__emoji">🍬</span>
+                    <span class="level3-object-select__name">Caramelos</span>
+                    <span class="item-select__mass">2 kg</span>
+                  </button>
+                  <button type="button" class="item-select__option level3-object-select__option" data-level3-object="cauldron">
+                    <span class="level3-object-select__emoji">🫕</span>
+                    <span class="level3-object-select__name">Caldero</span>
+                    <span class="item-select__mass">8 kg</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="level3-console__panel panel">
+                <div class="level3-console__header">
+                  <span class="level3-console__title">Dirección</span>
+                  <span class="level3-console__direction-value" data-level3="direction-value">0°</span>
+                </div>
+                <input
+                  id="level3-direction"
+                  class="slider"
+                  type="range"
+                  min="0"
+                  max="359"
+                  step="1"
+                  value="0"
+                  data-level3="direction"
+                />
+                <button type="button" class="btn btn--primary level3-console__launch" data-level3="launch">
+                  Lanzar hacia atrás
+                </button>
+              </div>
+            </div>
           </div>
+
           <aside class="level__sidebar">
             <div class="level__mission panel">
               <h2 class="level__mission-title">Misión</h2>
               <p>
-                La bruja flota sin gravedad. Elegí qué lanzar y en qué dirección: por
-                la 3.ª ley, ella retrocede exactamente al revés. Guiala hasta la luna
-                llena en 6 lanzamientos como máximo.
+                La bruja flota sin gravedad. Hay que elegir qué lanzar y en qué dirección:
+                por la 3.ª ley, ella retrocede exactamente al revés. Hay que guiarla hasta
+                la luna llena en 6 lanzamientos como máximo.
               </p>
             </div>
-            <div class="level__control">
-              <span class="level__control-label">Objeto a lanzar</span>
-              <div class="item-select">
-                <button type="button" class="item-select__option" data-level3-object="candy">
-                  Caramelos <span class="item-select__mass">2 kg</span>
-                </button>
-                <button type="button" class="item-select__option" data-level3-object="cauldron">
-                  Caldero <span class="item-select__mass">8 kg</span>
-                </button>
-              </div>
-            </div>
-            <div class="level__control">
-              <label class="level__control-label" for="level3-direction">
-                Dirección (<span data-level3="direction-value">0°</span>)
-              </label>
-              <input
-                id="level3-direction"
-                class="slider"
-                type="range"
-                min="0"
-                max="359"
-                step="1"
-                value="0"
-                data-level3="direction"
-              />
-            </div>
             <div class="hud level__telemetry" data-level3="telemetry"></div>
-            <button type="button" class="btn btn--primary" data-level3="launch">Lanzar hacia atrás</button>
             <p class="level__status" data-level3="status">Estado: flotando en reposo</p>
           </aside>
         </div>
@@ -192,7 +367,10 @@
         <div class="final__levels" data-final="level-cards"></div>
         <div class="final__laws" data-final="law-cards"></div>
         <div class="final__actions">
-          <button type="button" class="btn btn--primary" data-final-replay>Jugar de nuevo</button>
+          <button type="button" class="btn btn--primary" data-final-replay>
+            <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
+            Jugar de nuevo
+          </button>
           <button type="button" class="btn btn--ghost" data-nav-to="home">Volver al inicio</button>
         </div>
       </section>
@@ -211,25 +389,38 @@
       </section>
     </div>
 
+    <div class="modal" data-modal="level-menu" hidden>
+      <div class="modal__backdrop"></div>
+      <div class="modal__content panel" role="dialog" aria-modal="true" aria-labelledby="level-menu-title">
+        <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+        <h2 id="level-menu-title">Mapa de la mansión</h2>
+        <nav class="level-menu" data-level-menu-list></nav>
+      </div>
+    </div>
+
     <div class="modal" data-modal="how-to-play" hidden>
       <div class="modal__backdrop"></div>
       <div class="modal__content panel" role="dialog" aria-modal="true" aria-labelledby="how-to-play-title">
-        <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">&times;</button>
+        <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
         <h2 id="how-to-play-title">Cómo jugar</h2>
         <p>
-          <strong>Nivel 1 — El fantasma que no se detiene:</strong> cargá potencia con el
-          botón "Soplar" (o la tecla Espacio) y ajustá la fricción con el slider. El
-          fantasma debe detenerse dentro de la alfombra, frente a la puerta.
+          <strong>Nivel 1 — El fantasma que no se detiene:</strong> hay que cargar
+          potencia con el botón "Soplar" (o la tecla Espacio) y ajustar la fricción con
+          el slider. El fantasma debe detenerse dentro de la alfombra, frente a la puerta.
         </p>
         <p>
-          <strong>Nivel 2 — Catapulta de calabazas:</strong> elegí el tamaño de la
-          calabaza, ajustá la fuerza de lanzamiento y derribá al menos 3 de los 4
+          <strong>Nivel 2 — Catapulta de calabazas:</strong> hay que elegir el tamaño de
+          la calabaza, ajustar la fuerza de lanzamiento y derribar al menos 3 de los 4
           esqueletos en un máximo de 3 lanzamientos.
         </p>
         <p>
-          <strong>Nivel 3 — La bruja y su escoba:</strong> elegí qué objeto lanzar y en
-          qué dirección. La bruja retrocede en sentido contrario: usá el impulso para
-          llegar hasta la luna.
+          <strong>Nivel 3 — La bruja y su escoba:</strong> hay que elegir qué objeto
+          lanzar y en qué dirección. La bruja retrocede en sentido contrario: hay que
+          usar el impulso para llegar hasta la luna.
         </p>
       </div>
     </div>
@@ -237,7 +428,9 @@
     <div class="modal" data-modal="lesson" hidden>
       <div class="modal__backdrop"></div>
       <div class="modal__content panel" role="dialog" aria-modal="true" aria-labelledby="lesson-title">
-        <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">&times;</button>
+        <button type="button" class="modal__close" data-modal-close aria-label="Cerrar">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
 
         <div data-lesson="explanation">
           <p class="lesson__eyebrow">Ley de Newton</p>

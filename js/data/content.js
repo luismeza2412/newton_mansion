@@ -72,9 +72,9 @@
     },
 
     hints: {
-      level1Fail: 'Revisá la combinación de potencia y fricción: necesitás que el fantasma frene justo sobre la alfombra.',
-      level2Fail: 'Probá ajustar la fuerza según la masa de la calabaza: recordá que a = F/m.',
-      level3Fail: 'Elegí bien qué lanzar y en qué dirección: la bruja retrocede exactamente al revés.',
+      level1Fail: 'Hay que revisar la combinación de potencia y fricción: el fantasma necesita frenar justo sobre la alfombra.',
+      level2Fail: 'Hay que ajustar la fuerza según la masa de la calabaza: recordar que a = F/m.',
+      level3Fail: 'Hay que elegir bien qué lanzar y en qué dirección: la bruja retrocede exactamente al revés.',
       frictionZero: 'Sin fricción no hay fuerza que frene al fantasma: por la 1.ª ley, seguirá para siempre.',
     },
   };

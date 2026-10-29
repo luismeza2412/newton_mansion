@@ -10,6 +10,11 @@
     2: 'Catapulta de calabazas',
     3: 'La bruja y su escoba',
   };
+  var LEVEL_META = {
+    1: { emoji: '👻', lawTag: '1ª Ley' },
+    2: { emoji: '🎃', lawTag: '2ª Ley' },
+    3: { emoji: '🧙‍♀️', lawTag: '3ª Ley' },
+  };
   var LEVEL_IDS = [1, 2, 3];
 
   var screens = {};
@@ -80,31 +85,61 @@
 
   function cardAction(levelId, status) {
     if (status === 'locked') {
-      return '<p class="card__hint">Bloqueado espectral</p>';
+      return (
+        '<p class="card__hint">' +
+        '<span class="material-symbols-outlined" aria-hidden="true">lock</span>' +
+        ' Bloqueado espectral' +
+        '</p>'
+      );
     }
     var label = status === 'completed' ? 'Jugar de nuevo' : 'Jugar';
+    var icon = status === 'completed' ? 'restart_alt' : 'play_arrow';
     return (
       '<button type="button" class="btn btn--primary" data-nav-to="level-' +
       levelId +
       '">' +
+      '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span> ' +
       label +
       '</button>'
     );
   }
 
+  var STATUS_LABELS = {
+    locked: 'Bloqueado espectral',
+    unlocked: 'Disponible',
+    completed: 'Completado',
+  };
+
   function cardMarkup(levelId, status, levelState) {
+    var meta = LEVEL_META[levelId];
+    var formula = window.NM.content.laws[levelId].formula;
+    var lockOverlay = status === 'locked' ?
+      '<div class="level-card__lock"><span class="material-symbols-outlined" aria-hidden="true">lock</span></div>' :
+      '';
     return (
-      '<article class="card card--' + status + '">' +
+      '<article class="level-card level-card--' + status + '">' +
+      '<div class="level-card__thumb">' +
+      meta.emoji +
+      '<span class="level-card__law-tag">' + meta.lawTag + '</span>' +
+      lockOverlay +
+      '</div>' +
+      '<div class="level-card__body">' +
       '<p class="card__eyebrow">Nivel ' + levelId + '</p>' +
       '<h3 class="card__title">' + LEVEL_TITLES[levelId] + '</h3>' +
       '<div class="card__stars">' + starsMarkup(levelState.stars) + '</div>' +
-      cardAction(levelId, status) +
+      '<p class="level-card__formula">' + formula + '</p>' +
+      '<div class="level-card__footer">' +
+      '<span class="level-card__status">' + STATUS_LABELS[status] + '</span>' +
+      (status === 'locked' ? '' : cardAction(levelId, status)) +
+      '</div>' +
+      '</div>' +
       '</article>'
     );
   }
 
   /**
-   * Reconstruye las 3 tarjetas de nivel según el estado actual (RF-02).
+   * Reconstruye las 3 tarjetas de nivel según el estado actual (RF-02), junto
+   * con el badge de progreso real del encabezado de la sección.
    */
   function renderLevelCards() {
     var container = document.querySelector('[data-level-cards]');
@@ -113,12 +148,22 @@
     }
     var state = window.NM.state.getState();
     var html = '';
+    var completedCount = 0;
     for (var i = 0; i < LEVEL_IDS.length; i += 1) {
       var levelId = LEVEL_IDS[i];
-      html += cardMarkup(levelId, levelStatus(state, levelId), state.levels[levelId]);
+      var status = levelStatus(state, levelId);
+      if (status === 'completed') {
+        completedCount += 1;
+      }
+      html += cardMarkup(levelId, status, state.levels[levelId]);
     }
     container.innerHTML = html;
     wireNavButtons(container);
+
+    var badge = document.querySelector('[data-home="levels-progress"]');
+    if (badge) {
+      badge.textContent = completedCount + '/' + LEVEL_IDS.length + ' superados';
+    }
   }
 
   function finalLevelCardMarkup(levelId, levelState) {
@@ -183,7 +228,7 @@
       return;
     }
     replayButton.addEventListener('click', function () {
-      if (window.confirm('¿Seguro que querés borrar tu progreso y jugar de nuevo desde el Nivel 1?')) {
+      if (window.confirm('¿Seguro que desea borrar su progreso y jugar de nuevo desde el Nivel 1?')) {
         window.NM.state.resetProgress();
         navigateTo('home');
       }
@@ -223,10 +268,55 @@
     });
   }
 
+  function levelMenuItemMarkup(levelId, status) {
+    if (status === 'locked') {
+      return (
+        '<p class="level-menu__item level-menu__item--locked">' +
+        'Nivel ' + levelId + ': ' + LEVEL_TITLES[levelId] +
+        ' <span class="material-symbols-outlined" aria-hidden="true">lock</span>' +
+        '</p>'
+      );
+    }
+    return (
+      '<button type="button" class="btn btn--ghost level-menu__item" data-nav-to="level-' +
+      levelId +
+      '" data-modal-close>' +
+      'Nivel ' + levelId + ': ' + LEVEL_TITLES[levelId] +
+      '</button>'
+    );
+  }
+
+  /**
+   * Reconstruye el listado del mapa de niveles (home + niveles 1-3) cada vez
+   * que se abre el modal, respetando el mismo estado de bloqueo que las
+   * tarjetas del inicio.
+   */
+  function renderLevelMenu() {
+    var container = document.querySelector('[data-level-menu-list]');
+    if (!container) {
+      return;
+    }
+    var state = window.NM.state.getState();
+    var html =
+      '<button type="button" class="btn btn--ghost level-menu__item" data-nav-to="home" data-modal-close>' +
+      '<span class="material-symbols-outlined" aria-hidden="true">home</span> Inicio' +
+      '</button>';
+    for (var i = 0; i < LEVEL_IDS.length; i += 1) {
+      var levelId = LEVEL_IDS[i];
+      html += levelMenuItemMarkup(levelId, levelStatus(state, levelId));
+    }
+    container.innerHTML = html;
+    wireNavButtons(container);
+    wireModalClosers(container);
+  }
+
   function openModal(modalId) {
     var modal = document.querySelector('[data-modal="' + modalId + '"]');
     if (!modal) {
       return;
+    }
+    if (modalId === 'level-menu') {
+      renderLevelMenu();
     }
     modal.hidden = false;
     activeModal = modal;
@@ -250,6 +340,13 @@
     }
   }
 
+  function wireModalClosers(scope) {
+    var closers = scope.querySelectorAll('[data-modal-close]');
+    for (var j = 0; j < closers.length; j += 1) {
+      closers[j].addEventListener('click', closeModal);
+    }
+  }
+
   /**
    * Wirea apertura/cierre del modal: botón, backdrop y tecla Esc (RF-04).
    */
@@ -258,10 +355,7 @@
     for (var i = 0; i < openers.length; i += 1) {
       openers[i].addEventListener('click', handleModalOpenClick);
     }
-    var closers = document.querySelectorAll('[data-modal-close]');
-    for (var j = 0; j < closers.length; j += 1) {
-      closers[j].addEventListener('click', closeModal);
-    }
+    wireModalClosers(document);
     var backdrops = document.querySelectorAll('.modal__backdrop');
     for (var k = 0; k < backdrops.length; k += 1) {
       backdrops[k].addEventListener('click', closeModal);
@@ -278,7 +372,7 @@
       return;
     }
     resetButton.addEventListener('click', function () {
-      if (window.confirm('¿Seguro que querés borrar todo tu progreso?')) {
+      if (window.confirm('¿Seguro que desea borrar todo su progreso?')) {
         window.NM.state.resetProgress();
         renderLevelCards();
       }
@@ -286,7 +380,8 @@
   }
 
   function renderSoundToggle(button, isOn) {
-    button.textContent = isOn ? '🔊' : '🔇';
+    var icon = isOn ? 'volume_up' : 'volume_off';
+    button.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span>';
     button.setAttribute('aria-label', isOn ? 'Silenciar sonido' : 'Activar sonido');
   }
 
